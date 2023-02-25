@@ -1,5 +1,5 @@
 ﻿student-reg-system
-1.0.0.0
+
 
 winexe
 C#
@@ -12,7 +12,7 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\UOR education\SEM03\PP-Project\Student-Registration-System\student-reg-system\student-reg-system\App.xaml
 21727942632
 
-6-1754047522
+48892085
 194-2004305220
 MainWindow.xaml;Views\LoginView.xaml;
 
