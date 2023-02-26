@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\UOR education\\SEM03\\PP-Project\\Student-Registration-System\\student-reg-system\\student-reg-system\\student-reg-system.csproj": {}
+    "C:\\Users\\User\\OneDrive\\Desktop\\Student-sys\\student-reg-system\\student-reg-system\\student-reg-system.csproj": {}
   },
   "projects": {
-    "D:\\UOR education\\SEM03\\PP-Project\\Student-Registration-System\\student-reg-system\\student-reg-system\\student-reg-system.csproj": {
+    "C:\\Users\\User\\OneDrive\\Desktop\\Student-sys\\student-reg-system\\student-reg-system\\student-reg-system.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\UOR education\\SEM03\\PP-Project\\Student-Registration-System\\student-reg-system\\student-reg-system\\student-reg-system.csproj",
+        "projectUniqueName": "C:\\Users\\User\\OneDrive\\Desktop\\Student-sys\\student-reg-system\\student-reg-system\\student-reg-system.csproj",
         "projectName": "student-reg-system",
-        "projectPath": "D:\\UOR education\\SEM03\\PP-Project\\Student-Registration-System\\student-reg-system\\student-reg-system\\student-reg-system.csproj",
-        "packagesPath": "C:\\Users\\Oshan\\.nuget\\packages\\",
-        "outputPath": "D:\\UOR education\\SEM03\\PP-Project\\Student-Registration-System\\student-reg-system\\student-reg-system\\obj\\",
+        "projectPath": "C:\\Users\\User\\OneDrive\\Desktop\\Student-sys\\student-reg-system\\student-reg-system\\student-reg-system.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\OneDrive\\Desktop\\Student-sys\\student-reg-system\\student-reg-system\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\VisualStudio\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Oshan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +43,16 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            },
+            "Microsoft.VisualStudio.Utilities": {
+              "target": "Package",
+              "version": "[17.4.33103.184, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

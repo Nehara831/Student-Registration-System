@@ -1,4 +1,6 @@
-﻿using System;
+﻿using student_reg_system.ViewModels;
+using student_reg_system.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +12,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace student_reg_system
@@ -23,6 +24,8 @@ namespace student_reg_system
         public MainWindow()
         {
             InitializeComponent();
+            var window = new StudentRegView();
+            window.show();
         }
     }
 }

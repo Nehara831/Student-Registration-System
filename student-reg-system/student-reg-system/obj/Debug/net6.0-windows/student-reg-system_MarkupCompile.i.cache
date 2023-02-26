@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\App.xaml
-21727942632
+32070092615
 
-6-1754047522
-194-2004305220
-MainWindow.xaml;Views\LoginView.xaml;
+12-1662076597
+219-1658627541
+MainWindow.xaml;Views\LoginView.xaml;Views\StudentRegView.xaml;
 
-False
+True
 
