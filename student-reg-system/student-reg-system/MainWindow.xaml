@@ -5,9 +5,99 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:student_reg_system"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" 
+        Height="800" 
+        Width="1040" 
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Coral"
+        ResizeMode="NoResize"  
+        FontFamily="Segoe UI Emoji">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Height="28" Margin="177,52,0,0" VerticalAlignment="Top" Width="93"/>
+        <Grid>
+            <StackPanel Width="120"
+                    HorizontalAlignment="Left"
+                    Background="Gold">
+
+                <Button  x:Name="Home"
+                     Height="50"
+                     Width="50"
+                     Background="Transparent"
+                     BorderBrush="Transparent"
+                     Margin="0,180,0,20" Click="btnIndex_Click">
+
+                    <Image Source="https://img.icons8.com/ios/64/000000/home--v2.png"
+                       Stretch="Fill"/>
+
+                </Button>
+
+                <Button x:Name="Student"
+                     Height="50"
+                    Width="50"
+                     Background="Transparent"
+                     BorderBrush="Transparent"
+                     Margin="0,0,0,10"
+                    Foreground="White" Click="btnStuden_Click">
+
+                    <Image Source="https://img.icons8.com/ios-filled/24/000000/user-male-circle.png"
+                    Stretch="Fill"/>
+
+                </Button>
+
+                <Button x:Name="Cource"
+                      Height="50"
+                     Width="50"
+                     Background="Transparent"
+                     BorderBrush="Transparent"
+                     Margin="0,10,0,0"
+                    Click="btnCourse_click">
+
+                    <Image Source="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-course-online-learning-flatart-icons-outline-flatarticons.png" 
+                       Stretch="Fill"/>
+
+                </Button>
+
+            </StackPanel>
+            <Grid Height="75"
+              VerticalAlignment="Top"
+              Background="Gold">
+
+                <TextBlock Text="Student Management Application"
+                      
+                       FontSize="30"                       
+                       VerticalAlignment="Center"
+                       
+                       FontWeight="Bold" Margin="269,0,0,0" Width="auto"/>
+
+                <Button x:Name="Exit"
+                    Height="30"
+                    Width="30"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,20,0"
+                    Click="Exit_Click">
+
+                    <Image Source="https://img.icons8.com/ios-filled/50/000000/logout-rounded-down.png"/>
+
+                </Button>
+
+            </Grid>
+
+            <StackPanel Width="905"
+                    Height="720"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center"
+                    Margin="10,80,-110,5"
+                   Background="AliceBlue">
+                <Frame x:Name="MainContainer" NavigationUIVisibility="Hidden"/>
+            </StackPanel>
+
+
+
+        </Grid>
 
     </Grid>
 </Window>

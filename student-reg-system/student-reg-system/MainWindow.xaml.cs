@@ -24,8 +24,35 @@ namespace student_reg_system
         public MainWindow()
         {
             InitializeComponent();
-            var window = new StudentRegView();
-            window.show();
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            var response = MessageBox.Show("Do you really want to exit?", "Exiting...",
+                                      MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            if (response == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
+
+        }
+
+        private void btnCourse_click(object sender, RoutedEventArgs e)
+        {
+           // MainContainer.Content = new CourseView();
+        }
+
+        private void btnIndex_Click(object sender, RoutedEventArgs e)
+        {
+           // MainContainer.Content = new IndexView();
+        }
+
+        private void btnStuden_Click(object sender, RoutedEventArgs e)
+        {
+            StudentRegView newWindow = new StudentRegView();
+
+            // Show the new window
+            newWindow.Show();
         }
     }
 }
