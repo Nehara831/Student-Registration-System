@@ -2,6 +2,7 @@
 using student_reg_system.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,16 @@ namespace student_reg_system
             InitializeComponent();
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            UserView newuser= new UserView();
+            newuser.Show();
+
+        }
+    }
+}
+
+        /*private void Exit_Click(object sender, RoutedEventArgs e)
         {
             var response = MessageBox.Show("Do you really want to exit?", "Exiting...",
                                       MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
@@ -44,7 +54,11 @@ namespace student_reg_system
 
         private void btnIndex_Click(object sender, RoutedEventArgs e)
         {
-           // MainContainer.Content = new IndexView();
+            // MainContainer.Content = new IndexView();
+           LoginView newWindow1 = new LoginView();
+
+            // Show the new window
+            newWindow1.Show();
         }
 
         private void btnStuden_Click(object sender, RoutedEventArgs e)
@@ -53,6 +67,5 @@ namespace student_reg_system
 
             // Show the new window
             newWindow.Show();
-        }
-    }
-}
+        }*/
+

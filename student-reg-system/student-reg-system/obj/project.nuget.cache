@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "9dqqHfjXBj3tOArQTh0Wx8uKwlCoT/ultC7C352xGq0d6cofC3uHT3jShYfB2xE3IAWGXaytp53KgbQ60EGmTw==",
+  "dgSpecHash": "BEKcXA0ATs5JcpJ7+5geqzb1rtxKZbsL/fpZLxAyMSN8tU0yE2ZJcV6VK7VNDtjW5jMLKa9d4/Ix2B1fUbdzNA==",
   "success": true,
   "projectFilePath": "C:\\Users\\User\\OneDrive\\Desktop\\Student-sys\\student-reg-system\\student-reg-system\\student-reg-system.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\communitytoolkit.mvvm\\8.1.0\\communitytoolkit.mvvm.8.1.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\mahapps.metro.iconpacks.material\\4.11.0\\mahapps.metro.iconpacks.material.4.11.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\messagepack\\2.4.35\\messagepack.2.4.35.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\messagepack.annotations\\2.4.35\\messagepack.annotations.2.4.35.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

@@ -25,7 +25,6 @@ C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\obj\Debug\net6.0-windows\Views\LoginView.g.cs
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\obj\Debug\net6.0-windows\Views\StudentRegView.g.cs
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\obj\Debug\net6.0-windows\App.g.cs
-C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\obj\Debug\net6.0-windows\student-reg-system_MarkupCompile.cache
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\obj\Debug\net6.0-windows\student-reg-system_MarkupCompile.lref
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\obj\Debug\net6.0-windows\Views\LoginView.baml
@@ -153,3 +152,8 @@ C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\obj\Debug\net6.0-windows\ref\student-reg-system.dll
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\MahApps.Metro.IconPacks.Core.dll
+C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\MahApps.Metro.IconPacks.Material.dll
+C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\obj\Debug\net6.0-windows\Views\UserView.baml
+C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\obj\Debug\net6.0-windows\Views\UserView.g.cs
+C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\obj\Debug\net6.0-windows\App.baml

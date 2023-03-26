@@ -4,9 +4,12 @@ using student_reg_system.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
+using System.Windows;
 
 namespace student_reg_system.ViewModels
 {
@@ -23,8 +26,10 @@ namespace student_reg_system.ViewModels
         public DateTime dateofBirth;
         [ObservableProperty]
         public string? adress;
+        
 
-       
+
+
 
         [ObservableProperty]
          ObservableCollection<Module> moduleList;
@@ -55,6 +60,7 @@ namespace student_reg_system.ViewModels
                 DateofBirthStudent = DateofBirth,
                 AdressStudent = Adress,
             };
+
            // using (var db = new PersonContext())
            /* {
                 db.Persons.Add(p);
@@ -63,4 +69,6 @@ namespace student_reg_system.ViewModels
             LoadPerson();*/
         }
     }
+   
+
 }

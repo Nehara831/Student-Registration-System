@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace student_reg_system.Models
 {
-    internal class User
+    public class User
     {
     }
 }

@@ -127,7 +127,7 @@
                             Grid.Row="1"
                             Orientation="Vertical"
                             Margin="0,35,0,0">
-                    <Image Source="/asserts/Logo.png"
+                    <Image Source="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-course-online-learning-flatart-icons-outline-flatarticons.png"
                            Width="100" Height="100"/>
 
                     <TextBlock Text="Student Registration System"
@@ -161,7 +161,7 @@
                              Padding="20,0,0,0">
 
                         <TextBox.Background>
-                            <ImageBrush ImageSource="/Images/user-icon.png"
+                            <ImageBrush ImageSource="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-course-online-learning-flatart-icons-outline-flatarticons.png"
                                         Stretch="None"
                                         AlignmentX="Left"/>
                         </TextBox.Background>
