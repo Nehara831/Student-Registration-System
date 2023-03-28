@@ -68,7 +68,7 @@ namespace student_reg_system.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/student-reg-system;component/views/studentregview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/student-reg-system;V1.0.0.0;component/views/studentregview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\StudentRegView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
