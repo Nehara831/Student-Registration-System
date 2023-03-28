@@ -25,6 +25,7 @@ namespace student_reg_system.Views
             InitializeComponent();
             this.Visibility = Visibility.Visible;
             var converter = new BrushConverter();
+            DataGrid membersDataGrid = (DataGrid)FindName("membersDataGrid");
             ObservableCollection<Member> members = new ObservableCollection<Member>();
 
             members.Add(new Member { Number = "1", Character = "J", BgColor = (Brush)converter.ConvertFromString("#1098AD"), Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
@@ -60,7 +61,10 @@ namespace student_reg_system.Views
             members.Add(new Member { Number = "29", Character = "F", BgColor = (Brush)converter.ConvertFromString("#1E88E5"), Name = "Frank Underwood", Position = "Manager", Email = "frank@yahoo.com", Phone = "301-584-6966" });
             members.Add(new Member { Number = "30", Character = "S", BgColor = (Brush)converter.ConvertFromString("#0CA678"), Name = "Saeed Dasman", Position = "Coach", Email = "saeed.dasi@hotmail.com", Phone = "817-320-5052" });
 
+        
             membersDataGrid.ItemsSource = members;
+            
+           
         }
 
         private bool IsMaximize = false;

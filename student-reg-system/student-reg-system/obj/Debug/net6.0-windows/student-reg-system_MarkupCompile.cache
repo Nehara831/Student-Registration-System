@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\obj\Debug\net6.0-windows\
+D:\UOR education\SEM03\PP-Project\Student-Registration-System\student-reg-system\student-reg-system\obj\Debug\net6.0-windows\
 student_reg_system
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\App.xaml
+D:\UOR education\SEM03\PP-Project\Student-Registration-System\student-reg-system\student-reg-system\App.xaml
 4-1199045080
 
 11351069416
-221-115571603
+221-1333866321
 MainWindow.xaml;Views\LoginView.xaml;Views\StudentRegView.xaml;Views\UserView.xaml;
 
 False
