@@ -1,19 +1,25 @@
-﻿using System;
+﻿using MessagePack;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KeyAttribute = System.ComponentModel.DataAnnotations.KeyAttribute;
 
 namespace student_reg_system.Models
 {
     public class Student
     {
+        [Key]
         public int StudentIDStudent { get; set; }
 
         public string FirstNameStudent { get; set; }
         public string LastNameStudent{ get; set; }
         public DateTime DateofBirthStudent { get; set; }
         public string AdressStudent { get; set; }
+
+       // public string DepartmentStudent { get; set; }
         public List<Module> Modules = new List<Module>();
 
         public Student(int id, string fname, string lname, DateTime date, string adress)
@@ -23,6 +29,7 @@ namespace student_reg_system.Models
             LastNameStudent = lname;
             DateofBirthStudent = date;
             AdressStudent = adress;
+          //  DepartmentStudent= department;
 
         }
         public Student()

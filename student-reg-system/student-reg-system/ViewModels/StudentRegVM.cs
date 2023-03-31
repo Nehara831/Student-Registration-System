@@ -10,13 +10,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows;
+using student_reg_system.database;
+
 
 namespace student_reg_system.ViewModels
 {
-    partial class StudentRegVM:ObservableObject
+    partial class StudentRegVM : ObservableObject
     {
         [ObservableProperty]
-        public int id;
+        public int idstudent;
 
         [ObservableProperty]
         public string? firstName;
@@ -26,48 +28,46 @@ namespace student_reg_system.ViewModels
         public DateTime dateofBirth;
         [ObservableProperty]
         public string? adress;
-        
+        [ObservableProperty]
+        private bool? isMale;
+        [ObservableProperty]
+        private bool? isFemale;
+
 
 
 
 
         [ObservableProperty]
-         ObservableCollection<Module> moduleList;
+        ObservableCollection<Module> moduleList;
         public StudentRegVM()
         {
 
             moduleList = new ObservableCollection<Module>()
             {
              new Module(3305, "Signal and Systems", 3),
-             new Module(3301, "Analog Electronics", 3),           
+             new Module(3301, "Analog Electronics", 3),
              new Module(3302, "Data Structures and Algorithems", 3),
              new Module(3203, "Measurement", 2),
              new Module(3251, "GUI Prgramming", 2),
              new Module(3250, "Programming  Project", 3),
-           
+
 
         };
         }
         [RelayCommand]
 
-        public void addStudent()
+        public void AddStudent()
         {
-            Student student = new Student()
+            Student student = new Student(Idstudent, FirstName, LastName, DateofBirth, Adress);
+            
+            using (var db = new StudentContext())
             {
-                StudentIDStudent = Id,
-                FirstNameStudent = FirstName,
-                LastNameStudent = LastName,
-                DateofBirthStudent = DateofBirth,
-                AdressStudent = Adress,
-            };
-
-           // using (var db = new PersonContext())
-           /* {
-                db.Persons.Add(p);
+                db.Students.Add(student);
                 db.SaveChanges();
             }
-            LoadPerson();*/
+
         }
+       
     }
    
 

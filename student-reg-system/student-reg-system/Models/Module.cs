@@ -9,7 +9,7 @@ namespace student_reg_system.Models
     public class Module
     {
         public int ModuleId { get; set; }
-        public string ModuleNane { get; set; }
+        public string ModuleName { get; set; }
         public char Grade { get; set; }
         public double CreditValue { get; set; }
         public double GradePoint { get; set; }
@@ -18,7 +18,7 @@ namespace student_reg_system.Models
         {
 
             ModuleId = moduleId;
-            ModuleNane = moduleNane;
+            ModuleName = moduleNane;
 
             CreditValue = creditValue;
         }
