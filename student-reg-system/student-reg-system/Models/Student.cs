@@ -13,29 +13,22 @@ namespace student_reg_system.Models
     {
         [Key]
         public int StudentIDStudent { get; set; }
-
+        
         public string FirstNameStudent { get; set; }
         public string LastNameStudent{ get; set; }
-        public DateTime DateofBirthStudent { get; set; }
+        public DateOnly DateofBirthStudent { get; set; }
         public string AdressStudent { get; set; }
-
+        
        // public string DepartmentStudent { get; set; }
         public List<Module> Modules = new List<Module>();
 
-        public Student(int id, string fname, string lname, DateTime date, string adress)
-        {
-            StudentIDStudent = id;
-            FirstNameStudent = fname;
-            LastNameStudent = lname;
-            DateofBirthStudent = date;
-            AdressStudent = adress;
-          //  DepartmentStudent= department;
-
-        }
         public Student()
         {
+            
+         
 
         }
+        
             public double CalculateGPA()
         {
             double point = 0;

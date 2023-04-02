@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace student_reg_system.database
 {
-    
+    /*
         public class UserContext : DbContext
         {
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -18,7 +18,7 @@ namespace student_reg_system.database
 
             public DbSet<User> Users { get; set; }
             private readonly string _path1 = @"C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\sqlite\UserData.db";
-
+        
     }
-
+    */
 }

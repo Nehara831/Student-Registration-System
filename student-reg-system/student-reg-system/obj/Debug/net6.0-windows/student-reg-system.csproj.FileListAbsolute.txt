@@ -285,11 +285,15 @@ C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\Microsoft.Extensions.Options.dll
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\Microsoft.Extensions.Primitives.dll
-C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\SQLitePCLRaw.batteries_v2.dll
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\SQLitePCLRaw.core.dll
-C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\SQLitePCLRaw.provider.e_sqlite3.dll
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\System.Text.Json.dll
+C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\Humanizer.dll
+C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\Mono.TextTemplating.dll
+C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\SQLitePCLRaw.batteries_v2.dll
+C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\SQLitePCLRaw.provider.e_sqlite3.dll
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\runtimes\alpine-arm\native\libe_sqlite3.so
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\runtimes\alpine-arm64\native\libe_sqlite3.so
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\runtimes\alpine-x64\native\libe_sqlite3.so
@@ -313,4 +317,3 @@ C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\runtimes\win-x86\native\e_sqlite3.dll
-C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll

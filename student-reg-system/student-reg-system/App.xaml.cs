@@ -21,7 +21,7 @@ namespace student_reg_system
         protected override void OnStartup(StartupEventArgs e)
         {
             DatabaseFacade facade1= new DatabaseFacade(new StudentContext());
-            DatabaseFacade facade2 = new DatabaseFacade(new UserContext());
+           
             facade1.EnsureCreated();
             
         }

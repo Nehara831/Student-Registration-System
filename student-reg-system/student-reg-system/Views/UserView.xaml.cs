@@ -1,8 +1,11 @@
-﻿using student_reg_system.ViewModels;
+﻿using student_reg_system.database;
+using student_reg_system.Models;
+using student_reg_system.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,20 +23,22 @@ namespace student_reg_system.Views
     /// Interaction logic for UserView.xaml
     /// </summary>
     public partial class UserView : Window
-    {
+    { 
         public UserView()
         {
             InitializeComponent();
            
             DataContext = new StudentRegVM();
-            var converter = new BrushConverter();
-            DataGrid membersDataGrid = (DataGrid)FindName("membersDataGrid");
             
+            
+           
+
 
            
-        
-           
-           
+            
+            
+
+
         }
 
         private bool IsMaximize = false;
