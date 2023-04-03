@@ -37,7 +37,12 @@ namespace student_reg_system.ViewModels
         [ObservableProperty]
         private bool? isFemale;
 
-
+        [ObservableProperty]
+        public string selectedModule1;
+        [ObservableProperty]
+        public string selectedModule2;
+       // [ObservableProperty]
+       // public string selectedModule3;
 
         [ObservableProperty]
         public  ObservableCollection<Student> studentList;
@@ -80,7 +85,7 @@ namespace student_reg_system.ViewModels
             DateofBirthStudent = DoB,
             AdressStudent = Adres,
         };
-            
+           
             using (var db = new StudentContext())
             {
                 db.Students.Add(student);

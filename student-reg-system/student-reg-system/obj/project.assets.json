@@ -4114,10 +4114,7 @@
       "CommunityToolkit.Mvvm >= 8.1.0",
       "MahApps.Metro.IconPacks.Material >= 4.11.0",
       "Microsoft.EntityFrameworkCore >= 7.0.4",
-<<<<<<< HEAD
       "Microsoft.EntityFrameworkCore.Design >= 7.0.4",
-=======
->>>>>>> bd0bb8b371e43d7bf3a19e1dcd2ee83398433046
       "Microsoft.EntityFrameworkCore.Sqlite >= 7.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.4",
       "Microsoft.Extensions.DependencyInjection >= 7.0.0",
@@ -4125,19 +4122,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Oshan\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "D:\\VisualStudio\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\UOR education\\SEM03\\PP-Project\\Student-Registration-System\\student-reg-system\\student-reg-system\\student-reg-system.csproj",
+      "projectUniqueName": "C:\\Users\\User\\OneDrive\\Desktop\\Student-sys\\student-reg-system\\student-reg-system\\student-reg-system.csproj",
       "projectName": "student-reg-system",
-      "projectPath": "D:\\UOR education\\SEM03\\PP-Project\\Student-Registration-System\\student-reg-system\\student-reg-system\\student-reg-system.csproj",
-      "packagesPath": "C:\\Users\\Oshan\\.nuget\\packages\\",
-      "outputPath": "D:\\UOR education\\SEM03\\PP-Project\\Student-Registration-System\\student-reg-system\\student-reg-system\\obj\\",
+      "projectPath": "C:\\Users\\User\\OneDrive\\Desktop\\Student-sys\\student-reg-system\\student-reg-system\\student-reg-system.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\OneDrive\\Desktop\\Student-sys\\student-reg-system\\student-reg-system\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "D:\\VisualStudio\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Oshan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4175,15 +4177,12 @@
             "target": "Package",
             "version": "[7.0.4, )"
           },
-<<<<<<< HEAD
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
             "version": "[7.0.4, )"
           },
-=======
->>>>>>> bd0bb8b371e43d7bf3a19e1dcd2ee83398433046
           "Microsoft.EntityFrameworkCore.Sqlite": {
             "target": "Package",
             "version": "[7.0.4, )"
@@ -4225,5 +4224,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\User\\OneDrive\\Desktop\\Student-sys\\student-reg-system\\student-reg-system\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

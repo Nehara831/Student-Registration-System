@@ -14,15 +14,15 @@ namespace student_reg_system.Models
         public double CreditValue { get; set; }
         public double GradePoint { get; set; }
 
-        public Module(int moduleId, string moduleNane, double creditValue)
+
+        public Module(int moduleId, string moduleName, double creditValue)
         {
 
             ModuleId = moduleId;
-            ModuleName = moduleNane;
-
+            ModuleName = moduleName;
             CreditValue = creditValue;
         }
-
+        public Module() { }
 
 
     }

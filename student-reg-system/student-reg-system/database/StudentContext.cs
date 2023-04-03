@@ -16,6 +16,12 @@ namespace student_reg_system.database
         }
 
         public DbSet<Student> Students { get; set; }
+        public DbSet<Module> Modules { get; set; }
+        public DbSet<User> Users { get; set; }
+        
+
         private readonly string _path = @"C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\sqlite\StudentData.db";
+
     }
+
 }

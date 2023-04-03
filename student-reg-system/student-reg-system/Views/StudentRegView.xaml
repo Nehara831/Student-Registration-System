@@ -27,8 +27,8 @@
         <RadioButton x:Name="FemaleRadioButton" Content="Female" IsChecked="{Binding IsFemale, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="385,170,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="215,210,0,0" TextWrapping="Wrap" Text="{Binding DoB}" VerticalAlignment="Top" Width="425"/>
 
-        <ComboBox HorizontalAlignment="Left" Height="31" Margin="215,0,0,0" VerticalAlignment="Center" Width="131" ItemsSource="{Binding ModuleList}" DisplayMemberPath="ModuleName"/>
-        <ComboBox HorizontalAlignment="Left" Height="31" Margin="385,0,0,0" VerticalAlignment="Center" Width="131" ItemsSource="{Binding ModuleList}" DisplayMemberPath="ModuleName"/>
+        <ComboBox HorizontalAlignment="Left" Height="31" Margin="215,0,0,0" VerticalAlignment="Center" Width="131" ItemsSource="{Binding ModuleList}" DisplayMemberPath="ModuleName" SelectedItem="{Binding SelectedModule1}"/>
+        <ComboBox HorizontalAlignment="Left" Height="31" Margin="385,0,0,0" VerticalAlignment="Center" Width="131" ItemsSource="{Binding ModuleList}" DisplayMemberPath="ModuleName" SelectedItem="{Binding selectedModule2}"/>
         <Button Content="Add Student" Command="{Binding AddStudentCommand}" VerticalAlignment="Top" Width="109" Height="31" Margin="7,300,10,100" />
 
 
