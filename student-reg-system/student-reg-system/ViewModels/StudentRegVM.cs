@@ -32,15 +32,15 @@ namespace student_reg_system.ViewModels
         public DateOnly doB;
         [ObservableProperty]
         public string? adres;
+       
+        [ObservableProperty]
+        public string? department;
         [ObservableProperty]
         private bool? isMale;
         [ObservableProperty]
         private bool? isFemale;
 
-        [ObservableProperty]
-        public string selectedModule1;
-        [ObservableProperty]
-        public string selectedModule2;
+        
        // [ObservableProperty]
        // public string selectedModule3;
 
@@ -80,10 +80,11 @@ namespace student_reg_system.ViewModels
                 StudentIDStudent = Id,
                
 
-            FirstNameStudent = FName,
-            LastNameStudent = LName,
-            DateofBirthStudent = DoB,
-            AdressStudent = Adres,
+                FirstNameStudent = FName,
+                LastNameStudent = LName,
+                DateofBirthStudent = DoB,
+                AdressStudent = Adres,
+                DepartmentStudent=Department,
         };
            
             using (var db = new StudentContext())

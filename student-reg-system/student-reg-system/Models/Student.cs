@@ -19,7 +19,7 @@ namespace student_reg_system.Models
         public DateOnly DateofBirthStudent { get; set; }
         public string AdressStudent { get; set; }
         
-       // public string DepartmentStudent { get; set; }
+        public string DepartmentStudent { get; set; }
         public List<Module> Modules = new List<Module>();
 
         public Student()

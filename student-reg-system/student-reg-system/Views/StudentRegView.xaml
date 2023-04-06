@@ -9,28 +9,124 @@
    
     
 
+    
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="54,34,0,0" TextWrapping="Wrap" Text="Student ID" VerticalAlignment="Top" Width="109" Height="31"/>
-        <TextBlock HorizontalAlignment="Left" Margin="54,74,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top" Width="109" Height="31"/>
-        <TextBlock HorizontalAlignment="Left" Margin="54,110,0,0" TextWrapping="Wrap" Text="Last Name" VerticalAlignment="Top" Width="109" Height="31"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <TextBlock HorizontalAlignment="Left" Margin="54,140,0,0" TextWrapping="Wrap" Text="Adress" VerticalAlignment="Top" Width="109" Height="31"/>
-        <TextBlock HorizontalAlignment="Left" Margin="54,169,0,0" TextWrapping="Wrap" Text="Gender" VerticalAlignment="Top" Width="109" Height="31"/>
-        <TextBlock HorizontalAlignment="Left" Margin="54,1,0,0" TextWrapping="Wrap" Text="Modules" VerticalAlignment="Center" Width="109" Height="31"/>
-        <TextBlock HorizontalAlignment="Left" Margin="54,210,0,0" TextWrapping="Wrap" Text="Date Of  Birth" VerticalAlignment="Top" Width="109" Height="31"/>
+        <!--Left Section-->
+        <Border Padding="30" CornerRadius="25 0 0 25">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-        <TextBox HorizontalAlignment="Left" Margin="215,34,0,0" TextWrapping="Wrap" Text="{Binding Id}" VerticalAlignment="Top" Width="221"/>
-        <TextBox HorizontalAlignment="Left" Margin="215,69,0,0" TextWrapping="Wrap" Text="{Binding FName }" VerticalAlignment="Top" Width="221"/>
-        <TextBox HorizontalAlignment="Left" Margin="215,100,0,0" TextWrapping="Wrap" Text="{Binding LName}" VerticalAlignment="Top" Width="425"/>
-        <TextBox HorizontalAlignment="Left" Margin="215,138,0,0" TextWrapping="Wrap" Text="{Binding Adres}" VerticalAlignment="Top" Width="425"/>
-        <RadioButton x:Name="MaleRadioButton"  Content="Male" Margin="215,170,0,0" IsChecked="{Binding IsMale, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-        <RadioButton x:Name="FemaleRadioButton" Content="Female" IsChecked="{Binding IsFemale, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="385,170,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="215,210,0,0" TextWrapping="Wrap" Text="{Binding DoB}" VerticalAlignment="Top" Width="425"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
 
-        <ComboBox HorizontalAlignment="Left" Height="31" Margin="215,0,0,0" VerticalAlignment="Center" Width="131" ItemsSource="{Binding ModuleList}" DisplayMemberPath="ModuleName" SelectedItem="{Binding SelectedModule1}"/>
-        <ComboBox HorizontalAlignment="Left" Height="31" Margin="385,0,0,0" VerticalAlignment="Center" Width="131" ItemsSource="{Binding ModuleList}" DisplayMemberPath="ModuleName" SelectedItem="{Binding selectedModule2}"/>
-        <Button Content="Add Student" Command="{Binding AddStudentCommand}" VerticalAlignment="Top" Width="109" Height="31" Margin="7,300,10,100" />
+                <TextBox Grid.Column="1" Grid.Row="0"   Margin="500 10" VerticalAlignment="Center"  Foreground="#868686" />
+                <TextBox Grid.Column="1" Grid.Row="1"   Margin="10 10" VerticalAlignment="Center"  Foreground="#868686" Text="{Binding Id}" TextChanged="TextBox_TextChanged"/>
+                <TextBox Grid.Column="1" Grid.Row="2"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding  FName}"/>
+                <TextBox Grid.Column="1" Grid.Row="3"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686" Text="{Binding LName}"/>
+                <TextBox Grid.Column="1" Grid.Row="4"  Margin="10 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding DoB}"/>
 
+                <TextBlock Grid.Row="1" Text="Student ID" Style="{StaticResource text}"/>
+                <TextBlock Grid.Row="2" Text="First Name" Style="{StaticResource text}"/>
+                <TextBlock Grid.Row="3" Text="Last Name" Style="{StaticResource text}"/>
+                <TextBlock Grid.Row="4" Text="Date of Birth" Style="{StaticResource text}"/>
+
+
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" Margin="0 10">
+
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="6" Margin="0 10">
+
+                </StackPanel>
+
+                <Grid Grid.Column="1" Grid.Row="7" Margin="0 40 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel  Margin="0 40 10 0">
+                        
+                    </StackPanel>
+                   
+                </Grid>
+
+
+            </Grid>
+            
+        </Border>
+
+        <!--Input Section-->
+        <Border Grid.Column="1" Padding="20" MouseDown="Border_MouseDown" Background="#ffffff" CornerRadius="0 25 25 0">
+            <Grid Margin="10,0,0,0">
+                <Image Source="/Images/close.png" Width="25" Margin="0 4 5 0" Style="{StaticResource iconApp}"/>
+                <Image Source="/Images/minimize.png" Width="20" Margin="0 7 40 0" Style="{StaticResource iconApp}"/>
+
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox Grid.Column="1" Grid.Row="0"   Margin="500 10" VerticalAlignment="Center"  Foreground="#868686" Text="{Binding FName}"/>
+                    <TextBox Grid.Column="1" Grid.Row="1"   Margin="10 10" VerticalAlignment="Center"  Foreground="#868686" Text="{Binding Id}" TextChanged="TextBox_TextChanged"/>
+                    <TextBox Grid.Column="1" Grid.Row="2"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding  Adres}"/>
+                    <TextBox Grid.Column="1" Grid.Row="3"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686" Text="{Binding LName}"/>
+                    <TextBox Grid.Column="1" Grid.Row="4"  Margin="10 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding Department}"/>
+
+                    <TextBlock Grid.Row="1" Text="Gender" Style="{StaticResource text}"/>
+                    <TextBlock Grid.Row="2" Text="Adress" Style="{StaticResource text}"/>
+                    <TextBlock Grid.Row="3" Text="Modules" Style="{StaticResource text}"/>
+                    <TextBlock Grid.Row="4" Text="Department" Style="{StaticResource text}"/>
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" Margin="0 10">
+                        
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="6" Margin="0 10">
+
+                    </StackPanel>
+
+                    <Grid Grid.Column="1" Grid.Row="7" Margin="0 40 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Style="{StaticResource buttonMain}" Margin="0 0 10 0" Content="Cancel" />
+
+                        <Button Grid.Column="1" Style="{StaticResource buttonMainGreen}" Margin="10 0 0 0" Content="Save" Command="{Binding AddStudentCommand}"/>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+        </Border>
 
     </Grid>
 </Window>

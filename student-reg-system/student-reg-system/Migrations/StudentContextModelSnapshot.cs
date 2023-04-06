@@ -54,6 +54,10 @@ namespace student_reg_system.Migrations
                     b.Property<DateOnly>("DateofBirthStudent")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("DepartmentStudent")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("FirstNameStudent")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -82,7 +86,7 @@ namespace student_reg_system.Migrations
                     b.Property<string>("NameUser")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Phone")
+                    b.Property<int>("PhoneUser")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("IDUser");
