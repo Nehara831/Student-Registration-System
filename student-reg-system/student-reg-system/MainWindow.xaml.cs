@@ -33,6 +33,12 @@ namespace student_reg_system
             newuser.Show();
 
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AdminView newuserRegVM= new AdminView();
+            newuserRegVM.Show();
+        }
     }
 }
 

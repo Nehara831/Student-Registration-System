@@ -1,6 +1,10 @@
 ﻿using student_reg_system.ViewModels;
+using System.Drawing;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using Brushes = System.Windows.Media.Brushes;
 
 namespace student_reg_system.Views
 {
@@ -13,6 +17,8 @@ namespace student_reg_system.Views
         {
             InitializeComponent();
             DataContext = new StudentRegVM();
+            MyListBox.Items.Clear();
+            MyListBox.ItemsSource = StudentRegVM.moduleList;
 
         }
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -24,5 +30,8 @@ namespace student_reg_system.Views
         {
 
         }
+       
+
+
     }
 }

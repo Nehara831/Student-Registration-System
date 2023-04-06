@@ -11,7 +11,7 @@
         Background="Transparent" WindowStyle="None">
     <StackPanel  Background="AliceBlue">
         <Button Content="Clickme" Click="Button_Click"></Button>
-        
+        <Button Content="UsrClickme" Click="Button_Click_1"></Button>
     </StackPanel>
     </Window>
     

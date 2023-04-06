@@ -4,12 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodels="clr-namespace:student_reg_system.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:StudentRegVM}"
         mc:Ignorable="d"
-        Title="StudentRegView" Height="550" Width="800">
-    
-   
-    
+        Title="StudentRegView" Height="400" Width="800" AllowsTransparency="True"
+        Background="Transparent"  WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
 
-    
+
+
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -18,9 +19,15 @@
 
         <!--Left Section-->
         <Border Padding="30" CornerRadius="25 0 0 25">
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0">
+            <Border.Background>
+                <LinearGradientBrush >
+                    <GradientStop Color="DarkBlue" Offset="0"/>
+                    <GradientStop Color="DarkSlateBlue" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
@@ -34,17 +41,30 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
+                <Canvas>
+                    <Polygon Points="0 20 230 140 8 278" Fill="DarkSlateBlue" HorizontalAlignment="Center" Canvas.Top="80" VerticalAlignment="Top"/>
+                    <Polygon Points="0 20 20 40 8 50" Fill="DarkSlateBlue" Margin="50 400" />
+                    <Polygon Points="0 20 80 80 8 150" Fill="DarkSlateBlue"  Margin="200 250"/>
+                    <Polygon Points="0 20 50 50 25 15" Fill="DarkSlateBlue" Margin="250 0" />
 
-                <TextBox Grid.Column="1" Grid.Row="0"   Margin="500 10" VerticalAlignment="Center"  Foreground="#868686" />
+
+
+                </Canvas>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0" Margin="0 10"/>
+
                 <TextBox Grid.Column="1" Grid.Row="1"   Margin="10 10" VerticalAlignment="Center"  Foreground="#868686" Text="{Binding Id}" TextChanged="TextBox_TextChanged"/>
                 <TextBox Grid.Column="1" Grid.Row="2"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding  FName}"/>
                 <TextBox Grid.Column="1" Grid.Row="3"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686" Text="{Binding LName}"/>
-                <TextBox Grid.Column="1" Grid.Row="4"  Margin="10 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding DoB}"/>
 
-                <TextBlock Grid.Row="1" Text="Student ID" Style="{StaticResource text}"/>
-                <TextBlock Grid.Row="2" Text="First Name" Style="{StaticResource text}"/>
-                <TextBlock Grid.Row="3" Text="Last Name" Style="{StaticResource text}"/>
-                <TextBlock Grid.Row="4" Text="Date of Birth" Style="{StaticResource text}"/>
+                <DatePicker Grid.Column="1" Grid.Row="4" VerticalAlignment="Center"  Margin="10 10" />
+
+
+                <TextBlock Grid.Row="1" Text="Student ID" Style="{StaticResource text}"  Foreground="White"/>
+                <TextBlock Grid.Row="2" Text="First Name" Style="{StaticResource text}"  Foreground="White"/>
+                <TextBlock Grid.Row="3" Text="Last Name" Style="{StaticResource text}"  Foreground="White"/>
+                <TextBlock Grid.Row="4" Text="Date of Birth" Style="{StaticResource text}"  Foreground="White"/>
+                
 
 
                 <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" Margin="0 10">
@@ -60,24 +80,31 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel  Margin="0 40 10 0">
-                        
+                    <StackPanel  Margin="0 80 10 0">
+
                     </StackPanel>
-                   
+
                 </Grid>
 
 
             </Grid>
-            
+
         </Border>
 
         <!--Input Section-->
-        <Border Grid.Column="1" Padding="20" MouseDown="Border_MouseDown" Background="#ffffff" CornerRadius="0 25 25 0">
+        <Border Grid.Column="1" Padding="20" MouseDown="Border_MouseDown"  CornerRadius="0 25 25 0">
+            <Border.Background>
+                <LinearGradientBrush >
+                    <GradientStop Color="DarkBlue" Offset="0"/>
+                    <GradientStop Color="DarkSlateBlue" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
             <Grid Margin="10,0,0,0">
                 <Image Source="/Images/close.png" Width="25" Margin="0 4 5 0" Style="{StaticResource iconApp}"/>
                 <Image Source="/Images/minimize.png" Width="20" Margin="0 7 40 0" Style="{StaticResource iconApp}"/>
 
-                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="150"/>
                         <ColumnDefinition Width="*"/>
@@ -93,25 +120,30 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
+                    <Canvas>
+                        <Polygon Points="30 150 230 200 180 0" Fill="DarkSlateBlue" HorizontalAlignment="Left" Canvas.Top="95" VerticalAlignment="Top" Canvas.Left="10"/>
+                        <Polygon Points="10 10 20 60 80 50" Fill="DarkSlateBlue" Margin="50 300" />
+                        <Polygon Points="10 20 80 80 80 150" Fill="DarkSlateBlue"  Margin="200 250"/>
+                        <Polygon Points="0 20 50 50 25 15" Fill="DarkSlateBlue" Margin="250 0" />
 
-                    <TextBox Grid.Column="1" Grid.Row="0"   Margin="500 10" VerticalAlignment="Center"  Foreground="#868686" Text="{Binding FName}"/>
-                    <TextBox Grid.Column="1" Grid.Row="1"   Margin="10 10" VerticalAlignment="Center"  Foreground="#868686" Text="{Binding Id}" TextChanged="TextBox_TextChanged"/>
-                    <TextBox Grid.Column="1" Grid.Row="2"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding  Adres}"/>
-                    <TextBox Grid.Column="1" Grid.Row="3"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686" Text="{Binding LName}"/>
-                    <TextBox Grid.Column="1" Grid.Row="4"  Margin="10 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding Department}"/>
 
-                    <TextBlock Grid.Row="1" Text="Gender" Style="{StaticResource text}"/>
-                    <TextBlock Grid.Row="2" Text="Adress" Style="{StaticResource text}"/>
-                    <TextBlock Grid.Row="3" Text="Modules" Style="{StaticResource text}"/>
-                    <TextBlock Grid.Row="4" Text="Department" Style="{StaticResource text}"/>
 
-                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" Margin="0 10">
-                        
-                    </StackPanel>
+                    </Canvas>
+                    <TextBox Grid.Column="1" Grid.Row="0"  Margin="0 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding Department}" />
+                    <TextBox Grid.Column="1" Grid.Row="1"   Margin="0 10" VerticalAlignment="Center"  Foreground="#868686" Text="{Binding Id}" TextChanged="TextBox_TextChanged"/>
+                    <ListBox Grid.Column="1"   Grid.Row="2"  Margin="0 10 " VerticalAlignment="Center" Name="MyListBox" >
+                    
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ModuleName}" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate >
+                    </ListBox>
 
-                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="6" Margin="0 10">
-
-                    </StackPanel>
+                    <TextBlock  Grid.Row="0" Text="Department" Style="{StaticResource text}" Foreground="White"/>
+                    <TextBlock Grid.Row="1" Text="Adress" Style="{StaticResource text}" Foreground="White"/>
+                    <TextBlock Grid.Row="2" Text="Modules" Style="{StaticResource text}" Foreground="White"/>
+                   
 
                     <Grid Grid.Column="1" Grid.Row="7" Margin="0 40 0 0">
                         <Grid.ColumnDefinitions>
@@ -119,14 +151,14 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Style="{StaticResource buttonMain}" Margin="0 0 10 0" Content="Cancel" />
+                        <Button Style="{StaticResource buttonMain}" Margin="0 0 10 60" Content="Cancel" />
 
-                        <Button Grid.Column="1" Style="{StaticResource buttonMainGreen}" Margin="10 0 0 0" Content="Save" Command="{Binding AddStudentCommand}"/>
+                        <Button Grid.Column="1" Style="{StaticResource buttonMainGreen}" Margin="10 0 0 60" Content="Save" Command="{Binding AddStudentCommand}"/>
                     </Grid>
 
                 </Grid>
             </Grid>
         </Border>
-
+       
     </Grid>
 </Window>

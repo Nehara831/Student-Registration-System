@@ -48,7 +48,7 @@ namespace student_reg_system.ViewModels
         public  ObservableCollection<Student> studentList;
 
         [ObservableProperty]
-        public ObservableCollection<Module> moduleList;
+        public static  ObservableCollection<Module> moduleList;
 
         public StudentRegVM()
         {

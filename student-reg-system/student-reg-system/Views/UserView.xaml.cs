@@ -30,14 +30,7 @@ namespace student_reg_system.Views
            
             DataContext = new StudentRegVM();
             
-            
-           
-
-
-           
-            
-            
-
+   
 
         }
 
@@ -73,8 +66,18 @@ namespace student_reg_system.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            StudentRegView newview=new StudentRegView();
+            
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            StudentRegView newview = new StudentRegView();
             newview.Show();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 

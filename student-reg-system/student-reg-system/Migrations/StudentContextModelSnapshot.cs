@@ -83,7 +83,10 @@ namespace student_reg_system.Migrations
                     b.Property<string>("EmailUser")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("NameUser")
+                    b.Property<string>("FirstNameUser")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastNameUser")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("PhoneUser")

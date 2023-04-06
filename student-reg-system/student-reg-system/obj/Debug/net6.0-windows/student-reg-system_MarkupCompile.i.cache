@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\App.xaml
-4-1199045080
+7-657423161
 
-27-302391885
+32-843207422
 2392144746935
-MainWindow.xaml;Views\LoginView.xaml;Views\StudentRegView.xaml;Views\UserView.xaml;
+MainWindow.xaml;Views\AdminView.xaml;Views\LoginView.xaml;Views\ModuleRegistrationxaml.xaml;Views\StudentRegView.xaml;Views\UserRegistration.xaml;Views\UserView.xaml;
 
-False
+True
 
