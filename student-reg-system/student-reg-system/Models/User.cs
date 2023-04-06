@@ -16,11 +16,11 @@ namespace student_reg_system.Models
         public string? NameUser { get; set; }
         public string? EmailUser { get; set; }
 
-        public int Phone { get; set; }
+        public int PhoneUser { get; set; }
 
         public string? DepartmentUser { get; set; }
         
-        public List<Module> Modules = new List<Module>();
+        public List<Module> ModulesUser = new List<Module>();
         
     }
 }
