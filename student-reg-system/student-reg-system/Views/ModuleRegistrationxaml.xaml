@@ -103,7 +103,7 @@
                 <Image Source="/Images/close.png" Width="25" Margin="0 4 5 0" Style="{StaticResource iconApp}"/>
                 <Image Source="/Images/minimize.png" Width="20" Margin="0 7 40 0" Style="{StaticResource iconApp}"/>
 
-                <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Width="315" Margin="35,244,0,0">
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Width="315" Height="400" Margin="35,50,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="150"/>
                         <ColumnDefinition Width="*"/>
@@ -119,9 +119,11 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
+                   
+
                     <Canvas>
-                        <Polygon Points="30 150 230 200 180 0" Fill="DarkSlateBlue" HorizontalAlignment="Left" Canvas.Top="95" VerticalAlignment="Top" Canvas.Left="10"/>
-                        <Polygon Points="10 10 20 60 80 50" Fill="DarkSlateBlue" Canvas.Left="-12" Canvas.Top="265" />
+                        <Polygon Points="30 150 230 200 180 0" Fill="DarkSlateBlue" HorizontalAlignment="Left" Canvas.Top="-200" VerticalAlignment="Top" Canvas.Left="10" Height="200" Width="247" RenderTransformOrigin="0.736,0.536"/>
+                        <Polygon Points="10 10 20 60 80 50" Fill="DarkSlateBlue" Canvas.Left="-12" Canvas.Top="-178" HorizontalAlignment="Center" VerticalAlignment="Top" />
                         <Polygon Points="10 20 80 80 80 150" Fill="DarkSlateBlue" Canvas.Left="-52" Canvas.Top="45"/>
                         <Polygon Points="0 20 50 50 25 15" Fill="DarkSlateBlue" Margin="250 0" />
 
@@ -129,21 +131,33 @@
 
                     </Canvas>
 
+                    <TextBox Grid.Column="1" Grid.Row="0"  Margin="0 50" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding UserIdObservable}" RenderTransformOrigin="0.5,0.5" >
+                        <TextBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBox.RenderTransform>
+                    </TextBox>
+                    <TextBlock Grid.Row="0" Text="User ID" Style="{StaticResource text}"  Foreground="White"/>
 
 
                     <Grid Grid.Column="1" Grid.Row="7" Margin="0 40 0 0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="5*"/>
-                            <RowDefinition Height="6*"/>
+                            <RowDefinition Height="9*"/>
+                            <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Style="{StaticResource buttonMain}" Margin="0,0,5,60" Content="Cancel"  />
 
-                        <Button Style="{StaticResource buttonMainGreen}" Margin="0,0,0,60" Content="Save" Command="{Binding AddModuleCommand}" Grid.Column="1"/>
+                        <Button Style="{StaticResource buttonMain}" Margin="0,80,5,0" Content="Cancel"  />
+
+                        <Button Style="{StaticResource buttonMainGreen}" Margin="0,80,0,0" Content="Save" Command="{Binding AddModuleCommand}" Grid.Column="1"/>
                     </Grid>
 
                 </Grid>

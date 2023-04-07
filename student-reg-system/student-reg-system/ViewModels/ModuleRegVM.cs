@@ -25,6 +25,8 @@ namespace student_reg_system.ViewModels
         public double gradePointObservable;
         [ObservableProperty]
         public ObservableCollection<Module> moduleListObservable;
+        [ObservableProperty]
+        public int userIdObservable;
         public ModuleRegVM()
         {
             LoadModule();
@@ -44,6 +46,7 @@ namespace student_reg_system.ViewModels
                 Grade = gradeObservable,
                 CreditValue = creditValueObservable,
                 GradePoint = gradePointObservable,
+                UserId=UserIdObservable,
 
             };
 

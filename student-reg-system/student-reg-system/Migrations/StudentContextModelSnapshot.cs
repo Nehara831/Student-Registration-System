@@ -36,7 +36,12 @@ namespace student_reg_system.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("ModuleId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Modules");
                 });
@@ -94,7 +99,23 @@ namespace student_reg_system.Migrations
 
                     b.HasKey("IDUser");
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
+                });
+
+            modelBuilder.Entity("student_reg_system.Models.Module", b =>
+                {
+                    b.HasOne("student_reg_system.Models.User", "User")
+                        .WithMany("Modules")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("student_reg_system.Models.User", b =>
+                {
+                    b.Navigation("Modules");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,9 @@ namespace student_reg_system.Models
         public double CreditValue { get; set; }
         public double GradePoint { get; set; }
 
-
+        public User User { get; set; }
+        [ForeignKey("User")]
+        public int UserId { get; set; }
         public Module(int moduleId, string moduleName, double creditValue)
         {
 

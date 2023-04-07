@@ -1,6 +1,9 @@
-﻿using student_reg_system.ViewModels;
+﻿using student_reg_system.database;
+using student_reg_system.Models;
+using student_reg_system.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,13 +22,13 @@ namespace student_reg_system.Views
     /// Interaction logic for UserRegistration.xaml
     /// </summary>
      public partial class UserRegistration : Window
-    { 
+    { public List<Module> ModuleList { get; set; }
         public UserRegistration()
         {
             InitializeComponent();
             DataContext = new UserRegVM();
             MyListBox.Items.Clear();
-            MyListBox.ItemsSource = StudentRegVM.moduleList;
+            MyListBox.ItemsSource = ModuleList;
         }
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -43,6 +46,17 @@ namespace student_reg_system.Views
             {
                 textBox.Text = "";
                 textBox.Foreground = Brushes.Black;
+            }
+        }
+        public void LoadModule()
+        {
+            using (var db = new StudentContext())
+            {
+                var list = db.Modules
+
+
+                .ToList();
+                ModuleList = new List<Module>(list);
             }
         }
     }

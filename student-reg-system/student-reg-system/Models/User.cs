@@ -21,7 +21,7 @@ namespace student_reg_system.Models
 
         public string? DepartmentUser { get; set; }
         
-        public List<Module> ModulesUser = new List<Module>();
-        
+        public ICollection<Module> Modules { get; set; }
+
     }
 }
