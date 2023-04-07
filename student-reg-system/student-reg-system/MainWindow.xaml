@@ -10,8 +10,8 @@
        Height="720" Width="1080" WindowStartupLocation="CenterScreen" AllowsTransparency="True"
         Background="Transparent" WindowStyle="None">
     <StackPanel  Background="AliceBlue">
-        <Button Content="Clickme" Click="Button_Click"></Button>
-        <Button Content="UsrClickme" Click="Button_Click_1"></Button>
+        <Button Content="User" Click="Button_Click" Margin="500 100 500 50"></Button>
+        <Button Content="Admin " Click="Button_Click_1" Margin="500 50 500 50"></Button >
     </StackPanel>
     </Window>
     

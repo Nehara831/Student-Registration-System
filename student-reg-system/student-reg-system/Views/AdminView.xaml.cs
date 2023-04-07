@@ -62,5 +62,12 @@ namespace student_reg_system.Views
             UserRegistration userRegistration = new UserRegistration();
             userRegistration.Show();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ModuleRegistrationxaml moduleRegistrationxaml= new ModuleRegistrationxaml();
+            moduleRegistrationxaml.Show();
+
+        }
     }
 }

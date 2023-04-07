@@ -1,4 +1,5 @@
-﻿using System;
+﻿using student_reg_system.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,16 @@ namespace student_reg_system.Views
         public ModuleRegistrationxaml()
         {
             InitializeComponent();
+            DataContext = new ModuleRegVM();
+        }
+        private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left) this.DragMove();
+        }
+
+        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
         }
     }
 }
