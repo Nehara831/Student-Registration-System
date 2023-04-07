@@ -31,6 +31,7 @@ namespace student_reg_system.ViewModels
         {
             LoadModule();
 
+
         }
 
 
@@ -43,7 +44,7 @@ namespace student_reg_system.ViewModels
             {
                 ModuleId = ModuleIdObservable,
                 ModuleName = ModuleNameObservable,
-                Grade = gradeObservable,
+                
                 CreditValue = creditValueObservable,
                 GradePoint = gradePointObservable,
                 UserId=UserIdObservable,

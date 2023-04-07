@@ -17,6 +17,40 @@ namespace student_reg_system.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.4");
 
+            modelBuilder.Entity("ModuleStudent", b =>
+                {
+                    b.Property<int>("ModulesModuleId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("StudentssStudentIDStudent")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ModulesModuleId", "StudentssStudentIDStudent");
+
+                    b.HasIndex("StudentssStudentIDStudent");
+
+                    b.ToTable("ModuleStudent");
+                });
+
+            modelBuilder.Entity("student_reg_system.Models.LoginAuthentication", b =>
+                {
+                    b.Property<int>("LoginId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("LoginId");
+
+                    b.ToTable("LoginAuthentications");
+                });
+
             modelBuilder.Entity("student_reg_system.Models.Module", b =>
                 {
                     b.Property<int>("ModuleId")
@@ -99,7 +133,22 @@ namespace student_reg_system.Migrations
 
                     b.HasKey("IDUser");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ModuleStudent", b =>
+                {
+                    b.HasOne("student_reg_system.Models.Module", null)
+                        .WithMany()
+                        .HasForeignKey("ModulesModuleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("student_reg_system.Models.Student", null)
+                        .WithMany()
+                        .HasForeignKey("StudentssStudentIDStudent")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("student_reg_system.Models.Module", b =>

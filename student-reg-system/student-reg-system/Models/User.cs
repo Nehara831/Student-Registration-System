@@ -13,6 +13,7 @@ namespace student_reg_system.Models
     {
         [Key]
         public int IDUser { get; set; }
+
         public string? FirstNameUser { get; set; }
         public string? LastNameUser { get; set; }
         public string? EmailUser { get; set; }

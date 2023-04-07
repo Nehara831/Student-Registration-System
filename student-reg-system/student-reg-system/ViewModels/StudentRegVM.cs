@@ -53,23 +53,24 @@ namespace student_reg_system.ViewModels
         public StudentRegVM()
         {
             LoadStudent();
-            
-           
-            
-
-            moduleList = new ObservableCollection<Module>()
+            /*
+            using (var db = new StudentContext())
             {
-             new Module(3305, "Signal and Systems", 3),
-             new Module(3301, "Analog Electronics", 3),
-             new Module(3302, "Data Structures and Algorithems", 3),
-             new Module(3203, "Measurement", 2),
-             new Module(3251, "GUI Prgramming", 2),
-             new Module(3250, "Programming  Project", 3),
+                var TestObj =from modules in db.Modules
+                             from students in db.Students
+                             where modules.ModuleId==students.
 
-             
-        };
-          
-            
+
+                .ToList();
+                StudentList = new ObservableCollection<Student>(list);
+            }
+
+            */
+
+
+
+
+
         }
         [RelayCommand]
 

@@ -20,7 +20,8 @@ namespace student_reg_system.Models
         public string AdressStudent { get; set; }
         
         public string DepartmentStudent { get; set; }
-        public List<Module> Modules = new List<Module>();
+        public ICollection<Module> Modules { get; set; }
+
 
         public Student()
         {

@@ -16,8 +16,10 @@ namespace student_reg_system.Models
         public double GradePoint { get; set; }
 
         public User User { get; set; }
-        [ForeignKey("User")]
+        [ForeignKey("Users")]
         public int UserId { get; set; }
+        public ICollection<Student> Studentss { get; set; }
+
         public Module(int moduleId, string moduleName, double creditValue)
         {
 

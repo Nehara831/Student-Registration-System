@@ -33,6 +33,9 @@ namespace student_reg_system.ViewModels
 
         [ObservableProperty]
         public ObservableCollection<User> usersList;
+
+        [ObservableProperty]
+        public ObservableCollection<Module> moduleList;
         [RelayCommand]
 
         public void AddUser()
@@ -73,9 +76,30 @@ namespace student_reg_system.ViewModels
         {
             LoadUser();
             
+            using (var db = new StudentContext())
+            {
+                var TestObj = from users in db.Users
+                              from modules in db.Modules
+                              where modules.UserId == users.IDUser
+                              select new {
+                                  
+                      newModuleName = modules
+
+                              };
+
+               
+                ObservableCollection<Module> moduleusers=new ObservableCollection<Module> ();
+                foreach (var obj in TestObj)
+                {
+                    moduleusers.Add(obj.newModuleName);
+                }
+                ModuleList = moduleusers;
+            }
+
+            
         }
 
-       
+
 
 
     }

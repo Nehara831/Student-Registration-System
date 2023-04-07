@@ -27,8 +27,7 @@ namespace student_reg_system.Views
         {
             InitializeComponent();
             DataContext = new UserRegVM();
-            MyListBox.Items.Clear();
-            MyListBox.ItemsSource = ModuleList;
+            
         }
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
