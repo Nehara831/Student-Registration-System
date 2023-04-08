@@ -22,14 +22,29 @@ namespace student_reg_system.Migrations
                     b.Property<int>("ModulesModuleId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("StudentssStudentIDStudent")
+                    b.Property<int>("StudentsStudentIDStudent")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("ModulesModuleId", "StudentssStudentIDStudent");
+                    b.HasKey("ModulesModuleId", "StudentsStudentIDStudent");
 
-                    b.HasIndex("StudentssStudentIDStudent");
+                    b.HasIndex("StudentsStudentIDStudent");
 
                     b.ToTable("ModuleStudent");
+                });
+
+            modelBuilder.Entity("StudentUser", b =>
+                {
+                    b.Property<int>("StudentsStudentIDStudent")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UsersIDUser")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("StudentsStudentIDStudent", "UsersIDUser");
+
+                    b.HasIndex("UsersIDUser");
+
+                    b.ToTable("StudentUser");
                 });
 
             modelBuilder.Entity("student_reg_system.Models.LoginAuthentication", b =>
@@ -146,7 +161,22 @@ namespace student_reg_system.Migrations
 
                     b.HasOne("student_reg_system.Models.Student", null)
                         .WithMany()
-                        .HasForeignKey("StudentssStudentIDStudent")
+                        .HasForeignKey("StudentsStudentIDStudent")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("StudentUser", b =>
+                {
+                    b.HasOne("student_reg_system.Models.Student", null)
+                        .WithMany()
+                        .HasForeignKey("StudentsStudentIDStudent")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("student_reg_system.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersIDUser")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

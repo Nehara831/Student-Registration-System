@@ -18,7 +18,7 @@ namespace student_reg_system.Models
         public User User { get; set; }
         [ForeignKey("Users")]
         public int UserId { get; set; }
-        public ICollection<Student> Studentss { get; set; }
+        public ICollection<Student> Students { get; set; }
 
         public Module(int moduleId, string moduleName, double creditValue)
         {

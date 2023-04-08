@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace student_reg_system.Models
     public class User
     {
         [Key]
+        [ForeignKey("Students")]
         public int IDUser { get; set; }
 
         public string? FirstNameUser { get; set; }
@@ -23,6 +25,9 @@ namespace student_reg_system.Models
         public string? DepartmentUser { get; set; }
         
         public ICollection<Module> Modules { get; set; }
+        public ICollection<Student> Students { get; set; }
 
     }
+
+
 }

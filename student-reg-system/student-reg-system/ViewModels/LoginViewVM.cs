@@ -21,19 +21,18 @@ namespace student_reg_system.ViewModels
         public string passWord;
         [ObservableProperty]
         public string loginView;
-        public  int CurrentUserId { get; set; }
+        public  static int CurrentUserId { get; set; }
 
         [RelayCommand]
         public  void LoginAcess()
         {
-            UserView userView = new UserView();
-            userView.Show();
+           
 
 
-            /*
+            
       using (StudentContext context = new StudentContext())
       {
-          MessageBox.Show("User Not Found");
+          
           bool userfound = context.LoginAuthentications.Any(user => user.Username == UserName && user.Password == PassWord);
 
           if (userfound)
@@ -51,9 +50,10 @@ namespace student_reg_system.ViewModels
           }
 
       }
-      */
+      
 
         }
+        [RelayCommand]
         public static void GrantAcess()
         {
             UserView userView= new UserView ();
