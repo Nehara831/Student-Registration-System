@@ -18,6 +18,7 @@ namespace student_reg_system.database
         public DbSet<Student> Students { get; set; }
         public DbSet<Module> Modules { get; set; }
         public DbSet<User> Users { get; set; }
+   
 
         public DbSet<LoginAuthentication> LoginAuthentications { get; set; }
 

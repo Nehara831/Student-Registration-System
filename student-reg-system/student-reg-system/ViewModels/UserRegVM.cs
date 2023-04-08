@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows;
 using student_reg_system.database;
+using student_reg_system.Views;
 
 namespace student_reg_system.ViewModels
 {
@@ -62,6 +63,13 @@ namespace student_reg_system.ViewModels
 
         public void LoadUser()
         {
+            int lectureId = LoginViewVM.CurrentUserId;
+
+            using (StudentContext context = new StudentContext())
+            {
+              //  List<Student> students = context.Students.Where(student => student.user== lectureId).ToList();
+                
+            }
             using (var db = new StudentContext())
             {
                 var listusers = db.Users
@@ -70,6 +78,7 @@ namespace student_reg_system.ViewModels
                 .ToList();
                UsersList = new ObservableCollection<User>(listusers);
             }
+            
         }
 
         public UserRegVM()

@@ -1,7 +1,9 @@
 ﻿using MessagePack;
+using student_reg_system.database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,7 @@ namespace student_reg_system.Models
     public class Student
     {
         [Key]
+        [ForeignKey("Users")]
         public int StudentIDStudent { get; set; }
         
         public string FirstNameStudent { get; set; }
@@ -22,11 +25,12 @@ namespace student_reg_system.Models
         public string DepartmentStudent { get; set; }
         public ICollection<Module> Modules { get; set; }
 
+        public ICollection<User> Users { get; set; }
 
         public Student()
         {
+
             
-         
 
         }
         

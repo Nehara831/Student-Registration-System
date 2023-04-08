@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using student_reg_system.database;
 
@@ -10,9 +11,11 @@ using student_reg_system.database;
 namespace student_reg_system.Migrations
 {
     [DbContext(typeof(StudentContext))]
-    partial class StudentContextModelSnapshot : ModelSnapshot
+    [Migration("20230407184938_mig1")]
+    partial class mig1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.4");
@@ -22,12 +25,12 @@ namespace student_reg_system.Migrations
                     b.Property<int>("ModulesModuleId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("StudentsStudentIDStudent")
+                    b.Property<int>("StudentssStudentIDStudent")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("ModulesModuleId", "StudentsStudentIDStudent");
+                    b.HasKey("ModulesModuleId", "StudentssStudentIDStudent");
 
-                    b.HasIndex("StudentsStudentIDStudent");
+                    b.HasIndex("StudentssStudentIDStudent");
 
                     b.ToTable("ModuleStudent");
                 });
@@ -161,7 +164,7 @@ namespace student_reg_system.Migrations
 
                     b.HasOne("student_reg_system.Models.Student", null)
                         .WithMany()
-                        .HasForeignKey("StudentsStudentIDStudent")
+                        .HasForeignKey("StudentssStudentIDStudent")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
