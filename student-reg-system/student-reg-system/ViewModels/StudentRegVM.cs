@@ -55,10 +55,10 @@ namespace student_reg_system.ViewModels
 
         public StudentRegVM()
         {
-           
+            LoadStudent();
 
             UserIdObservable = LoginViewVM.CurrentUserId;
-            LoadStudent();
+            
 
 
         }
