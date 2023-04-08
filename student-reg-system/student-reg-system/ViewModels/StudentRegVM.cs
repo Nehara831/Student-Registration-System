@@ -65,63 +65,67 @@ namespace student_reg_system.ViewModels
 
         public void AddStudent()
         {
-            Student student = new Student()
-            {
-                StudentIDStudent = Id,
-               
-
-                FirstNameStudent = FName,
-                LastNameStudent = LName,
-                DateofBirthStudent = DoB,
-                AdressStudent = Adres,
-                DepartmentStudent=Department,
-        };
             using (var db = new StudentContext())
             {
-                db.Students.Add(student);
-                db.SaveChanges();
-            }
-
-            using (var db = new StudentContext())
-            {
-
-
-
-                // Alternatively, retrieve multiple users using a LINQ query
-                var users = db.Users.Where(u => u.IDUser == UserIdObservable).ToList();
-
-                // Associate the student with the user(s)
-
-
-                foreach (var u in users)
+                var user = db.Users.Find(UserIdObservable);
+                // create new student object
+                Student student = new Student()
                 {
-                    if (u.Students == null)
-                    {
-                        u.Students = new List<Student>();
-                    }
-                    u.Students.Add(student);
-                }
-        
-                // Save the changes to the database
-                db.SaveChanges();
-            }
+                    StudentIDStudent = Id,
+                    FirstNameStudent = FName,
+                    LastNameStudent = LName,
+                    DateofBirthStudent = DoB,
+                    AdressStudent = Adres,
+                    DepartmentStudent = Department,
+                    Users = new List<User>() { user }
+                };
 
-            LoadStudent();
+                // add student to Students table
+                db.Students.Add(student);
+
+                // find the user with the specified ID and add the student to their list of students
+
+                if (user != null)
+                {
+                    if (user.Students == null)
+                    {
+                        user.Students = new List<Student>();
+                    }
+                    user.Students.Add(student);
+                }
+
+                // save changes to database
+                db.SaveChanges();
+
+                // reload the list of students
+                LoadStudent();
+            }
         }
-        
+
         public void LoadStudent()
         {
             using (var db = new StudentContext())
             {
-                var list = db.Students
-                
 
-                .ToList();
-                StudentList= new ObservableCollection<Student>(list);
+
+                var user = db.Users.Find(UserIdObservable);
+                // StudentList = new ObservableCollection<Student>(db.Students);
+                if (user != null && user.Students != null)
+                {
+                    StudentList = new ObservableCollection<Student>(user.Students);
+                }
+
+
+
+
+
+
+
+
             }
-            
-          
-               
+
+
+
 
         }
 
