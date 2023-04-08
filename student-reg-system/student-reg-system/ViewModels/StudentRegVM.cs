@@ -107,18 +107,15 @@ namespace student_reg_system.ViewModels
             using (var db = new StudentContext())
             {
 
+                //MessageBox.Show($"User ID: {UserIdObservable}");
+                //var user = db.Users.Find(4097);
+                var user = db.Users.Include(u => u.Students).SingleOrDefault(u => u.IDUser == LoginViewVM.CurrentUserId);
 
-                var user = db.Users.Find(UserIdObservable);
                 // StudentList = new ObservableCollection<Student>(db.Students);
                 if (user != null && user.Students != null)
                 {
                     StudentList = new ObservableCollection<Student>(user.Students);
                 }
-
-
-
-
-
 
 
 
