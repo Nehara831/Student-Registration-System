@@ -29,14 +29,14 @@ namespace student_reg_system
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            UserView newuser = new UserView();
+            UserView newuser= new UserView();
             newuser.Show();
 
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            AdminView newuserRegVM = new AdminView();
+            AdminView newuserRegVM= new AdminView();
             newuserRegVM.Show();
         }
 
@@ -46,39 +46,38 @@ namespace student_reg_system
             loginView.Show();
         }
     }
+}
 
-
-   /* private void Exit_Click(object sender, RoutedEventArgs e)
-    {
-        var response = MessageBox.Show("Do you really want to exit?", "Exiting...",
-                                  MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-        if (response == MessageBoxResult.Yes)
+        /*private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            var response = MessageBox.Show("Do you really want to exit?", "Exiting...",
+                                      MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            if (response == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
+
         }
 
-    }
+        private void btnCourse_click(object sender, RoutedEventArgs e)
+        {
+           // MainContainer.Content = new CourseView();
+        }
 
-    private void btnCourse_click(object sender, RoutedEventArgs e)
-    {
-        // MainContainer.Content = new CourseView();
-    }
+        private void btnIndex_Click(object sender, RoutedEventArgs e)
+        {
+            // MainContainer.Content = new IndexView();
+           LoginView newWindow1 = new LoginView();
 
-    private void btnIndex_Click(object sender, RoutedEventArgs e)
-    {
-        // MainContainer.Content = new IndexView();
-        LoginView newWindow1 = new LoginView();
+            // Show the new window
+            newWindow1.Show();
+        }
 
-        // Show the new window
-        newWindow1.Show();
-    }
+        private void btnStuden_Click(object sender, RoutedEventArgs e)
+        {
+            StudentRegView newWindow = new StudentRegView();
 
-    private void btnStuden_Click(object sender, RoutedEventArgs e)
-    {
-        StudentRegView newWindow = new StudentRegView();
-
-        // Show the new window
-        newWindow.Show();
-    }*/
-}
+            // Show the new window
+            newWindow.Show();
+        }*/
 

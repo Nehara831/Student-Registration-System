@@ -30,7 +30,6 @@ namespace student_reg_system.Views
            
             DataContext = new StudentRegVM();
             
-            
    
 
         }
