@@ -40,7 +40,7 @@ namespace student_reg_system.ViewModels
         [ObservableProperty]
         public string? department;
         [ObservableProperty]
-        private int userIdObservable;
+        public int userIdObservable;
         
 
         
@@ -48,16 +48,17 @@ namespace student_reg_system.ViewModels
        // public string selectedModule3;
 
         [ObservableProperty]
-        public  ObservableCollection<Student> studentList;
+        public static ObservableCollection<Student> studentList;
 
         [ObservableProperty]
         public static  ObservableCollection<Module> moduleList;
 
         public StudentRegVM()
         {
-            LoadStudent();
+           
 
             UserIdObservable = LoginViewVM.CurrentUserId;
+            LoadStudent();
 
 
         }
@@ -67,7 +68,7 @@ namespace student_reg_system.ViewModels
         {
             using (var db = new StudentContext())
             {
-                var user = db.Users.Find(UserIdObservable);
+                var user = db.Users.FirstOrDefault(u => u.IDUser == LoginViewVM.CurrentUserId);
                 // create new student object
                 Student student = new Student()
                 {
@@ -77,9 +78,16 @@ namespace student_reg_system.ViewModels
                     DateofBirthStudent = DoB,
                     AdressStudent = Adres,
                     DepartmentStudent = Department,
+                    
                     Users = new List<User>() { user }
                 };
-
+                
+                    /*if (student.Users == null)
+                    {
+                        student.Users = new List<User>();
+                    }
+                    student.Users.Add(user);*/
+                
                 // add student to Students table
                 db.Students.Add(student);
 
@@ -108,7 +116,8 @@ namespace student_reg_system.ViewModels
             {
 
 
-                var user = db.Users.Find(UserIdObservable);
+                var user = db.Users.FirstOrDefault(u => u.IDUser == LoginViewVM.CurrentUserId);
+
                 // StudentList = new ObservableCollection<Student>(db.Students);
                 if (user != null && user.Students != null)
                 {
