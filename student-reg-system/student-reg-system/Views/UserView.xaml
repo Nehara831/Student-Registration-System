@@ -34,65 +34,7 @@
                 </Button>
 
                 <Border Grid.Row="1" Background="#623ED0" CornerRadius="0 50 0 30">
-                    <DockPanel>
-                        <!--Menu Logo-->
-                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
-                            <Ellipse>
-                                <Ellipse.Fill>
-                                    <ImageBrush ImageSource="D:\UOR education\SEM03\PP-Project\GUI-Project\Student-Registration-System\student-reg-system\student-reg-system\Images\p1.jpg"/>
-                                </Ellipse.Fill>
-                            </Ellipse>
-                        </Border>
-
-                        <!--Menu Titles-->
-                        <TextBlock Text="{Binding UserFullNameObservable}" Foreground="White" FontSize="22" FontWeight="SemiBold" DockPanel.Dock="Top" Margin="5 25 0 10" TextAlignment="Center"/>
-                        <TextBlock Text="{Binding UserEmailObservable}" Foreground="#D0BFFF" FontSize="14" FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center"/>
-
-                        <!--Menu Seprator-->
-                        <Separator Margin="25" Background="#7E5FDC" DockPanel.Dock="Top" Height="0.8"/>
-
-                        <!--Menu Buttons-->
-                        <StackPanel DockPanel.Dock="Top" >
-                            <Button Style="{StaticResource menuButton}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="HomeVariant" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Dashboard"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="CalendarClock" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="GPA Calculator"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}" Background="#7B5CD6" Foreground="White">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="AccountMultipleOutline" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Students"/>
-                                </StackPanel>
-                            </Button>
-
-
-
-                            <Button Style="{StaticResource menuButton}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="ForumOutline" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Annoucements"/>
-                                </StackPanel>
-                            </Button>
-
-                        </StackPanel>
-
-                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
-                            <StackPanel Orientation="Horizontal">
-                                <Icon:PackIconMaterial Kind="Logout" Style="{StaticResource menuButtonIcon}"/>
-                                <TextBlock Text="Logout"/>
-                            </StackPanel>
-                        </Button>
-
-                    </DockPanel>
+                    <Border BorderBrush="Black" BorderThickness="1"/>
                 </Border>
 
             </Grid>

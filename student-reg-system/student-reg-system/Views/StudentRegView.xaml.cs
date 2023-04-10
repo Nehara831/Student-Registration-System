@@ -52,6 +52,11 @@ namespace student_reg_system.Views
 
         }
 
+        private void MyListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
         /*  private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
           {
 
@@ -77,9 +82,9 @@ namespace student_reg_system.Views
                   }
               }
           }*/
-       
 
 
 
-}
+
+    }
 }

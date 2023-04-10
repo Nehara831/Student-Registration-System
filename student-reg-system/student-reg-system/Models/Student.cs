@@ -43,6 +43,7 @@ namespace student_reg_system.Models
                 point = point + module.GradePoint * module.CreditValue;
                 sumOfCredits += module.CreditValue;
             }
+
             double GPA = point / sumOfCredits;
 
             return GPA;

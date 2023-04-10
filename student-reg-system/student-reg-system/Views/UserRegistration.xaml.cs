@@ -58,5 +58,10 @@ namespace student_reg_system.Views
                 ModuleList = new List<Module>(list);
             }
         }
+
+        private void MyListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
