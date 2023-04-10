@@ -26,7 +26,7 @@ using System.Runtime.CompilerServices;
 
 namespace student_reg_system.ViewModels
 {
-    partial class StudentRegVM : ObservableObject, ICommand
+    partial class StudentRegVM : ObservableObject
     {
         [ObservableProperty]
         public int id;
@@ -76,53 +76,17 @@ namespace student_reg_system.ViewModels
             UserIdObservable = LoginViewVM.CurrentUserId;
             SelectedModulesStudent= new List<Module>();
 
-            //SelectedModulesStudent = StudentRegView.selectedModules;
+            SelectedModulesStudent = StudentRegView.SelectedModules;
            
 
+
+
         }
-
-        //---------------------------------------------
-
-        public void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBox comboBox = sender as ComboBox;
-            if (comboBox == null) return;
-
-            //SelectedModulesStudent = new List<Module>();
-
-            foreach (var item in comboBox.Items)
-            {
-                if (item is Module module && module.IsSelected)
-                {
-                    SelectedModulesStudent.Add(module);
-                }
-            }
-        }
-
-        public event EventHandler CanExecuteChanged;
-
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public void Execute(object parameter)
-        {
-            if (parameter is SelectionChangedEventArgs e && e.OriginalSource is ComboBox comboBox)
-            {
-                ComboBox_SelectionChanged(comboBox, e);
-            }
-        }
-
-        //---------------------------------------------
-
         [RelayCommand]
 
         public void AddStudent()
 
         {
-
-            MessageBox.Show($"{StudentRegView.selectedModules.Count}");
            
             using (var db = new StudentContext())
             {
@@ -140,8 +104,8 @@ namespace student_reg_system.ViewModels
                     Users = new List<User>() { user },
                     Modules = SelectedModulesStudent.ToList()
                 };
-               
-                
+
+                MessageBox.Show( $"No.of Selected Modules {SelectedModulesStudent.Count}");
                     /*if (student.Users == null)
                     {
                         student.Users = new List<User>();
