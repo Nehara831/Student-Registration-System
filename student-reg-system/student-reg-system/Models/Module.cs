@@ -14,8 +14,10 @@ namespace student_reg_system.Models
         public char Grade { get; set; }
         public double CreditValue { get; set; }
         public double GradePoint { get; set; }
-
+        public bool IsSelected { get; set; }
         public User User { get; set; }
+        public string Department { get; set; }
+
         [ForeignKey("Users")]
         public int UserId { get; set; }
         public ICollection<Student> Students { get; set; }

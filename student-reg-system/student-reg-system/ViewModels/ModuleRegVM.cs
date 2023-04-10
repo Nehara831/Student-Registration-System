@@ -23,13 +23,14 @@ namespace student_reg_system.ViewModels
         public double creditValueObservable;
         [ObservableProperty]
         public double gradePointObservable;
+       
         [ObservableProperty]
-        public ObservableCollection<Module> moduleListObservable;
+        public int userModuleIdObservable;
         [ObservableProperty]
-        public int userIdObservable;
+        public string userModuleDepartmentObservable;
         public ModuleRegVM()
         {
-            LoadModule();
+            
 
 
         }
@@ -44,32 +45,36 @@ namespace student_reg_system.ViewModels
             {
                 ModuleId = ModuleIdObservable,
                 ModuleName = ModuleNameObservable,
-                
+
                 CreditValue = creditValueObservable,
                 GradePoint = gradePointObservable,
-                UserId=UserIdObservable,
+                UserId = UserModuleIdObservable,
+                Department=UserModuleDepartmentObservable,
+                IsSelected=false
 
             };
 
             using (var db = new StudentContext())
             {
                 db.Modules.Add(module);
+
+                var user = db.Users.FirstOrDefault(u => u.IDUser == UserModuleIdObservable);
+
+                if (user != null)
+                {
+                    if (user.Modules == null)
+                    {
+                        user.Modules = new List<Module>();
+                    }
+                    user.Modules.Add(module);
+                }
+                /* */
                 db.SaveChanges();
+
             }
-            LoadModule();
+           
         }
 
-        public void LoadModule()
-        {
-            using (var db = new StudentContext())
-            {
-                var list = db.Modules
-
-
-                .ToList();
-                ModuleListObservable = new ObservableCollection<Module>(list);
-            }
-        }
+        
     }
-
 }

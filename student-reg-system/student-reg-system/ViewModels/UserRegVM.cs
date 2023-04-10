@@ -12,6 +12,8 @@ using System.Windows.Data;
 using System.Windows;
 using student_reg_system.database;
 using student_reg_system.Views;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace student_reg_system.ViewModels
 {
@@ -19,7 +21,7 @@ namespace student_reg_system.ViewModels
     {
 
         [ObservableProperty]
-        public int userId;
+        public static int userId;
         [ObservableProperty]
         public string? userFirstName;
         [ObservableProperty]
@@ -27,16 +29,23 @@ namespace student_reg_system.ViewModels
         [ObservableProperty]
         public string? userEmail;
         [ObservableProperty]
-        public string? userDepartment;
+        public static string? userDepartment;
         [ObservableProperty]
         public int userPhone;
 
 
         [ObservableProperty]
         public ObservableCollection<User> usersList;
+        private ObservableCollection<Module> _selectedModules;
+        public ObservableCollection<Module> SelectedModules
+        {
+            get { return _selectedModules; }
+            set { SetProperty(ref _selectedModules, value); }
+        }
+
 
         [ObservableProperty]
-        public ObservableCollection<Module> moduleList;
+        public ObservableCollection<Module> userModuleList;
         [RelayCommand]
 
         public void AddUser()
@@ -51,6 +60,7 @@ namespace student_reg_system.ViewModels
                 EmailUser = UserEmail,
                 PhoneUser=UserPhone,
                 DepartmentUser = UserDepartment,
+                Modules = SelectedModules.ToList(),
             };
 
             using (var db = new StudentContext())
@@ -59,7 +69,9 @@ namespace student_reg_system.ViewModels
                 db.SaveChanges();
             }
             LoadUser();
+            
         }
+        
 
         public void LoadUser()
         {
@@ -77,36 +89,40 @@ namespace student_reg_system.ViewModels
 
                 .ToList();
                UsersList = new ObservableCollection<User>(listusers);
+
+                var modules = db.Modules
+                .Where(m => m.Department == UserDepartment)
+                .ToList();
+
+
+                UserModuleList = new ObservableCollection<Module>(modules);
+            }
             }
             
-        }
+        
 
         public UserRegVM()
         {
             LoadUser();
             
-            using (var db = new StudentContext())
-            {
-                var TestObj = from users in db.Users
-                              from modules in db.Modules
-                              where modules.UserId == users.IDUser
-                              select new {
-                                  
-                      newModuleName = modules
-
-                              };
-
-               
-                ObservableCollection<Module> moduleusers=new ObservableCollection<Module> ();
-                foreach (var obj in TestObj)
-                {
-                    moduleusers.Add(obj.newModuleName);
-                }
-                ModuleList = moduleusers;
-            }
+           
 
             
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void RaisePropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(storage, value)) return false;
+
+            storage = value;
+            RaisePropertyChanged(propertyName);
+            return true;
+        }
+
 
 
 

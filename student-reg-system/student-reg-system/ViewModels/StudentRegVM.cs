@@ -20,6 +20,9 @@ using System.CodeDom.Compiler;
 using System.Drawing;
 using System.Runtime.Intrinsics.X86;
 using Microsoft.EntityFrameworkCore;
+using student_reg_system.Views;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace student_reg_system.ViewModels
 {
@@ -36,36 +39,55 @@ namespace student_reg_system.ViewModels
         public DateOnly doB;
         [ObservableProperty]
         public string? adres;
-       
+
+        [ObservableProperty]
+        public int noOfStudents;
+
         [ObservableProperty]
         public string? department;
         [ObservableProperty]
         public int userIdObservable;
-        
+        [ObservableProperty]
+        public string userFullNameObservable;
+        [ObservableProperty]
+        public string userLNameObservable;
+        [ObservableProperty]
+        public string userDepartmentObservable;
+        [ObservableProperty]
+        public string userEmailObservable;
 
-        
-       // [ObservableProperty]
-       // public string selectedModule3;
+
+        // [ObservableProperty]
+        // public string selectedModule3;
 
         [ObservableProperty]
         public static ObservableCollection<Student> studentList;
 
         [ObservableProperty]
-        public static  ObservableCollection<Module> moduleList;
+        public ObservableCollection<Module> moduleListStudent;
 
+
+
+        public static List<Module> SelectedModulesStudent;
         public StudentRegVM()
         {
             LoadStudent();
 
             UserIdObservable = LoginViewVM.CurrentUserId;
-            
+            SelectedModulesStudent= new List<Module>();
+
+            SelectedModulesStudent = StudentRegView.selectedModules;
+           
+
 
 
         }
         [RelayCommand]
 
         public void AddStudent()
+
         {
+           
             using (var db = new StudentContext())
             {
                 var user = db.Users.FirstOrDefault(u => u.IDUser == LoginViewVM.CurrentUserId);
@@ -79,8 +101,10 @@ namespace student_reg_system.ViewModels
                     AdressStudent = Adres,
                     DepartmentStudent = Department,
                     
-                    Users = new List<User>() { user }
+                    Users = new List<User>() { user },
+                    Modules = SelectedModulesStudent.ToList()
                 };
+               
                 
                     /*if (student.Users == null)
                     {
@@ -107,6 +131,8 @@ namespace student_reg_system.ViewModels
 
                 // reload the list of students
                 LoadStudent();
+                
+               // ClearTextBoxes();
             }
         }
 
@@ -125,7 +151,19 @@ namespace student_reg_system.ViewModels
                     StudentList = new ObservableCollection<Student>(user.Students);
                 }
 
+                UserIdObservable = user.IDUser;
+                UserFullNameObservable = user.FirstNameUser +" "+ user.LastNameUser;
+                UserLNameObservable = user.LastNameUser;
+                UserDepartmentObservable = user.DepartmentUser +"  Department";
+                UserEmailObservable = user.EmailUser;
+                NoOfStudents = studentList.Count;
 
+                var modules = db.Modules
+                    .Where(m => m.Department == user.DepartmentUser)
+                    .ToList();
+
+
+                ModuleListStudent = new ObservableCollection<Module> (modules);
 
             }
 
@@ -133,8 +171,21 @@ namespace student_reg_system.ViewModels
 
 
         }
-
-
+        [RelayCommand]
+       public void ClearTextBoxes()
+        {
+            var window = Application.Current.Windows.OfType<StudentRegView>().SingleOrDefault(x => x.IsActive);
+            
+            window.IdTextBox.Text = "";
+            window.FNameTextBox.Text = "";
+            window.LNameTextBox.Text = "";
+            window.DepartmentTextBox.Text = "";
+            window.UserIdTextBox.Text = "";
+            window.AdressTextBox.Text = "";
+        }
+        //
+       
+        
 
     }
 

@@ -29,7 +29,7 @@ namespace student_reg_system.Views
             InitializeComponent();
            
             DataContext = new StudentRegVM();
-            membersDataGrid.ItemsSource = StudentRegVM.studentList;
+          //  membersDataGrid.ItemsSource = StudentRegVM.studentList;
    
 
         }
@@ -77,6 +77,17 @@ namespace student_reg_system.Views
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
 
         }
     }

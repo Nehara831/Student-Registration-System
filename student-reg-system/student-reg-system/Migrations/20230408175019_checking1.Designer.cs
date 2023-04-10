@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using student_reg_system.database;
 
@@ -10,9 +11,11 @@ using student_reg_system.database;
 namespace student_reg_system.Migrations
 {
     [DbContext(typeof(StudentContext))]
-    partial class StudentContextModelSnapshot : ModelSnapshot
+    [Migration("20230408175019_checking1")]
+    partial class checking1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.4");
@@ -47,25 +50,6 @@ namespace student_reg_system.Migrations
                     b.ToTable("StudentUser");
                 });
 
-            modelBuilder.Entity("student_reg_system.Models.AdminAuthentication", b =>
-                {
-                    b.Property<int>("AdminId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("AdminId");
-
-                    b.ToTable("AdminAuthentications");
-                });
-
             modelBuilder.Entity("student_reg_system.Models.LoginAuthentication", b =>
                 {
                     b.Property<int>("LoginId")
@@ -94,18 +78,11 @@ namespace student_reg_system.Migrations
                     b.Property<double>("CreditValue")
                         .HasColumnType("REAL");
 
-                    b.Property<string>("Department")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<char>("Grade")
                         .HasColumnType("TEXT");
 
                     b.Property<double>("GradePoint")
                         .HasColumnType("REAL");
-
-                    b.Property<bool>("IsSelected")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ModuleName")
                         .IsRequired()

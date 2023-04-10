@@ -1,4 +1,6 @@
-﻿using student_reg_system.ViewModels;
+﻿using student_reg_system.Models;
+using student_reg_system.ViewModels;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,13 +15,14 @@ namespace student_reg_system.Views
     /// </summary>
     public partial class StudentRegView : Window
     {
+        public static List<Module> selectedModules = new List<Module>();
+
         public StudentRegView()
         {
             InitializeComponent();
             DataContext = new StudentRegVM();
-            MyListBox.Items.Clear();
-            MyListBox.ItemsSource = StudentRegVM.moduleList;
-
+           
+          
         }
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -30,7 +33,44 @@ namespace student_reg_system.Views
         {
 
         }
-       
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            var comboBox = sender as ComboBox;
+            var listBox = comboBox.Template.FindName("PART_ListBox", comboBox) as ListBox;
+            MessageBox.Show($"Listbox null{listBox.SelectedItems.Count}");
+            if (listBox == null)
+            {
+               
+                return;
+            }
+
+            selectedModules.Clear();
+            
+
+            foreach (var item in listBox.SelectedItems)
+            {
+                var module = item as Module;
+                if (module != null)
+                {
+                    selectedModules.Add(module);
+                    
+                }
+            }
+        }
+
 
 
     }

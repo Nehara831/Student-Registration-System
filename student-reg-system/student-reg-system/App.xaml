@@ -10,8 +10,12 @@
 
 
                 <Style x:Key="topButton" TargetType="Button">
-                    <Setter Property="Background" Value="Transparent" />
-                    <Setter Property="Foreground" Value="#6E7783" />
+
+
+
+
+            <Setter Property="Background" Value="#623ED0"/>
+                    <Setter Property="Foreground" Value="White" />
                     <Setter Property="FocusVisualStyle" Value="{x:Null}" />
                     <Setter Property="Height" Value="30" />
                     <Setter Property="Width" Value="30" />
@@ -28,7 +32,7 @@
 
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#dcdcdc" />
+                    <Setter Property="Background" Value="#623ED0"/>
                         </Trigger>
                     </Style.Triggers>
                 </Style>
@@ -36,7 +40,7 @@
 
                 <Style x:Key="menuButton" TargetType="Button">
                     <Setter Property="Background" Value="Transparent" />
-                    <Setter Property="Foreground" Value="#D0C0FF" />
+                    <Setter Property="Foreground" Value="White"/>
                     <Setter Property="FocusVisualStyle" Value="{x:Null}" />
                     <Setter Property="Height" Value="35" />
                     <Setter Property="Margin" Value="15 3" />

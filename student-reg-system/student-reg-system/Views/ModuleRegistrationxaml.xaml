@@ -130,8 +130,8 @@
 
 
                     </Canvas>
-
-                    <TextBox Grid.Column="1" Grid.Row="0"  Margin="0 50" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding UserIdObservable}" RenderTransformOrigin="0.5,0.5" >
+                    <TextBox Grid.Column="1" Grid.Row="1"  Margin="0 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding UserModuleDepartmentObservable}" TextChanged="TextBox_TextChanged_1"  />
+                    <TextBox Grid.Column="1" Grid.Row="0"  Margin="0 20" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding UserModuleIdObservable}" RenderTransformOrigin="0.5,0.5" >
                         <TextBox.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -142,6 +142,7 @@
                         </TextBox.RenderTransform>
                     </TextBox>
                     <TextBlock Grid.Row="0" Text="User ID" Style="{StaticResource text}"  Foreground="White"/>
+                    <TextBlock Grid.Row="1" Text="Department" Style="{StaticResource text}"  Foreground="White"/>
 
 
                     <Grid Grid.Column="1" Grid.Row="7" Margin="0 40 0 0">

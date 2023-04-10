@@ -134,13 +134,12 @@
                     </Canvas>
                     <TextBox Grid.Column="1" Foreground="#868686"  Text="{Binding Userdepartment}"/>
                     <TextBox Grid.Column="1" Grid.Row="1"  Foreground="#868686" Text="{Binding UserPhone}" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="160"/>
-                    <ListBox Grid.Column="1"   Grid.Row="2"  Margin="0 10 " VerticalAlignment="Center" Name="MyListBox"  ItemsSource="{Binding ModuleList}">
+                    <ListBox Grid.Column="1"   Grid.Row="2"  Margin="0 10 " VerticalAlignment="Center" Name="MyListBox"  ItemsSource="{Binding UserModuleList}" >
 
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding ModuleName}" />
-                            </DataTemplate>
-                        </ListBox.ItemTemplate >
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox IsChecked="{Binding IsSelected}" Margin="0 0 10 0"/>
+                            <TextBlock Text="{Binding ModuleName}"/>
+                        </StackPanel>
                     </ListBox>
 
                     <TextBlock  Grid.Row="0" Text="Department" Style="{StaticResource text}" Foreground="White"/>
