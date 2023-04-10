@@ -76,7 +76,7 @@ namespace student_reg_system.ViewModels
             UserIdObservable = LoginViewVM.CurrentUserId;
             SelectedModulesStudent= new List<Module>();
 
-            SelectedModulesStudent = StudentRegView.selectedModules;
+            SelectedModulesStudent = StudentRegView.SelectedModules;
            
 
 
@@ -104,8 +104,8 @@ namespace student_reg_system.ViewModels
                     Users = new List<User>() { user },
                     Modules = SelectedModulesStudent.ToList()
                 };
-               
-                
+
+                MessageBox.Show( $"No.of Selected Modules {SelectedModulesStudent.Count}");
                     /*if (student.Users == null)
                     {
                         student.Users = new List<User>();

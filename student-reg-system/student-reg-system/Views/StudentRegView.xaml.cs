@@ -15,14 +15,21 @@ namespace student_reg_system.Views
     /// </summary>
     public partial class StudentRegView : Window
     {
-        public static List<Module> selectedModules = new List<Module>();
-
+        public static List<Module> SelectedModules = new List<Module>();
+       
         public StudentRegView()
         {
             InitializeComponent();
             DataContext = new StudentRegVM();
-           
-          
+            // Create a list to store the selected items
+            
+            foreach (var selectedItem in MyListBox.SelectedItems)
+            {
+                 // Get the text of the selected item
+                SelectedModules.Add((Module)selectedItem); // Add the text to the SelectedModulesList
+            }
+
+
         }
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -45,33 +52,34 @@ namespace student_reg_system.Views
 
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-            var comboBox = sender as ComboBox;
-            var listBox = comboBox.Template.FindName("PART_ListBox", comboBox) as ListBox;
-            MessageBox.Show($"Listbox null{listBox.SelectedItems.Count}");
-            if (listBox == null)
-            {
-               
-                return;
-            }
+        /*  private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+          {
 
-            selectedModules.Clear();
-            
+              var comboBox = sender as ComboBox;
+              var listBox = comboBox.Template.FindName("PART_ListBox", comboBox) as ListBox;
+              MessageBox.Show($"Listbox null{listBox.SelectedItems.Count}");
+              if (listBox == null)
+              {
 
-            foreach (var item in listBox.SelectedItems)
-            {
-                var module = item as Module;
-                if (module != null)
-                {
-                    selectedModules.Add(module);
-                    
-                }
-            }
-        }
+                  return;
+              }
+
+              selectedModules.Clear();
 
 
+              foreach (var item in listBox.SelectedItems)
+              {
+                  var module = item as Module;
+                  if (module != null)
+                  {
+                      selectedModules.Add(module);
 
-    }
+                  }
+              }
+          }*/
+       
+
+
+
+}
 }
