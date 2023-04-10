@@ -193,7 +193,7 @@
                     <TextBox Grid.Column="1" Grid.Row="0"  Margin="0 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding Department}" Name="DepartmentTextBox"/>
                     <TextBox Grid.Column="1" Grid.Row="1"   Margin="0 10" VerticalAlignment="Center"  Foreground="#868686" Text="{Binding Adres}" TextChanged="TextBox_TextChanged" Name="AdressTextBox"/>
 
-                    <ComboBox ItemsSource="{Binding ModuleListStudent}" Grid.Column="1" Grid.Row="2" Margin="0,0,0,10" VerticalAlignment="Bottom" Name="MyComboBox" SelectionChanged="ComboBox_SelectionChanged">
+                    <ComboBox ItemsSource="{Binding ModuleListStudent}" Grid.Column="1" Grid.Row="2" Margin="0,0,0,10" VerticalAlignment="Bottom" Name="MyComboBox" SelectionChanged="{Binding ComboBox_SelectionChanged}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <CheckBox Content="{Binding ModuleName}" IsChecked="{Binding IsSelected}" />

@@ -14,7 +14,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.IO;
+using System.Reflection;
 namespace student_reg_system
 {
     /// <summary>
@@ -25,6 +26,8 @@ namespace student_reg_system
         public MainWindow()
         {
             InitializeComponent();
+
+          
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
