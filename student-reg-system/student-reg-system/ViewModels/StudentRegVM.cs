@@ -57,16 +57,17 @@ namespace student_reg_system.ViewModels
         public string userEmailObservable;
 
 
-        // [ObservableProperty]
-        // public string selectedModule3;
+        [ObservableProperty]
+        public int testName;
+        [ObservableProperty]
+        public static string testName2;
 
         [ObservableProperty]
         public static ObservableCollection<Student> studentList;
 
         [ObservableProperty]
         public ObservableCollection<Module> moduleListStudent;
-
-
+        
 
         public static List<Module> SelectedModulesStudent;
         public StudentRegVM()
@@ -74,75 +75,109 @@ namespace student_reg_system.ViewModels
             LoadStudent();
 
             UserIdObservable = LoginViewVM.CurrentUserId;
-            SelectedModulesStudent= new List<Module>();
+            SelectedModulesStudent = new List<Module>();
 
-            SelectedModulesStudent = StudentRegView.SelectedModules;
-           
-
-
-
+            
         }
-        [RelayCommand]
+            ////
 
-        public void AddStudent()
+            [RelayCommand]
 
-        {
-           
-            using (var db = new StudentContext())
+            public void AddStudent()
+
             {
-                var user = db.Users.FirstOrDefault(u => u.IDUser == LoginViewVM.CurrentUserId);
-                // create new student object
-                Student student = new Student()
-                {
-                    StudentIDStudent = Id,
-                    FirstNameStudent = FName,
-                    LastNameStudent = LName,
-                    DateofBirthStudent = DoB,
-                    AdressStudent = Adres,
-                    DepartmentStudent = Department,
-                    
-                    Users = new List<User>() { user },
-                    Modules = SelectedModulesStudent.ToList()
-                };
 
-                MessageBox.Show( $"No.of Selected Modules {SelectedModulesStudent.Count}");
-                    /*if (student.Users == null)
+                using (var db = new StudentContext())
+                {
+                    var user = db.Users.FirstOrDefault(u => u.IDUser == LoginViewVM.CurrentUserId);
+                    // create new student object
+                    Student student = new Student()
                     {
-                        student.Users = new List<User>();
-                    }
-                    student.Users.Add(user);*/
+                        StudentIDStudent = Id,
+                        FirstNameStudent = FName,
+                        LastNameStudent = LName,
+                        DateofBirthStudent = DoB,
+                        AdressStudent = Adres,
+                        DepartmentStudent = Department,
+                        Modules =SelectedModulesStudent.ToList(),
+                        Users=new List<User>() { user},
+                    };
+
                 
-                // add student to Students table
-                db.Students.Add(student);
+
+                SelectedModulesStudent = StudentRegView.SelectedModules;
+                // MessageBox.Show($"Selected Module List Length = {SelectedModulesStudent.Count}");
+                
+
+                
+                
+
+                    // add student to Students table
+                    db.Students.Add(student);
 
                 // find the user with the specified ID and add the student to their list of students
 
-                if (user != null)
+                /*if (user != null)
                 {
                     if (user.Students == null)
                     {
                         user.Students = new List<Student>();
                     }
                     user.Students.Add(student);
+                }*/
+                foreach (Module module in SelectedModulesStudent)
+                {
+                    // Check if the module is already being tracked by the context
+                    var existingModule = db.Modules.Find(module.ModuleId);
+
+                    // If the module is not being tracked, add it to the context
+                    if (existingModule == null)
+                    {
+                        db.Modules.Add(module);
+                    }
+
+                    // Add the module to the student's collection
+                    if (student != null)
+                    {
+                        if (student.Modules == null)
+                        {
+                            student.Modules = new List<Module>();
+                        }
+
+                        // If the module is being tracked, use the existing entity rather than adding a new one
+                        student.Modules.Add(existingModule ?? module);
+                    }
                 }
+
+
+                foreach (Module moduleSt in SelectedModulesStudent)
+                {
+                    if (moduleSt.Students == null)
+                    {
+                        moduleSt.Students = new List<Student>();
+                    }
+                    moduleSt.Students.Add(student);
+                }
+                
 
                 // save changes to database
                 db.SaveChanges();
 
-                // reload the list of students
-                LoadStudent();
-                
-               // ClearTextBoxes();
+                    // reload the list of students
+                    LoadStudent();
+
+                    /*int length1 = SelectedModulesStudent.Count;
+                    MessageBox.Show($"lenth {length1}");*/
+
+                    ClearTextBoxes();
+                }
             }
-        }
 
         public void LoadStudent()
         {
             using (var db = new StudentContext())
             {
 
-                //MessageBox.Show($"User ID: {UserIdObservable}");
-                //var user = db.Users.Find(4097);
                 var user = db.Users.Include(u => u.Students).SingleOrDefault(u => u.IDUser == LoginViewVM.CurrentUserId);
 
                 // StudentList = new ObservableCollection<Student>(db.Students);
@@ -152,9 +187,9 @@ namespace student_reg_system.ViewModels
                 }
 
                 UserIdObservable = user.IDUser;
-                UserFullNameObservable = user.FirstNameUser +" "+ user.LastNameUser;
+                UserFullNameObservable = user.FirstNameUser + " " + user.LastNameUser;
                 UserLNameObservable = user.LastNameUser;
-                UserDepartmentObservable = user.DepartmentUser +"  Department";
+                UserDepartmentObservable = user.DepartmentUser + "  Department";
                 UserEmailObservable = user.EmailUser;
                 NoOfStudents = studentList.Count;
 
@@ -163,31 +198,59 @@ namespace student_reg_system.ViewModels
                     .ToList();
 
 
-                ModuleListStudent = new ObservableCollection<Module> (modules);
+                ModuleListStudent = new ObservableCollection<Module>(modules);
+
+                
+
+
+                
+            
+
+        }
+
+        }
+        [RelayCommand] 
+        public void ShowModules()
+        {
+            using (var db = new StudentContext()) {
+                var testStudent = db.Students.Include(s => s.Modules).FirstOrDefault(s => s.StudentIDStudent == TestName);
+
+
+                TestName2 = "";
+                if (testStudent != null)
+                {
+                    
+                    if (testStudent.Modules != null)
+                    {
+                        foreach (Module module in testStudent.Modules)
+                        {
+                            TestName2 += " " + module.ModuleName;
+                        }
+                    }
+
+                }
+            }
+            
+        }
+
+
+                [RelayCommand]
+                public void ClearTextBoxes()
+                {
+                    var window = Application.Current.Windows.OfType<StudentRegView>().SingleOrDefault(x => x.IsActive);
+
+                    window.IdTextBox.Text = "";
+                    window.FNameTextBox.Text = "";
+                    window.LNameTextBox.Text = "";
+                    window.DepartmentTextBox.Text = "";
+                    window.UserIdTextBox.Text = "";
+                    window.AdressTextBox.Text = "";
+                }
+                //
+
+
 
             }
 
 
-
-
         }
-        [RelayCommand]
-       public void ClearTextBoxes()
-        {
-            var window = Application.Current.Windows.OfType<StudentRegView>().SingleOrDefault(x => x.IsActive);
-            
-            window.IdTextBox.Text = "";
-            window.FNameTextBox.Text = "";
-            window.LNameTextBox.Text = "";
-            window.DepartmentTextBox.Text = "";
-            window.UserIdTextBox.Text = "";
-            window.AdressTextBox.Text = "";
-        }
-        //
-       
-        
-
-    }
-
-
-}

@@ -90,6 +90,8 @@ namespace student_reg_system.Views
             WindowState = WindowState.Minimized;
 
         }
+
+        
     }
 
    

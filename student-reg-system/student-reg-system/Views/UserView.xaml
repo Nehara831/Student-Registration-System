@@ -63,7 +63,7 @@
                             <Button Style="{StaticResource menuButton}">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="CalendarClock" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="GPA Calculator"/>
+                                    <TextBlock Text="GPA Calculator" />
                                 </StackPanel>
                             </Button>
 
@@ -76,7 +76,7 @@
 
 
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Command="{Binding ShowModulesCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="ForumOutline" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Annoucements"/>
@@ -84,6 +84,9 @@
                             </Button>
 
                         </StackPanel>
+                        <TextBox Text="{Binding TestName }" Width="100"/>
+
+
 
                         <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
                             <StackPanel Orientation="Horizontal">
@@ -231,6 +234,7 @@
                 <!--Pagingation Section-->
                 <Border Grid.Row="6" HorizontalAlignment="Right" BorderBrush="#DEE4EC" BorderThickness="1" CornerRadius="5" Padding="5" Background="#ffffff" Margin="0 10 10 10">
                     <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Left" Margin="0 10 200 10" Text="{Binding TestName2}"></TextBlock>
                         <Button Style="{StaticResource pagingButton}">
                             <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
                         </Button>
@@ -252,8 +256,9 @@
                         </Button>
                     </StackPanel>
                 </Border>
-                
-               
+                <TextBlock Foreground="AliceBlue" x:Name="Test" Text="{Binding TestName2}" Margin="100,204,630,117" Grid.Row="5"/>
+
+
 
             </Grid>
 
