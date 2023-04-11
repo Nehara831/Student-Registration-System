@@ -87,6 +87,9 @@
                         <TextBox Text="{Binding TestName }" Width="100"/>
 
 
+                        <TextBox Text="{Binding TestName }" Width="100"/>
+
+
 
                         <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
                             <StackPanel Orientation="Horizontal">

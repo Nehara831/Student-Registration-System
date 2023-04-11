@@ -22,13 +22,14 @@ namespace student_reg_system.Views
             InitializeComponent();
             DataContext = new StudentRegVM();
             // Create a list to store the selected items
-            
-            foreach (var selectedItem in MyListBox.SelectedItems)
+           
+            /*foreach (var selectedItem in MyListBox.SelectedItems)
             {
                  // Get the text of the selected item
                 SelectedModules.Add((Module)selectedItem); // Add the text to the SelectedModulesList
             }
-
+           */
+            
 
         }
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -51,37 +52,69 @@ namespace student_reg_system.Views
             WindowState = WindowState.Minimized;
 
         }
+        private void MyListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AddSelectedModulesToList();
+        }
+        private void AddSelectedModulesToList()
+        {
+            List<Module> SelectedModulesList = new List<Module>(); // Create a list to store the selected modules
+
+            foreach (Module selectedItem in MyListBox.SelectedItems)
+            {
+                SelectedModules.Add(selectedItem); // Add the selected module to the SelectedModulesList
+            }
+            int leength = SelectedModules.Count;
+           // MessageBox.Show($"No.of Selected Modules {leength}");
+            // Do something with the SelectedModulesList
+        }
 
         private void MyListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
+        private void MyListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AddSelectedModulesToList();
+        }
+        private void AddSelectedModulesToList()
+        {
+            List<Module> SelectedModulesList = new List<Module>(); // Create a list to store the selected modules
+
+            foreach (Module selectedItem in MyListBox.SelectedItems)
+            {
+                SelectedModules.Add(selectedItem); // Add the selected module to the SelectedModulesList
+            }
+            int leength = SelectedModules.Count;
+           // MessageBox.Show($"No.of Selected Modules {leength}");
+            // Do something with the SelectedModulesList
+        }
 
         /*  private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-          {
+ {
 
-              var comboBox = sender as ComboBox;
-              var listBox = comboBox.Template.FindName("PART_ListBox", comboBox) as ListBox;
-              MessageBox.Show($"Listbox null{listBox.SelectedItems.Count}");
-              if (listBox == null)
-              {
+     var comboBox = sender as ComboBox;
+     var listBox = comboBox.Template.FindName("PART_ListBox", comboBox) as ListBox;
+     MessageBox.Show($"Listbox null{listBox.SelectedItems.Count}");
+     if (listBox == null)
+     {
 
-                  return;
-              }
+         return;
+     }
 
-              selectedModules.Clear();
+     selectedModules.Clear();
 
 
-              foreach (var item in listBox.SelectedItems)
-              {
-                  var module = item as Module;
-                  if (module != null)
-                  {
-                      selectedModules.Add(module);
+     foreach (var item in listBox.SelectedItems)
+     {
+         var module = item as Module;
+         if (module != null)
+         {
+             selectedModules.Add(module);
 
-                  }
-              }
-          }*/
+         }
+     }
+ }*/
 
 
 

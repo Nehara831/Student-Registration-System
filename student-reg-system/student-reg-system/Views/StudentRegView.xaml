@@ -201,9 +201,9 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
 
-                    
 
-                    <TextBox Grid.Column="1" Grid.Row="3"   Margin="0 0" VerticalAlignment="Center"  Foreground="#868686" Text="{Binding UserIdObservable}" TextChanged="TextBox_TextChanged" Name="UserIdTextBox"/>
+
+                    <TextBox Grid.Column="1" Grid.Row="3"   Margin="0 0" VerticalAlignment="Center"  Foreground="#868686" Text="{Binding UserIdObservable}" TextChanged="TextBox_TextChanged" Name="UserIdTextBox" />
 
                     <TextBlock  Grid.Row="0" Text="Department" Style="{StaticResource text}" Foreground="White"/>
                     <TextBlock Grid.Row="1" Text="Adress" Style="{StaticResource text}" Foreground="White"/>
@@ -225,6 +225,7 @@
                 </Grid>
             </Grid>
         </Border>
-
+        <TextBlock HorizontalAlignment="Left" Height="61" Margin="117,285,0,0" VerticalAlignment="Top" Width="217" Foreground="AntiqueWhite" Name="myLabel1"/>
+        <Button Height="20" Margin="100 20" VerticalAlignment="Bottom" Click="Button_Click_2"></Button>
     </Grid>
 </Window>
