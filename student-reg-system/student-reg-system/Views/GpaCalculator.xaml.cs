@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace student_reg_system.Views
@@ -17,21 +18,23 @@ namespace student_reg_system.Views
     /// <summary>
     /// Interaction logic for GpaCalculator.xaml
     /// </summary>
-    public partial class GpaCalculator : Window
+    public partial class GpaCalculator : Page
     {
         public GpaCalculator()
         {
             InitializeComponent();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
+        private void CalculateGPA(object sender, RoutedEventArgs e)
+        {
+            StudentRegView newview = new StudentRegView();
+            newview.Show();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void TextBox_TextChanged2(object sender, TextChangedEventArgs e)
         {
-
+            // Your code to handle the TextChanged event goes here
         }
     }
 }

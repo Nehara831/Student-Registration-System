@@ -15,6 +15,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace student_reg_system.Views
@@ -89,6 +90,18 @@ namespace student_reg_system.Views
         {
             WindowState = WindowState.Minimized;
 
+        }
+
+
+        private void ShowCalculator(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Navigate(new GpaCalculator());
+
+        }
+
+        private void ShowStudentData(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Navigate(new StudentDataPage());
         }
     }
 
