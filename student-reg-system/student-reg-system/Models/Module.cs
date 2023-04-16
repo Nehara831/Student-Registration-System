@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace student_reg_system.Models
 {
-    public class Module: INotifyPropertyChanged
+    public class Module
     {
         public int ModuleId { get; set; }
-      //  public string ModuleName { get; set; }
+        public string ModuleName { get; set; }
         public char Grade { get; set; }
         public double CreditValue { get; set; }
         public double GradePoint { get; set; }
@@ -24,25 +24,25 @@ namespace student_reg_system.Models
         [ForeignKey("Users")]
         public int UserId { get; set; }
         public ICollection<Student> Students { get; set; }
-        
-            private string _moduleName;
-            private bool _isSelected;
 
-            public string ModuleName
-            {
-                get { return _moduleName; }
-                set { _moduleName = value; NotifyPropertyChanged(); }
-            }
+        //private string _moduleName;
+        private bool _isSelected;
 
-            public bool IsSelected
-            {
+        /*            public string ModuleName
+                    {
+                        get { return _moduleName; }
+                        set { _moduleName = value; NotifyPropertyChanged(); }
+                    }*/
+
+        public bool IsSelected
+        {
             get { return _isSelected; }
             set
             {
                 _isSelected = value;
-                NotifyPropertyChanged();
+ /*               NotifyPropertyChanged();*/
 
-                if (_isSelected)
+/*                if (_isSelected)
                 {
                     // Add the module to the SelectedModules collection
                     StudentRegVM.SelectedModulesStudent.Add(this);
@@ -51,17 +51,17 @@ namespace student_reg_system.Models
                 {
                     // Remove the module from the SelectedModules collection
                     StudentRegVM.SelectedModulesStudent.Remove(this);
-                }
+                }*/
             }
         }
 
-            public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-            private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-            {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
-        
+        /*            private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+                    {
+                        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                    }*/
+
 
         public Module(int moduleId, string moduleName, double creditValue)
         {
