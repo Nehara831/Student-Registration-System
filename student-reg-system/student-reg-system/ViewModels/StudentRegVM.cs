@@ -23,6 +23,7 @@ using student_reg_system.Views;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections;
+using System.Windows.Media;
 
 namespace student_reg_system.ViewModels
 {
@@ -73,12 +74,14 @@ namespace student_reg_system.ViewModels
         public ObservableCollection<Module> moduleListStudent;
 
 
-        public static ObservableCollection<Module> SelectedModulesStudent;
+        //public static ObservableCollection<Module> SelectedModulesStudent;
 
-        [ObservableProperty]
-        public ObservableCollection<Module> existingModules;
-        public RelayCommand<Module> UpdateModuleSelectionCommand { get; private set; }
+        //[ObservableProperty]
+        //public ObservableCollection<Module> existingModules;
+        //public RelayCommand<Module> UpdateModuleSelectionCommand;
 
+
+        public List<Module> selectedModules = new List<Module>();
 
         public bool IsSelectedModule { get; set; }
        /* {
@@ -97,8 +100,8 @@ namespace student_reg_system.ViewModels
             LoadStudent();
 
             UserIdObservable = LoginViewVM.CurrentUserId;
-            UpdateModuleSelectionCommand = new RelayCommand<Module>(UpdateModuleSelection);
-            SelectedModulesStudent = new ObservableCollection<Module>();
+            //UpdateModuleSelectionCommand = new RelayCommand<Module>(UpdateModuleSelection);
+            //SelectedModulesStudent = new ObservableCollection<Module>();
 
 
         }
@@ -111,8 +114,8 @@ namespace student_reg_system.ViewModels
             Adres = student.AdressStudent;
             DoB = student.DateofBirthStudent;
             Department = student.DepartmentStudent;
-            SelectedModulesStudent = new ObservableCollection<Module> ();
-            UpdateModuleSelectionCommand = new RelayCommand<Module>(UpdateModuleSelection);
+            //SelectedModulesStudent = new ObservableCollection<Module> ();
+            //UpdateModuleSelectionCommand = new RelayCommand<Module>(UpdateModuleSelection);
             LoadStudent();
 
 
@@ -190,6 +193,8 @@ namespace student_reg_system.ViewModels
                
             }
         }
+
+
     
         [RelayCommand]
 
@@ -207,7 +212,7 @@ namespace student_reg_system.ViewModels
                 Student existingStudent = db.Students.Find(Id);
                 var user = db.Users.FirstOrDefault(u => u.IDUser == LoginViewVM.CurrentUserId);
                 // If the module is not being tracked, add it to the context
-                if (existingStudent != null)
+/*                if (existingStudent != null)
                 {
                     if (existingStudent.Modules == null)
                     {
@@ -216,8 +221,36 @@ namespace student_reg_system.ViewModels
                     ExistingModules = (ObservableCollection<Module>)existingStudent.Modules;
                     db.Remove(existingStudent);
                     db.SaveChanges();
+                }*/
+
+                foreach (var module in ModuleListStudent)
+                {
+                    bool isSelected = module.IsSelected;
+
+                    if (isSelected)
+                    {
+                  
+
+                        selectedModules.Add(db.Modules.FirstOrDefault(u => u.ModuleName == module.ModuleName));
+                        MessageBox.Show($"Item added..! {module.ModuleName}");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Item not added");
+                    }
+
                 }
-                
+
+                //MessageBox.Show($"Selected module List: {selectedModules.Count()}");
+
+                List<Module> tempList = new List<Module>
+                {
+                   db.Modules.FirstOrDefault(u => u.ModuleName == "Analog Electronics"),
+                   db.Modules.FirstOrDefault(u => u.ModuleName == "Measurements")
+
+                };
+               // MessageBox.Show($"Temp module List: {tempList.Count()}");
                 // create new student object
                 Student student = new Student()
                 {
@@ -227,84 +260,81 @@ namespace student_reg_system.ViewModels
                     DateofBirthStudent = DoB,
                     AdressStudent = Adres,
                     DepartmentStudent = Department,
-                    
-                        Modules = SelectedModulesStudent.ToList(),
-                        Users = new List<User>() { user },
-                    };
+                  
+                    Modules = selectedModules,
+                    Users = new List<User>() { user },
+
+                };
 
                 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                 //  SelectedModulesStudent = StudentRegView.SelectedModules;
 
-               /* var checkstu = db.Students.Include(u => u.Modules).FirstOrDefault(u => u.StudentIDStudent == Id);
-                var mod = checkstu.Modules.FirstOrDefault(u => u.ModuleName == "Analog");
-                IsSelectedModule = mod.IsSelected;
-                MessageBox.Show($"selected   {IsSelectedModule}");*/
+                /* var checkstu = db.Students.Include(u => u.Modules).FirstOrDefault(u => u.StudentIDStudent == Id);
+                 var mod = checkstu.Modules.FirstOrDefault(u => u.ModuleName == "Analog");
+                 IsSelectedModule = mod.IsSelected;
+                 MessageBox.Show($"selected   {IsSelectedModule}");*/
 
 
 
                 // add student to Students table
                 db.Students.Add(student);
-                    if (user != null)
-                    {
-                        if (user.Students == null)
-                        {
-                            user.Students = new List<Student>();
-                        }
-                        user.Students.Add(student);
-                    }
-                foreach (Module module in SelectedModulesStudent)
+                if (user != null)
                 {
-                    // Check if the module is already being tracked by the context
-                    var existingModule = db.Modules.Find(module.ModuleId);
-
-                    // If the module is not being tracked, add it to the context
-                    if (existingModule == null)
+                    if (user.Students == null)
                     {
-                        db.Modules.Add(module);
+                        user.Students = new List<Student>();
                     }
-
-                    // Add the module to the student's collection
-                    if (student != null)
-                    {
-                        if (student.Modules == null)
-                        {
-                            student.Modules = new List<Module>();
-                        }
-
-                        // If the module is being tracked, use the existing entity rather than adding a new one
-                        student.Modules.Add(existingModule ?? module);
-                    }
+                    user.Students.Add(student);
                 }
+                /* foreach (Module module in SelectedModulesStudent)
+                 {*/
+                // Check if the module is already being tracked by the context
+                //var existingModule = db.Modules.Find(module.ModuleId);
+
+                // If the module is not being tracked, add it to the context
 
 
-                foreach (Module moduleSt in SelectedModulesStudent)
-                {
-                    if (moduleSt.Students == null)
-                    {
-                        moduleSt.Students = new List<Student>();
-                    }
-                    moduleSt.Students.Add(student);
-                }
+                // Add the module to the student's collection
+                /* if (student != null)
+                 {
+                     if (student.Modules == null)
+                     {
+                         student.Modules = new List<Module>();
+                     }
+
+                     // If the module is being tracked, use the existing entity rather than adding a new one
+                     student.Modules.Add(existingModule ?? module);
+                 }*/
+                //}
+
+
+                /*                foreach (Module moduleSt in SelectedModulesStudent)
+                                {
+                                    if (moduleSt.Students == null)
+                                    {
+                                        moduleSt.Students = new List<Student>();
+                                    }
+                                    moduleSt.Students.Add(student);
+                                }*/
                 // save changes to database
                 db.SaveChanges();
                 //////////////////////////////////////////////////////////
-                var checkstu = db.Students.Include(u => u.Modules).FirstOrDefault(u => u.StudentIDStudent == Id);
-                var mod = checkstu.Modules.FirstOrDefault(u => u.ModuleName == "Analog");
-                IsSelectedModule = mod.IsSelected;
-                MessageBox.Show($"selected   {IsSelectedModule}");
+                /* var checkstu = db.Students.Include(u => u.Modules).FirstOrDefault(u => u.StudentIDStudent == Id);
+                 var mod = checkstu.Modules.FirstOrDefault(u => u.ModuleName == "Analog");
+                 IsSelectedModule = mod.IsSelected;*/
+                //  MessageBox.Show($"selected   {IsSelectedModule}");
 
                 // reload the list of students
                 LoadStudent();
 
-                    /*int length1 = SelectedModulesStudent.Count;
-                    MessageBox.Show($"lenth {length1}");*/
+                /*int length1 = SelectedModulesStudent.Count;
+                MessageBox.Show($"lenth {length1}");*/
 
-                    ClearTextBoxes();
-                
+                ClearTextBoxes();
+
             }
         }
-
         public void LoadStudent()
         {
             using (var db = new StudentContext())
@@ -382,21 +412,38 @@ namespace student_reg_system.ViewModels
         }
         //
 
-        private void UpdateModuleSelection(Module module)
+/*        private void UpdateModuleSelection(Module module)
         {
-            using (var db = new StudentContext())
-            {
-                var stu = db.Students.Include(u => u.Modules).FirstOrDefault(u => u.StudentIDStudent == Id);
-                var mod = stu.Modules.FirstOrDefault(m => m.ModuleId == module.ModuleId);
+            *//*            using (var db = new StudentContext())
+                        {
+                            var stu = db.Students.Include(u => u.Modules).FirstOrDefault(u => u.StudentIDStudent == Id);
+                            var mod = stu.Modules.FirstOrDefault(m => m.ModuleId == module.ModuleId);
 
-                if (mod != null)
-                {
-                    mod.IsSelected = !module.IsSelected;
-                }
-            }
-        }
+                            if (mod != null)
+                            {
+                                mod.IsSelected = !module.IsSelected;
+                            }
+                            if (stu != null)
+                            {
+                                if (stu.Modules == null)
+                                {
+                                    stu.Modules = new List<Models.Module>();
+                                }
 
+                                // If the module is being tracked, use the existing entity rather than adding a new one
+                                stu.Modules.Add(mod ?? module);
+                            }
+                            if (module.Students == null)
+                            {
+                                module.Students = new List<Student>();
+                            }
+                            module.Students.Add(stu);
+                            db.SaveChanges();
+                        }*//*
 
+            //tempModule = module;
+        
+        }*/
 
 
     }
