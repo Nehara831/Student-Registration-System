@@ -92,16 +92,33 @@ namespace student_reg_system.Views
 
         }
 
-
-        private void ShowCalculator(object sender, RoutedEventArgs e)
+        private void DataGridCheckBoxColumn_Checked(object sender, RoutedEventArgs e)
         {
-            MainContentFrame.Navigate(new GpaCalculator());
+            /*if (((FrameworkElement)sender).DataContext is Student selectedStudent && selectedStudent.IsSelected)
+            {
+                MessageBox.Show("Selected student: " + selectedStudent.FirstNameStudent);
+            }*/
+        }
+        private void Checked(object sender, RoutedEventArgs e)
+        {
+           // Student selectedStudent = membersDataGrid.SelectedItem as Student;
 
+            // Show a message box with the selected student's name
+           // MessageBox.Show("You have selected " + selectedStudent.FirstNameStudent + " " + selectedStudent.LastNameStudent);
         }
 
-        private void ShowStudentData(object sender, RoutedEventArgs e)
+        private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            MainContentFrame.Navigate(new StudentDataPage());
+            // MessageBox.Show("Button working .cs");
+            Checked(sender,e);
+        }
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Get the selected student object
+            Student selectedStudent = membersDataGrid.SelectedItem as Student;
+
+            StudentRegView studentRegView = new StudentRegView(selectedStudent);
+            studentRegView.Show();
         }
     }
 

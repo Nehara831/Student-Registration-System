@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.VisualStudio.ApplicationInsights.Extensibility.Implementation;
 using student_reg_system.database;
 using student_reg_system.Models;
@@ -7,6 +8,7 @@ using student_reg_system.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -54,7 +56,7 @@ namespace student_reg_system.ViewModels
                     var admin = context.AdminAuthentications.FirstOrDefault(a => a.Username == UserName && a.Password == PassWord);
 
                     CurrentUserId = admin.AdminId;
-                   
+                    
 
                     GrantAdminAcess();
                 }
@@ -71,14 +73,20 @@ namespace student_reg_system.ViewModels
         public static void GrantUserAcess()
         {
             UserView userView= new UserView ();
+            // Close active window
+            Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive)?.Close();
             userView.Show();
+            
 
         }
         public static void GrantAdminAcess()
         {
            AdminView adminView = new AdminView();
-           adminView.Show();
+            Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive)?.Close();
+            adminView.Show();
 
         }
+
+
     }
 }

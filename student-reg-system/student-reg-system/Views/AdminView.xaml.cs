@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Xceed.Wpf.Toolkit;
 
 namespace student_reg_system.Views
 {
@@ -33,7 +34,9 @@ namespace student_reg_system.Views
             {
                 if (IsMaximize)
                 {
-                    this.WindowState = WindowState.Normal;
+                    WindowState = System.Windows.WindowState.Normal;
+
+
                     this.Width = 1080;
                     this.Height = 720;
 
@@ -41,7 +44,7 @@ namespace student_reg_system.Views
                 }
                 else
                 {
-                    this.WindowState = WindowState.Maximized;
+                    WindowState = System.Windows.WindowState.Maximized;
 
                     IsMaximize = true;
                 }
@@ -69,5 +72,25 @@ namespace student_reg_system.Views
             moduleRegistrationxaml.Show();
 
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = System.Windows.WindowState.Minimized;
+
+        }
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            // Get the selected user object from the DataContext of the checkbox
+            var user = (sender as FrameworkElement)?.DataContext as User;
+
+            // Show a message box with the user's name
+            System.Windows.MessageBox.Show($"User {user.FirstNameUser} {user.LastNameUser} is checked.");
+        }
+
     }
 }
