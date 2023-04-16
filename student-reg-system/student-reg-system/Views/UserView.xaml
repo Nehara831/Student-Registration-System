@@ -101,7 +101,7 @@
             </Grid>
 
 
-            <Frame Grid.Column="1" Margin="30 20 20 20" x:Name="MainContentFrame"/>
+            <Frame Grid.Column="1" Margin="30 20 20 20" x:Name="MainContentFrame" NavigationUIVisibility="Hidden"/>
             <!--Main Section-->
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using student_reg_system.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace student_reg_system.Views
         public GpaCalculator()
         {
             InitializeComponent();
+            DataContext = new GPACalculatorVM();
         }
 
 
