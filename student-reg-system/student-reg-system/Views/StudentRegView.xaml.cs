@@ -69,26 +69,7 @@ namespace student_reg_system.Views
             // Do something with the SelectedModulesList
         }
 
-        private void MyListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
-        private void MyListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            AddSelectedModulesToList();
-        }
-        private void AddSelectedModulesToList()
-        {
-            List<Module> SelectedModulesList = new List<Module>(); // Create a list to store the selected modules
-
-            foreach (Module selectedItem in MyListBox.SelectedItems)
-            {
-                SelectedModules.Add(selectedItem); // Add the selected module to the SelectedModulesList
-            }
-            int leength = SelectedModules.Count;
-           // MessageBox.Show($"No.of Selected Modules {leength}");
-            // Do something with the SelectedModulesList
-        }
 
         /*  private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
  {

@@ -23,7 +23,7 @@ namespace student_reg_system.ViewModels
         public string? studentName;
 
         [ObservableProperty]
-        public ObservableCollection<Module> moduleList;
+        public ObservableCollection<Module> moduleList = new ObservableCollection<Module>();
 
 
         [RelayCommand]
@@ -32,8 +32,8 @@ namespace student_reg_system.ViewModels
             using (StudentContext context = new StudentContext())
             {
                 var student = context.Students.Include(s => s.Modules).FirstOrDefault(s => s.StudentIDStudent == StudentId);
-                moduleList = new ObservableCollection<Module> (student.Modules);
-                studentName = student.FirstNameStudent + " " + student.LastNameStudent;
+                ModuleList = new ObservableCollection<Module> (student.Modules);
+                StudentName = student.FirstNameStudent + " " + student.LastNameStudent;
             }
 
            

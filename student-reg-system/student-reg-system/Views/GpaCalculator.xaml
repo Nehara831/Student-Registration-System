@@ -20,10 +20,12 @@
                            Panel.ZIndex="1" Text="Search here ..."
                            Visibility="{Binding ElementName=textBoxSearch, Converter={StaticResource BoolToVis}}" />
 
-            <TextBox Name="textBoxSearch" Style="{StaticResource searchTextbox}"/>
-
-            <Icon:PackIconMaterial Kind="Magnify" Width="40" Height="15" VerticalAlignment="Center" Margin="0 0 15 0" Foreground="#B0B9C6" HorizontalAlignment="Right" />
+            <TextBox Name="textBoxSearch" Style="{StaticResource searchTextbox}" Text="{Binding StudentId}"/>
+            <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc" Command="{Binding SearchCommand}">
+                <Icon:PackIconMaterial Kind="Magnify"/>
+            </Button>
         </Grid>
+        
         <TextBlock TextWrapping="Wrap" Text="{Binding StudentName}" Height="30" Margin="40,0,0,0" Width="200" HorizontalAlignment="Left" Background="#FFEFEBEB" />
 
         <DataGrid d:ItemsSource="{d:SampleData ItemCount=0}" Margin="40,28,40,2" AutoGenerateColumns="False" Height="200" ItemsSource="{Binding ModuleList}">

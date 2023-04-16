@@ -226,6 +226,6 @@
             </Grid>
         </Border>
         <TextBlock HorizontalAlignment="Left" Height="61" Margin="117,285,0,0" VerticalAlignment="Top" Width="217" Foreground="AntiqueWhite" Name="myLabel1"/>
-        <Button Height="20" Margin="100 20" VerticalAlignment="Bottom" Click="Button_Click_2"></Button>
+    
     </Grid>
 </Window>
