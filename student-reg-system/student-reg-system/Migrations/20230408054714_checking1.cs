@@ -8,6 +8,15 @@ namespace student_reg_system.Migrations
     public partial class checking1 : Migration
     {
         /// <inheritdoc />
-        
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+
+        }
     }
 }

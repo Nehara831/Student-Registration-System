@@ -3,17 +3,16 @@
       
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" xmlns:viewmodels="clr-namespace:student_reg_system.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:i="clr-namespace:Microsoft.VisualBasic;assembly=Microsoft.VisualBasic.Core"
         DataContext="viewmodels:StudentRegVM"
-       
-
         Height="720" Width="1080" WindowStartupLocation="CenterScreen" AllowsTransparency="True"
         Background="Transparent" WindowStyle="None">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Window.Resources>
-
+    
     <Border CornerRadius="30" Background="#EFF2F7" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid >
             <Grid.ColumnDefinitions>
@@ -88,7 +87,7 @@
 
 
 
-                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
+                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="1 0 5 20">
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Logout" Style="{StaticResource menuButtonIcon}"/>
                                 <TextBlock Text="Logout"/>
@@ -185,42 +184,50 @@
                 </Grid>
 
                 <!--Members Data Grid-->
-                <DataGrid  RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding StudentList}">
+                <DataGrid  RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding StudentList}" SelectedItem="{Binding SelectedStudent}" >
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
+                        <DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto" Binding="{Binding IsSelected}" ElementStyle="{StaticResource CheckBoxStyle1}">
                             <DataGridCheckBoxColumn.HeaderTemplate>
                                 <DataTemplate>
-                                    <CheckBox Style="{StaticResource CheckBoxStyle1}"/>
+                                    <CheckBox Style="{StaticResource CheckBoxStyle1}"  />
+                                    
                                 </DataTemplate>
-                            </DataGridCheckBoxColumn.HeaderTemplate>
+                                </DataGridCheckBoxColumn.HeaderTemplate>
                         </DataGridCheckBoxColumn>
-                        <DataGridTemplateColumn Header="User Id" IsReadOnly="True" Width="*">
+
+                        <DataGridTextColumn Header=" Id  " Binding="{Binding   StudentIDStudent}" IsReadOnly="True" Width="0.5*" />
+                        <DataGridTemplateColumn Header="Student" IsReadOnly="True" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="Beige">
+                                        <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="#1098AD">
+                                            <TextBlock Text="{Binding FirstNameStudent[0]}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
 
                                         </Border>
 
-                                        <TextBlock Text="{Binding  StudentIDStudent}" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding  FirstNameStudent}" VerticalAlignment="Center"/>
+                                        <TextBlock Text="  " VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding  LastNameStudent}" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="First Name" Binding="{Binding   FirstNameStudent}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="Last Name" Binding="{Binding  LastNameStudent}" IsReadOnly="True" Width="*"/>
+                        
                         <DataGridTextColumn Header=" Adress" Binding="{Binding AdressStudent }" IsReadOnly="True" Width="*"/>
 
                         <DataGridTextColumn Header="Date Of Birth" Binding="{Binding DateofBirthStudent}" IsReadOnly="True" Width="*"/>
-                        <DataGridTemplateColumn Header="Edit Student" IsReadOnly="True" Width="auto">
+                        <DataGridTemplateColumn Header="Edit Student"  Width="auto">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Button Style="{StaticResource gridEditButton}">
-                                            <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
+                                        <Button 
+                                          Style="{StaticResource gridEditButton}" Click="EditButton_Click" IsEnabled="{Binding SelectedItem.IsSelected, ElementName=membersDataGrid, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            
+                                            <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}" />
                                         </Button>
                                         <Button Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}">
-                                            <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                            <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/> 
+                                            
                                         </Button>
                                     </StackPanel>
                                 </DataTemplate>
@@ -235,7 +242,7 @@
                 <Border Grid.Row="6" HorizontalAlignment="Right" BorderBrush="#DEE4EC" BorderThickness="1" CornerRadius="5" Padding="5" Background="#ffffff" Margin="0 10 10 10">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock HorizontalAlignment="Left" Margin="0 10 200 10" Text="{Binding TestName2}"></TextBlock>
-                        <Button Style="{StaticResource pagingButton}">
+                        <Button Style="{StaticResource pagingButton}" >
                             <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
                         </Button>
                         <Rectangle Width="1" Fill="#DEE4EC" Margin="3 7"/>

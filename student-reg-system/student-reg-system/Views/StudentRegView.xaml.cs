@@ -1,4 +1,6 @@
-﻿using student_reg_system.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using student_reg_system.database;
+using student_reg_system.Models;
 using student_reg_system.ViewModels;
 using System.Collections.Generic;
 using System.Drawing;
@@ -16,22 +18,42 @@ namespace student_reg_system.Views
     public partial class StudentRegView : Window
     {
         public static List<Module> SelectedModules = new List<Module>();
-       
+
+        public Student Student { get; }
+
         public StudentRegView()
         {
             InitializeComponent();
             DataContext = new StudentRegVM();
-            // Create a list to store the selected items
-           
-            /*foreach (var selectedItem in MyListBox.SelectedItems)
+            //Create a list to store the selected items
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////
+            foreach (var selectedItem in MyListBox.SelectedItems)
             {
-                 // Get the text of the selected item
+                // Get the text of the selected item
                 SelectedModules.Add((Module)selectedItem); // Add the text to the SelectedModulesList
-            }
-           */
-            
+            }*/
+
+
 
         }
+        public StudentRegView(Student student)
+        {
+            InitializeComponent();
+            DataContext = new StudentRegVM(student);
+            // Create a list to store the selected items
+
+          /*  foreach (var selectedItem in MyListBox.SelectedItems)
+            {
+                // Get the text of the selected item
+                SelectedModules.Add((Module)selectedItem); // Add the text to the SelectedModulesList
+            }*/
+
+
+
+        }
+
+
+
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left) this.DragMove();
@@ -52,59 +74,52 @@ namespace student_reg_system.Views
             WindowState = WindowState.Minimized;
 
         }
-        private void MyListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /*  private void MyListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+          {
+              AddSelectedModulesToList();
+          }
+          private void AddSelectedModulesToList()
+          {
+              List<Module> SelectedModulesList = new List<Module>(); // Create a list to store the selected modules
+
+              foreach (Module selectedItem in MyListBox.SelectedItems)
+              {
+                  SelectedModules.Add(selectedItem); // Add the selected module to the SelectedModulesList
+              }
+              int leength = SelectedModules.Count;
+              MessageBox.Show($"No.of Selected Modules {leength}");
+              // Do something with the SelectedModulesList
+          }
+
+          private void Button_Click_2(object sender, RoutedEventArgs e)
+          {
+              myLabel1.Text = "";
+              foreach (Module selectedItem in MyListBox.SelectedItems)
+              {
+                  myLabel1.Text+=selectedItem.ModuleName; // Add the selected module to the SelectedModulesList
+              }
+          }*/
+
+
+
+     /*   private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            AddSelectedModulesToList();
+            StudentContext dbContext = new StudentContext();
+            var checkBox = sender as CheckBox;
+            var enrollment = checkBox.DataContext as Enrollment;
+            enrollment.IsSelected = true;
+            dbContext.SaveChanges();
         }
-        private void AddSelectedModulesToList()
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            List<Module> SelectedModulesList = new List<Module>(); // Create a list to store the selected modules
-
-            foreach (Module selectedItem in MyListBox.SelectedItems)
-            {
-                SelectedModules.Add(selectedItem); // Add the selected module to the SelectedModulesList
-            }
-            int leength = SelectedModules.Count;
-           // MessageBox.Show($"No.of Selected Modules {leength}");
-            // Do something with the SelectedModulesList
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            myLabel1.Text = "";
-            foreach (Module selectedItem in MyListBox.SelectedItems)
-            {
-                myLabel1.Text+=selectedItem.ModuleName; // Add the selected module to the SelectedModulesList
-            }
-        }
-        /*  private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
- {
-
-     var comboBox = sender as ComboBox;
-     var listBox = comboBox.Template.FindName("PART_ListBox", comboBox) as ListBox;
-     MessageBox.Show($"Listbox null{listBox.SelectedItems.Count}");
-     if (listBox == null)
-     {
-
-         return;
-     }
-
-     selectedModules.Clear();
-
-
-     foreach (var item in listBox.SelectedItems)
-     {
-         var module = item as Module;
-         if (module != null)
-         {
-             selectedModules.Add(module);
-
-         }
-     }
- }*/
-
-
-
+            StudentContext dbContext = new StudentContext();
+            var checkBox = sender as CheckBox;
+            var enrollment = checkBox.DataContext as Enrollment;
+            enrollment.IsSelected = false;
+            dbContext.SaveChanges();
+        }*/
 
     }
 }

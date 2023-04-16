@@ -10,9 +10,9 @@ using student_reg_system.database;
 
 namespace student_reg_system.Migrations
 {
-  /*  [DbContext(typeof(StudentContext))]
-    [Migration("20230408175019_checking1")]
-    partial class checking1
+    [DbContext(typeof(StudentContext))]
+    [Migration("20230412104217_m99")]
+    partial class m99
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,6 +50,25 @@ namespace student_reg_system.Migrations
                     b.ToTable("StudentUser");
                 });
 
+            modelBuilder.Entity("student_reg_system.Models.AdminAuthentication", b =>
+                {
+                    b.Property<int>("AdminId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("AdminId");
+
+                    b.ToTable("AdminAuthentications");
+                });
+
             modelBuilder.Entity("student_reg_system.Models.LoginAuthentication", b =>
                 {
                     b.Property<int>("LoginId")
@@ -77,6 +96,10 @@ namespace student_reg_system.Migrations
 
                     b.Property<double>("CreditValue")
                         .HasColumnType("REAL");
+
+                    b.Property<string>("Department")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<char>("Grade")
                         .HasColumnType("TEXT");
@@ -118,6 +141,9 @@ namespace student_reg_system.Migrations
                     b.Property<string>("FirstNameStudent")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsSelected")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("LastNameStudent")
                         .IsRequired()
@@ -199,6 +225,7 @@ namespace student_reg_system.Migrations
                 {
                     b.Navigation("Modules");
                 });
-pragma warning restore 612, 618
-        }*/
+#pragma warning restore 612, 618
+        }
     }
+}
