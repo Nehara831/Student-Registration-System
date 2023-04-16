@@ -65,6 +65,8 @@ namespace student_reg_system.ViewModels
                 Modules = SelectedModules.ToList(),
             };
 
+
+
             using (var db = new StudentContext())
             {
                 db.Users.Add(user);

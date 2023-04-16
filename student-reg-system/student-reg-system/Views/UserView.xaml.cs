@@ -24,14 +24,14 @@ namespace student_reg_system.Views
     /// Interaction logic for UserView.xaml
     /// </summary>
     public partial class UserView : Window
-    { 
+    {
         public UserView()
         {
             InitializeComponent();
-           
+
             DataContext = new StudentRegVM();
-          //  membersDataGrid.ItemsSource = StudentRegVM.studentList;
-   
+            //  membersDataGrid.ItemsSource = StudentRegVM.studentList;
+
 
         }
 
@@ -67,7 +67,7 @@ namespace student_reg_system.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -92,34 +92,18 @@ namespace student_reg_system.Views
 
         }
 
-        private void DataGridCheckBoxColumn_Checked(object sender, RoutedEventArgs e)
-        {
-            /*if (((FrameworkElement)sender).DataContext is Student selectedStudent && selectedStudent.IsSelected)
-            {
-                MessageBox.Show("Selected student: " + selectedStudent.FirstNameStudent);
-            }*/
-        }
-        private void Checked(object sender, RoutedEventArgs e)
-        {
-           // Student selectedStudent = membersDataGrid.SelectedItem as Student;
 
-            // Show a message box with the selected student's name
-           // MessageBox.Show("You have selected " + selectedStudent.FirstNameStudent + " " + selectedStudent.LastNameStudent);
+        private void ShowCalculator(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Navigate(new GpaCalculator());
+
         }
 
-        private void Button_Click_5(object sender, RoutedEventArgs e)
+        private void ShowStudentData(object sender, RoutedEventArgs e)
         {
-            // MessageBox.Show("Button working .cs");
-            Checked(sender,e);
+            MainContentFrame.Navigate(new StudentDataPage());
         }
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Get the selected student object
-            Student selectedStudent = membersDataGrid.SelectedItem as Student;
 
-            StudentRegView studentRegView = new StudentRegView(selectedStudent);
-            studentRegView.Show();
-        }
     }
 
    
