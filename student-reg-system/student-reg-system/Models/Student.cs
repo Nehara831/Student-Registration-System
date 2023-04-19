@@ -21,7 +21,8 @@ namespace student_reg_system.Models
         public string LastNameStudent{ get; set; }
         public DateOnly DateofBirthStudent { get; set; }
         public string AdressStudent { get; set; }
-        
+      //  public bool IsSelected { get; set; }
+
         public string DepartmentStudent { get; set; }
         public ICollection<Module> Modules { get; set; }
 

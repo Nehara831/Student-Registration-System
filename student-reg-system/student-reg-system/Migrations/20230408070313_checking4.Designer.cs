@@ -10,9 +10,9 @@ using student_reg_system.database;
 
 namespace student_reg_system.Migrations
 {
-  /*  [DbContext(typeof(StudentContext))]
-    [Migration("20230408175019_checking1")]
-    partial class checking1
+    [DbContext(typeof(StudentContext))]
+    [Migration("20230408070313_checking4")]
+    partial class checking4
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -199,6 +199,7 @@ namespace student_reg_system.Migrations
                 {
                     b.Navigation("Modules");
                 });
-pragma warning restore 612, 618
-        }*/
+#pragma warning restore 612, 618
+        }
     }
+}

@@ -142,6 +142,9 @@ namespace student_reg_system.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("IsSelected")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("LastNameStudent")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -164,6 +167,7 @@ namespace student_reg_system.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FirstNameUser")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastNameUser")

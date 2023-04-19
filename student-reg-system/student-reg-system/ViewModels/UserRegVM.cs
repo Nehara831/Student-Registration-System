@@ -14,12 +14,13 @@ using student_reg_system.database;
 using student_reg_system.Views;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 
 namespace student_reg_system.ViewModels
 {
    partial class UserRegVM:ObservableObject
     {
-
+        
         [ObservableProperty]
         public static int userId;
         [ObservableProperty]
@@ -33,6 +34,7 @@ namespace student_reg_system.ViewModels
         [ObservableProperty]
         public int userPhone;
 
+       
 
         [ObservableProperty]
         public ObservableCollection<User> usersList;
@@ -96,6 +98,7 @@ namespace student_reg_system.ViewModels
 
 
                 UserModuleList = new ObservableCollection<Module>(modules);
+                
             }
             }
             
@@ -104,10 +107,10 @@ namespace student_reg_system.ViewModels
         public UserRegVM()
         {
             LoadUser();
-            
-           
+          
 
-            
+
+
         }
         public event PropertyChangedEventHandler PropertyChanged;
         protected void RaisePropertyChanged([CallerMemberName] string propertyName = null)
@@ -123,8 +126,7 @@ namespace student_reg_system.ViewModels
             return true;
         }
 
-
-
+       
 
 
     }

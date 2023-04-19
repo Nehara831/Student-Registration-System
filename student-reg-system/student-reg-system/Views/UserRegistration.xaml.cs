@@ -58,5 +58,6 @@ namespace student_reg_system.Views
                 ModuleList = new List<Module>(list);
             }
         }
+       
     }
 }

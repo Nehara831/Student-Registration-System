@@ -1,9 +1,14 @@
-﻿using student_reg_system.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using student_reg_system.database;
+using student_reg_system.Models;
 using student_reg_system.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using Brushes = System.Windows.Media.Brushes;
@@ -13,24 +18,55 @@ namespace student_reg_system.Views
     /// <summary>
     /// Interaction logic for StudentRegView.xaml
     /// </summary>
+    /*public class CheckBoxTickConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if ((bool)value)
+            {
+                return new SolidColorBrush(Colors.Green);
+            }
+            else
+            {
+                return new SolidColorBrush(Colors.Gray);
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+*/
+
     public partial class StudentRegView : Window
     {
-        public static List<Module> SelectedModules = new List<Module>();
        
+        public static List<Module> SelectedModules = new List<Module>();
+
+        public Student Student { get; }
+
         public StudentRegView()
         {
             InitializeComponent();
             DataContext = new StudentRegVM();
-            // Create a list to store the selected items
-            
-            foreach (var selectedItem in MyListBox.SelectedItems)
-            {
-                 // Get the text of the selected item
-                SelectedModules.Add((Module)selectedItem); // Add the text to the SelectedModulesList
-            }
+
+           
+
+        }
+        public StudentRegView(Student student)
+        {
+            InitializeComponent();
+            DataContext = new StudentRegVM(student);
+
+          
+
 
 
         }
+
+
+
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left) this.DragMove();
@@ -51,35 +87,6 @@ namespace student_reg_system.Views
             WindowState = WindowState.Minimized;
 
         }
-
-        /*  private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-          {
-
-              var comboBox = sender as ComboBox;
-              var listBox = comboBox.Template.FindName("PART_ListBox", comboBox) as ListBox;
-              MessageBox.Show($"Listbox null{listBox.SelectedItems.Count}");
-              if (listBox == null)
-              {
-
-                  return;
-              }
-
-              selectedModules.Clear();
-
-
-              foreach (var item in listBox.SelectedItems)
-              {
-                  var module = item as Module;
-                  if (module != null)
-                  {
-                      selectedModules.Add(module);
-
-                  }
-              }
-          }*/
-       
-
-
-
-}
+        
+    }
 }

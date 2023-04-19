@@ -90,6 +90,35 @@ namespace student_reg_system.Views
             WindowState = WindowState.Minimized;
 
         }
+
+        private void DataGridCheckBoxColumn_Checked(object sender, RoutedEventArgs e)
+        {
+            /*if (((FrameworkElement)sender).DataContext is Student selectedStudent && selectedStudent.IsSelected)
+            {
+                MessageBox.Show("Selected student: " + selectedStudent.FirstNameStudent);
+            }*/
+        }
+        private void Checked(object sender, RoutedEventArgs e)
+        {
+           // Student selectedStudent = membersDataGrid.SelectedItem as Student;
+
+            // Show a message box with the selected student's name
+           // MessageBox.Show("You have selected " + selectedStudent.FirstNameStudent + " " + selectedStudent.LastNameStudent);
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            // MessageBox.Show("Button working .cs");
+            Checked(sender,e);
+        }
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Get the selected student object
+            Student selectedStudent = membersDataGrid.SelectedItem as Student;
+
+            StudentRegView studentRegView = new StudentRegView(selectedStudent);
+            studentRegView.Show();
+        }
     }
 
    
