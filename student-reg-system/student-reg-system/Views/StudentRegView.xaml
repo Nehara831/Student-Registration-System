@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodels="clr-namespace:student_reg_system.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:StudentRegVM}"
         mc:Ignorable="d"
         Title="StudentRegView" Height="400" Width="800" AllowsTransparency="True"
-        Background="Transparent"  WindowStartupLocation="CenterScreen"
+        Background="Transparent" WindowStartupLocation="CenterScreen"
         WindowStyle="None">
+  
 
 
 
@@ -192,28 +193,15 @@
                     </Canvas>
                     <TextBox Grid.Column="1" Grid.Row="0"  Margin="0 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding Department}" Name="DepartmentTextBox"/>
                     <TextBox Grid.Column="1" Grid.Row="1"   Margin="0 10" VerticalAlignment="Center"  Foreground="#868686" Text="{Binding Adres}" TextChanged="TextBox_TextChanged" Name="AdressTextBox"/>
-<!--
-                    <ListBox x:Name="MyListBox" SelectionMode="Multiple" Grid.Column="1" Grid.Row="2" Margin="0,0,0,10" VerticalAlignment="Bottom" ItemsSource="{Binding ModuleListStudent}" SelectionChanged="MyListBox_SelectionChanged" d:ItemsSource="{d:SampleData ItemCount=5}" >
- 
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding ModuleName}" />
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                    -->
-                    <ComboBox ItemsSource="{Binding ModuleListStudent}"   SelectedValue="{Binding SelectedModulesStudent, Mode=TwoWay}" Grid.Column="1" Grid.Row="2" Margin="0,0,0,10" VerticalAlignment="Bottom" >
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <CheckBox IsChecked="{Binding IsSelected}" Command="{Binding UpdateModuleSelectionCommand}" 
-          CommandParameter="{Binding}" 
-                          VerticalAlignment="Center"/>
-                                    <TextBlock Text="{Binding ModuleName}" 
-                           Margin="5,0,0,0"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
+
+                    <ComboBox ItemsSource="{Binding ModuleListStudent}"   SelectedValue="{Binding SelectedModulesStudent, Mode=TwoWay}" Grid.Column="1" Grid.Row="2" Margin="0,0,0,10" >
+                      
+                            <CheckBox IsChecked="{Binding IsSelected,Mode=UpdateSourceTrigger}" 
+          VerticalAlignment="Center">
+                               
+                            </CheckBox>
+                  
+
                     </ComboBox>
 
 
