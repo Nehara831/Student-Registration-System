@@ -29,7 +29,7 @@ namespace student_reg_system.Views
         {
             InitializeComponent();
 
-            DataContext = new StudentRegVM();
+
             //  membersDataGrid.ItemsSource = StudentRegVM.studentList;
 
 

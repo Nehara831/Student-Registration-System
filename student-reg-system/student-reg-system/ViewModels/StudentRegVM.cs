@@ -24,6 +24,8 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections;
 using System.Windows.Media;
+using Microsoft.Data.Sqlite;
+
 
 namespace student_reg_system.ViewModels
 {
@@ -82,7 +84,7 @@ namespace student_reg_system.ViewModels
 
       
 
-    public StudentRegVM()
+        public StudentRegVM()
         {
             LoadStudent();
 
@@ -90,18 +92,17 @@ namespace student_reg_system.ViewModels
 
 
         }
-        public StudentRegVM(Student student)
+        public StudentRegVM(Student student, List<Module> moduleList)
         {
-
+            
+            ModuleListStudent = new ObservableCollection<Module>(moduleList);
             Id = student.StudentIDStudent;
             FName = student.FirstNameStudent;
             LName = student.LastNameStudent;
             Adres = student.AdressStudent;
             DoB = student.DateofBirthStudent;
             Department = student.DepartmentStudent;
-            LoadStudent();
-
-
+            UpdateSelectedModulesForStudent(student);
 
         }
 
@@ -178,6 +179,8 @@ namespace student_reg_system.ViewModels
 
             }
         }
+
+
         public void LoadStudent()
         {
             using (var db = new StudentContext())
@@ -252,6 +255,50 @@ namespace student_reg_system.ViewModels
             window.DepartmentTextBox.Text = "";
 
             window.AdressTextBox.Text = "";
+        }
+
+
+        public void UpdateSelectedModulesForStudent(Student student)
+        {
+
+            
+            foreach (var moduleL in ModuleListStudent)
+            {
+                bool exists = false;
+                foreach (var module in student.Modules)
+                {
+                    if (moduleL.ModuleId == module.ModuleId)
+                    {
+                        exists = true;
+                    }
+                }
+
+                if (exists)
+                {
+                    moduleL.IsSelected = true;
+                }
+            }
+        }
+
+
+        [RelayCommand]
+        public void EditStudent(Student student)
+        {
+            List<Module> DepModuleList = new List<Module>();
+            List<Module> StudentModuleList = new List<Module>();
+
+            using (var db = new StudentContext())
+            {
+                var user = db.Users.Include(u => u.Students).SingleOrDefault(u => u.IDUser == LoginViewVM.CurrentUserId);
+
+                student.Modules = db.Students.Include(s => s.Modules).FirstOrDefault(s => s.StudentIDStudent == student.StudentIDStudent).Modules;
+
+                DepModuleList = db.Modules.Where(m => m.Department == user.DepartmentUser).ToList();
+
+            }
+
+            var editView = new StudentRegView(student, DepModuleList);
+            editView.Show();
         }
 
 

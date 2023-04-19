@@ -27,6 +27,13 @@ namespace student_reg_system.database
         public DbSet<AdminAuthentication> AdminAuthentications { get; set; }
 
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Student>()
+                .HasMany(s => s.Modules)
+                .WithMany(m => m.Students);
+        }
+
         //string projectRootPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", ".."));
         //string dbPath = Path.Combine("@",Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..")), "sqlite", "StudentData.db");
 

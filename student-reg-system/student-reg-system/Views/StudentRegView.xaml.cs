@@ -36,10 +36,10 @@ namespace student_reg_system.Views
 
 
         }
-        public StudentRegView(Student student)
+        public StudentRegView(Student student, List<Module> moduleList)
         {
             InitializeComponent();
-            DataContext = new StudentRegVM(student);
+            DataContext = new StudentRegVM(student, moduleList);
             // Create a list to store the selected items
 
           /*  foreach (var selectedItem in MyListBox.SelectedItems)
@@ -74,6 +74,11 @@ namespace student_reg_system.Views
             WindowState = WindowState.Minimized;
 
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /*  private void MyListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
           {
@@ -103,23 +108,23 @@ namespace student_reg_system.Views
 
 
 
-     /*   private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            StudentContext dbContext = new StudentContext();
-            var checkBox = sender as CheckBox;
-            var enrollment = checkBox.DataContext as Enrollment;
-            enrollment.IsSelected = true;
-            dbContext.SaveChanges();
-        }
+        /*   private void CheckBox_Checked(object sender, RoutedEventArgs e)
+           {
+               StudentContext dbContext = new StudentContext();
+               var checkBox = sender as CheckBox;
+               var enrollment = checkBox.DataContext as Enrollment;
+               enrollment.IsSelected = true;
+               dbContext.SaveChanges();
+           }
 
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            StudentContext dbContext = new StudentContext();
-            var checkBox = sender as CheckBox;
-            var enrollment = checkBox.DataContext as Enrollment;
-            enrollment.IsSelected = false;
-            dbContext.SaveChanges();
-        }*/
+           private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+           {
+               StudentContext dbContext = new StudentContext();
+               var checkBox = sender as CheckBox;
+               var enrollment = checkBox.DataContext as Enrollment;
+               enrollment.IsSelected = false;
+               dbContext.SaveChanges();
+           }*/
 
     }
 }
