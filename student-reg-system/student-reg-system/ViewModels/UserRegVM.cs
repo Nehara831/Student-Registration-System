@@ -39,11 +39,20 @@ namespace student_reg_system.ViewModels
         [ObservableProperty]
         public ObservableCollection<User> usersList;
         [ObservableProperty]
-        public ObservableCollection<Module> selectedModulesList;
+        public ObservableCollection<Module> selectedModulesList=new ObservableCollection<Module>();
       
 
         [ObservableProperty]
         public ObservableCollection<Module> userModuleList;
+        public UserRegVM()
+        {
+           // UserModuleList = new ObservableCollection<Module>();
+            LoadUser();
+
+
+
+
+        }
         [RelayCommand]
 
         public void AddUser()
@@ -73,13 +82,9 @@ namespace student_reg_system.ViewModels
 
         public void LoadUser()
         {
-            int lectureId = LoginViewVM.CurrentUserId;
+           
 
-            using (StudentContext context = new StudentContext())
-            {
-              //  List<Student> students = context.Students.Where(student => student.user== lectureId).ToList();
-                
-            }
+          
             using (var db = new StudentContext())
             {
                 var listusers = db.Users
@@ -89,10 +94,17 @@ namespace student_reg_system.ViewModels
                UsersList = new ObservableCollection<User>(listusers);
 
                 var modules = db.Modules
-                .Where(m => m.Department == UserDepartment)
+               
                 .ToList();
 
-
+                /* if (modules == null)
+                 {
+                     MessageBox.Show("no mudules");
+                 }*/
+                if (modules == null)
+                {
+                    UserModuleList = new ObservableCollection<Module>();
+                }
                 UserModuleList = new ObservableCollection<Module>(modules);
                 
             }
@@ -100,28 +112,8 @@ namespace student_reg_system.ViewModels
             
         
 
-        public UserRegVM()
-        {
-            LoadUser();
-          
-
-
-
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void RaisePropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(storage, value)) return false;
-
-            storage = value;
-            RaisePropertyChanged(propertyName);
-            return true;
-        }
-
+       
+     
        
 
 

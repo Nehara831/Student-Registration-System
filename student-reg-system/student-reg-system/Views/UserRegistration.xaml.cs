@@ -22,7 +22,7 @@ namespace student_reg_system.Views
     /// Interaction logic for UserRegistration.xaml
     /// </summary>
      public partial class UserRegistration : Window
-    { public List<Module> ModuleList { get; set; }
+    { 
         public UserRegistration()
         {
             InitializeComponent();
@@ -47,17 +47,7 @@ namespace student_reg_system.Views
                 textBox.Foreground = Brushes.Black;
             }
         }
-        public void LoadModule()
-        {
-            using (var db = new StudentContext())
-            {
-                var list = db.Modules
-
-
-                .ToList();
-                ModuleList = new List<Module>(list);
-            }
-        }
+     
        
     }
 }

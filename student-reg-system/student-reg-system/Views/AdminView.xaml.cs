@@ -1,4 +1,5 @@
-﻿using student_reg_system.Models;
+﻿using student_reg_system.database;
+using student_reg_system.Models;
 using student_reg_system.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Xceed.Wpf.Toolkit;
+
 
 namespace student_reg_system.Views
 {
@@ -62,8 +63,16 @@ namespace student_reg_system.Views
         
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            UserRegistration userRegistration = new UserRegistration();
-            userRegistration.Show();
+           /* UserRegistration userRegistration = new UserRegistration();
+            userRegistration.Show();*/
+            using (var db = new StudentContext())
+            {
+                var mod = db.Modules.ToList();
+                foreach (var module in mod)
+                {
+                    MessageBox.Show($"{module.ModuleName}");
+                }
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
