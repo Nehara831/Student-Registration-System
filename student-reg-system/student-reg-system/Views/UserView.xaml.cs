@@ -115,9 +115,10 @@ namespace student_reg_system.Views
         {
             // Get the selected student object
             Student selectedStudent = membersDataGrid.SelectedItem as Student;
+            MessageBox.Show($"{selectedStudent.LastNameStudent}");
 
-            StudentRegView studentRegView = new StudentRegView(selectedStudent);
-            studentRegView.Show();
+            /*StudentRegView studentRegView = new StudentRegView(selectedStudent);
+            studentRegView.Show();*/
         }
     }
 

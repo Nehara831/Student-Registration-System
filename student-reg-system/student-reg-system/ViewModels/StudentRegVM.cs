@@ -74,7 +74,7 @@ namespace student_reg_system.ViewModels
         public ObservableCollection<Module> moduleListStudent;
 
 
-        //public static ObservableCollection<Module> SelectedModulesStudent;
+        public static ObservableCollection<Module> SelectedModulesStudent;
 
         //[ObservableProperty]
         //public ObservableCollection<Module> existingModules;
@@ -101,7 +101,7 @@ namespace student_reg_system.ViewModels
 
             UserIdObservable = LoginViewVM.CurrentUserId;
             //UpdateModuleSelectionCommand = new RelayCommand<Module>(UpdateModuleSelection);
-            //SelectedModulesStudent = new ObservableCollection<Module>();
+            SelectedModulesStudent = new ObservableCollection<Module>();
 
 
         }
@@ -116,7 +116,7 @@ namespace student_reg_system.ViewModels
             Department = student.DepartmentStudent;
 
             LoadStudent();
-            using (var db = new StudentContext())
+           /* using (var db = new StudentContext())
             {
 
                 foreach (var module in ModuleListStudent)
@@ -138,7 +138,7 @@ namespace student_reg_system.ViewModels
 
                 }
 
-            }
+            }*/
         }
 
 

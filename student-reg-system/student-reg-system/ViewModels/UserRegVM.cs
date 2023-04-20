@@ -38,13 +38,9 @@ namespace student_reg_system.ViewModels
 
         [ObservableProperty]
         public ObservableCollection<User> usersList;
-        private ObservableCollection<Module> _selectedModules;
-        public ObservableCollection<Module> SelectedModules
-        {
-            get { return _selectedModules; }
-            set { SetProperty(ref _selectedModules, value); }
-        }
-
+        [ObservableProperty]
+        public ObservableCollection<Module> selectedModulesList;
+      
 
         [ObservableProperty]
         public ObservableCollection<Module> userModuleList;
@@ -62,7 +58,7 @@ namespace student_reg_system.ViewModels
                 EmailUser = UserEmail,
                 PhoneUser=UserPhone,
                 DepartmentUser = UserDepartment,
-                Modules = SelectedModules.ToList(),
+                Modules = SelectedModulesList.ToList(),
             };
 
             using (var db = new StudentContext())
