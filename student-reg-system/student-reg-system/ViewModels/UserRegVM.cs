@@ -38,12 +38,9 @@ namespace student_reg_system.ViewModels
 
         [ObservableProperty]
         public ObservableCollection<User> usersList;
-        private ObservableCollection<Module> _selectedModules;
-        public ObservableCollection<Module> SelectedModules
-        {
-            get { return _selectedModules; }
-            set { SetProperty(ref _selectedModules, value); }
-        }
+        [ObservableProperty]
+        public ObservableCollection<Module> selectedModules=new ObservableCollection<Module>();
+       
 
 
         [ObservableProperty]
@@ -52,26 +49,46 @@ namespace student_reg_system.ViewModels
 
         public void AddUser()
         {
+            using (var db = new StudentContext())
+            {
+                foreach (var module in UserModuleList)
+                {
+                    bool isSelected = module.IsSelected;
+
+                    if (isSelected)
+                    {
+
+
+                        SelectedModules.Add(db.Modules.FirstOrDefault(u => u.ModuleName == module.ModuleName));
+                        MessageBox.Show($"{module.ModuleId}");
+
+                    }
+
+                }
+            
+            
+
             User user = new User()
             {
                 IDUser = UserId,
 
 
-                FirstNameUser= UserFirstName,
+                FirstNameUser = UserFirstName,
                 LastNameUser = UserLastName,
                 EmailUser = UserEmail,
-                PhoneUser=UserPhone,
+                PhoneUser = UserPhone,
                 DepartmentUser = UserDepartment,
                 Modules = SelectedModules.ToList(),
+                Students = new List<Student>(),
             };
 
 
 
-            using (var db = new StudentContext())
-            {
+          
                 db.Users.Add(user);
                 db.SaveChanges();
             }
+            
             LoadUser();
             
         }
@@ -79,7 +96,7 @@ namespace student_reg_system.ViewModels
 
         public void LoadUser()
         {
-            int lectureId = LoginViewVM.CurrentUserId;
+            
 
             using (StudentContext context = new StudentContext())
             {
@@ -95,7 +112,7 @@ namespace student_reg_system.ViewModels
                UsersList = new ObservableCollection<User>(listusers);
 
                 var modules = db.Modules
-                .Where(m => m.Department == UserDepartment)
+               
                 .ToList();
 
 
