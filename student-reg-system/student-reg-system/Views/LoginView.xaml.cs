@@ -1,4 +1,5 @@
-﻿using System;
+﻿using student_reg_system.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,7 @@ namespace student_reg_system.Views
         public LoginView()
         {
             InitializeComponent();
+            DataContext =new  LoginViewVM();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -42,7 +44,9 @@ namespace student_reg_system.Views
             Application.Current.Shutdown();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e) { }
-
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
     }
 }
