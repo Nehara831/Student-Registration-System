@@ -76,6 +76,14 @@ namespace student_reg_system.ViewModels
         public ObservableCollection<Module> moduleListStudent;
 
 
+        public static ObservableCollection<Module> SelectedModulesStudent;
+
+        //[ObservableProperty]
+        //public ObservableCollection<Module> existingModules;
+        //public RelayCommand<Module> UpdateModuleSelectionCommand;
+
+
+
 
 
         public List<Module> selectedModules = new List<Module>();
@@ -187,13 +195,15 @@ namespace student_reg_system.ViewModels
             {
 
                 var user = db.Users.Include(u => u.Students).SingleOrDefault(u => u.IDUser == LoginViewVM.CurrentUserId);
+                MessageBox.Show($"{user.FirstNameUser}");
+                MessageBox.Show($"{user.Students.ToList().Count()}");
 
                 // StudentList = new ObservableCollection<Student>(db.Students);
                 if (user != null && user.Students != null)
                 {
                     StudentList = new ObservableCollection<Student>(user.Students);
                 }
-
+                
                 UserIdObservable = user.IDUser;
                 UserFullNameObservable = user.FirstNameUser + " " + user.LastNameUser;
                 UserLNameObservable = user.LastNameUser;
