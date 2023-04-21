@@ -45,6 +45,14 @@ namespace student_reg_system.ViewModels
 
         [ObservableProperty]
         public ObservableCollection<Module> userModuleList;
+        public UserRegVM()
+        {
+            LoadUser();
+           
+
+
+
+        }
         [RelayCommand]
 
         public void AddUser()
@@ -123,14 +131,7 @@ namespace student_reg_system.ViewModels
             
         
 
-        public UserRegVM()
-        {
-            LoadUser();
-          
-
-
-
-        }
+       
         public event PropertyChangedEventHandler PropertyChanged;
         protected void RaisePropertyChanged([CallerMemberName] string propertyName = null)
         {
