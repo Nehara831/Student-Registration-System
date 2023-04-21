@@ -257,7 +257,7 @@ namespace student_reg_system.ViewModels
         [RelayCommand]
         public void ClearTextBoxes()
         {
-            var window = Application.Current.Windows.OfType<StudentRegView>().SingleOrDefault(x => x.IsActive);
+            var window = Application.Current.Windows.OfType<UserRegView>().SingleOrDefault(x => x.IsActive);
 
             window.IdTextBox.Text = "";
             window.FNameTextBox.Text = "";
@@ -307,7 +307,7 @@ namespace student_reg_system.ViewModels
 
             }
 
-            var editView = new StudentRegView(student, DepModuleList);
+            var editView = new UserRegView(student, DepModuleList);
             editView.Show();
         }
 

@@ -15,12 +15,13 @@ using student_reg_system.Views;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Microsoft.EntityFrameworkCore;
 
 namespace student_reg_system.ViewModels
 {
-   partial class UserRegVM:ObservableObject
+    partial class UserRegVM : ObservableObject
     {
-        
+
         [ObservableProperty]
         public static int userId;
         [ObservableProperty]
@@ -34,32 +35,48 @@ namespace student_reg_system.ViewModels
         [ObservableProperty]
         public int userPhone;
 
-       
-
-        [ObservableProperty]
-        public ObservableCollection<User> usersList;
-        [ObservableProperty]
-        public ObservableCollection<Module> selectedModules=new ObservableCollection<Module>();
-       
 
 
         [ObservableProperty]
-        public ObservableCollection<Module> userModuleList;
+        public ObservableCollection<User> usersList = new ObservableCollection<User>();
+        [ObservableProperty]
+        public ObservableCollection<Module> selectedModules = new ObservableCollection<Module>();
+
+
+
+        [ObservableProperty]
+        public ObservableCollection<Module> moduleList;
         public UserRegVM()
         {
+            
             LoadUser();
-           
+
 
 
 
         }
+        public UserRegVM(User user, List<Module> moduleList)
+        {
+
+            ModuleList = new ObservableCollection<Module>(moduleList);
+            UserId = user.IDUser;
+            UserFirstName = user.FirstNameUser;
+            UserLastName = user.LastNameUser;
+            UserEmail = user.EmailUser;
+            UserDepartment = user.DepartmentUser;
+            UserPhone = user.PhoneUser;
+            UpdateSelectedModulesForUser(user);
+
+        }
+
+
         [RelayCommand]
 
         public void AddUser()
         {
             using (var db = new StudentContext())
             {
-                foreach (var module in UserModuleList)
+                foreach (var module in ModuleList)
                 {
                     bool isSelected = module.IsSelected;
 
@@ -73,80 +90,107 @@ namespace student_reg_system.ViewModels
                     }
 
                 }
-            
-            
-
-            User user = new User()
-            {
-                IDUser = UserId,
-
-
-                FirstNameUser = UserFirstName,
-                LastNameUser = UserLastName,
-                EmailUser = UserEmail,
-                PhoneUser = UserPhone,
-                DepartmentUser = UserDepartment,
-                Modules = SelectedModules.ToList(),
-                Students = new List<Student>(),
-            };
 
 
 
-          
+                User user = new User()
+                {
+                    IDUser = UserId,
+
+
+                    FirstNameUser = UserFirstName,
+                    LastNameUser = UserLastName,
+                    EmailUser = UserEmail,
+                    PhoneUser = UserPhone,
+                    DepartmentUser = UserDepartment,
+                    Modules = SelectedModules.ToList(),
+                    Students = new List<Student>(),
+                };
+
+
+
+
                 db.Users.Add(user);
                 db.SaveChanges();
             }
-            
+
             LoadUser();
-            
+
         }
-        
+
 
         public void LoadUser()
         {
-            
 
-            using (StudentContext context = new StudentContext())
-            {
-              //  List<Student> students = context.Students.Where(student => student.user== lectureId).ToList();
-                
-            }
+
+           
             using (var db = new StudentContext())
             {
                 var listusers = db.Users
 
 
                 .ToList();
-               UsersList = new ObservableCollection<User>(listusers);
+                UsersList = new ObservableCollection<User>(listusers);
 
                 var modules = db.Modules
-               
+
                 .ToList();
 
+                /* if (modules == null)
+                 {
+                     MessageBox.Show("no mudules");
+                 }*/
+                if (modules == null)
+                {
+                    ModuleList = new ObservableCollection<Module>();
+                }
+                ModuleList = new ObservableCollection<Module>(modules);
+              
 
-                UserModuleList = new ObservableCollection<Module>(modules);
+            }
+        }
+
+        [RelayCommand]
+        public void EditUser(User user)
+        {
+            List<Module> DepModuleList = new List<Module>();
+           
+
+            using (var db = new StudentContext())
+            {
                 
-            }
-            }
-            
-        
+                
+                DepModuleList = db.Modules.ToList();
 
-       
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void RaisePropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(storage, value)) return false;
+            }
 
-            storage = value;
-            RaisePropertyChanged(propertyName);
-            return true;
+            var editView = new UserRegistration(user, DepModuleList);
+            editView.Show();
         }
 
-       
+        [RelayCommand]
+        public void UpdateSelectedModulesForUser(User user)
+        {
+
+
+            foreach (var moduleL in ModuleList)
+            {
+                bool exists = false;
+                foreach (var module in user.Modules)
+                {
+                    if (moduleL.ModuleId == module.ModuleId)
+                    {
+                        exists = true;
+                    }
+                }
+
+                if (exists)
+                {
+                    moduleL.IsSelected = true;
+                }
+            }
+        }
+
 
 
     }

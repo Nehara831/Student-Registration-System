@@ -15,13 +15,13 @@ namespace student_reg_system.Views
     /// <summary>
     /// Interaction logic for StudentRegView.xaml
     /// </summary>
-    public partial class StudentRegView : Window
+    public partial class UserRegView : Window
     {
         public static List<Module> SelectedModules = new List<Module>();
 
         public Student Student { get; }
 
-        public StudentRegView()
+        public UserRegView()
         {
             InitializeComponent();
             DataContext = new StudentRegVM();
@@ -36,7 +36,7 @@ namespace student_reg_system.Views
 
 
         }
-        public StudentRegView(Student student, List<Module> moduleList)
+        public UserRegView(Student student, List<Module> moduleList)
         {
             InitializeComponent();
             DataContext = new StudentRegVM(student, moduleList);

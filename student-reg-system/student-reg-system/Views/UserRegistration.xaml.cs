@@ -26,8 +26,24 @@ namespace student_reg_system.Views
         public UserRegistration()
         {
             InitializeComponent();
+            myComboBox.Items.Clear();
             DataContext = new UserRegVM();
             
+        }
+        public UserRegistration(User user, List<Module> moduleList)
+        {
+            InitializeComponent();
+            DataContext = new UserRegVM(user, moduleList);
+            // Create a list to store the selected items
+
+            /*  foreach (var selectedItem in MyListBox.SelectedItems)
+              {
+                  // Get the text of the selected item
+                  SelectedModules.Add((Module)selectedItem); // Add the text to the SelectedModulesList
+              }*/
+
+
+
         }
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {

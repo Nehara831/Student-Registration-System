@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewmodels="clr-namespace:student_reg_system.ViewModels"
-        mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance  Type=viewmodels:UserRegVM}"
        
+        d:DataContext="{d:DesignInstance  Type=viewmodels:UserRegVM}"
+        mc:Ignorable="d"
         Title="UserRegistration" Height="550" Width="800" AllowsTransparency="True"
         Background="Transparent"  WindowStartupLocation="CenterScreen"
         WindowStyle="None">
@@ -57,11 +57,11 @@
                 <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0" Margin="70 10"/>
 
 
-                <TextBox Grid.Column="1" Grid.Row="1"   Margin="10 10" VerticalAlignment="Center"  Foreground="#868686" Text="{Binding UserId}" TextChanged="TextBox_TextChanged" Width="700" Height="30" />
-                <TextBox Grid.Column="1" Grid.Row="4"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding  UserFirstName}" Width="700" Height="30"/>
-                <TextBox Grid.Column="1" Grid.Row="6"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686" Text="{Binding UserLastName}" Height="30"/>
+                <TextBox Grid.Column="1" Grid.Row="1"   Margin="10 10" VerticalAlignment="Center"  Foreground="#868686" Text="{Binding UserId}" TextChanged="TextBox_TextChanged" Width="700" Height="35" />
+                <TextBox Grid.Column="1" Grid.Row="4"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding  UserFirstName}" Width="700" Height="35"/>
+                <TextBox Grid.Column="1" Grid.Row="6"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686" Text="{Binding UserLastName}" Height="35"/>
 
-                <TextBox Grid.Column="1" Grid.Row="8"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686" Text="{Binding UserEmail}" Height="30"/>
+                <TextBox Grid.Column="1" Grid.Row="8"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686" Text="{Binding UserEmail}" Height="35"/>
 
 
                 <TextBlock Grid.Row="0" Text="User ID" Style="{StaticResource text}"  Foreground="White" Height="30" VerticalAlignment="Center" Margin="10 0"/>
@@ -116,18 +116,26 @@
 
 
                     </Canvas>
-                    <TextBox Grid.Column="1" Grid.Row="1" Foreground="#868686"  Text="{Binding UserDepartment}" Width="700" Height="30"/>
-                    <TextBox Grid.Column="1" Grid.Row="3"  Foreground="#868686" Text="{Binding UserPhone}" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="700" Height="30"/>
-                    <ComboBox ItemsSource="{Binding UserModuleList}"   SelectedValue="{Binding SelectedModulesList, Mode=TwoWay}" Grid.Column="1" Grid.Row="5" Margin="0,20,0,10" >
+                    <TextBox Grid.Column="1" Grid.Row="1" Foreground="#868686"  Text="{Binding UserDepartment}" Width="700" Height="35"/>
+                    <TextBox Grid.Column="1" Grid.Row="3"  Foreground="#868686" Text="{Binding UserPhone}" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="700" Height="35"/>
 
-                        <CheckBox IsChecked="{Binding IsSelected}" 
-          VerticalAlignment="Center">
+                    <ComboBox ItemsSource="{Binding ModuleList}"   SelectedValue="{Binding SelectedModules, Mode=TwoWay}" Grid.Column="1" Grid.Row="5" Margin="0,20,0,10" Name="myComboBox">
 
-                        </CheckBox>
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox IsChecked="{Binding IsSelected}" Command="{Binding UpdateModuleSelectionCommand}" 
+          CommandParameter="{Binding}" 
+                          VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding ModuleName}" 
+                           Margin="5,0,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                        
 
 
                     </ComboBox>
-
 
                     <TextBlock  Grid.Row="0" Text="Department" Style="{StaticResource text}" Foreground="White"/>
                     <TextBlock Grid.Row="2" Text="Phone" Style="{StaticResource text}" Foreground="White"/>

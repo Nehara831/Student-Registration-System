@@ -72,7 +72,7 @@ namespace student_reg_system.Views
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            StudentRegView newview = new StudentRegView();
+            UserRegView newview = new UserRegView();
             newview.Show();
         }
 
