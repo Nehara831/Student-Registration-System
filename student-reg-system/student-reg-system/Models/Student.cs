@@ -23,7 +23,7 @@ namespace student_reg_system.Models
         public string AdressStudent { get; set; }
       //  public bool IsSelected { get; set; }
 
-        public string DepartmentStudent { get; set; }
+        public string EmailAdress { get; set; }
         public ICollection<Module> Modules { get; set; }
 
         public ICollection<User> Users { get; set; }

@@ -38,15 +38,15 @@ namespace student_reg_system.ViewModels
       using (StudentContext context = new StudentContext())
       {
           
-          bool userfound = context.LoginAuthentications.Any(user => user.Username == UserName && user.Password == PassWord);
+          bool userfound = context.Users.Any(user => user.UserName == UserName && user.Password == PassWord);
           bool adminfound = context.AdminAuthentications.Any(admin => admin.Username == UserName && admin.Password == PassWord);
 
 
                 if (userfound)
           {
-              var user = context.LoginAuthentications.FirstOrDefault(u => u.Username == UserName && u.Password == PassWord);
+              var user = context.Users.FirstOrDefault(u => u.UserName == UserName && u.Password == PassWord);
 
-              CurrentUserId = user.LoginId;
+              CurrentUserId = user.IDUser;
                    
 
               GrantUserAcess();

@@ -50,7 +50,7 @@ namespace student_reg_system.ViewModels
         public int noOfStudents;
 
         [ObservableProperty]
-        public string? department;
+        public string? email;
         [ObservableProperty]
         public int userIdObservable;
         [ObservableProperty]
@@ -78,14 +78,7 @@ namespace student_reg_system.ViewModels
 
         public static ObservableCollection<Module> SelectedModulesStudent;
 
-        //[ObservableProperty]
-        //public ObservableCollection<Module> existingModules;
-        //public RelayCommand<Module> UpdateModuleSelectionCommand;
-
-
-
-
-
+       
         public List<Module> selectedModules = new List<Module>();
 
         public bool IsSelectedModule { get; set; }
@@ -109,7 +102,7 @@ namespace student_reg_system.ViewModels
             LName = student.LastNameStudent;
             Adres = student.AdressStudent;
             DoB = student.DateofBirthStudent;
-            Department = student.DepartmentStudent;
+            Email = student.EmailAdress;
             UpdateSelectedModulesForStudent(student);
 
         }
@@ -129,7 +122,13 @@ namespace student_reg_system.ViewModels
                 // Check if the module is already being tracked by the context
 
 
-                Student existingStudent = db.Students.Find(Id);
+                
+                var existingStudent = db.Students.FirstOrDefault(u => u.StudentIDStudent == Id);
+                if (existingStudent != null)
+                {
+                    db.Remove(existingStudent);
+                    db.SaveChanges();
+                }
                 var user = db.Users.FirstOrDefault(u => u.IDUser == LoginViewVM.CurrentUserId);
 
 
@@ -157,7 +156,7 @@ namespace student_reg_system.ViewModels
                     LastNameStudent = LName,
                     DateofBirthStudent = DoB,
                     AdressStudent = Adres,
-                    DepartmentStudent = Department,
+                    EmailAdress = Email,
                   
                     Modules = selectedModules,
                     Users = new List<User>() { user },
@@ -257,17 +256,17 @@ namespace student_reg_system.ViewModels
         [RelayCommand]
         public void ClearTextBoxes()
         {
-            var window = Application.Current.Windows.OfType<UserRegView>().SingleOrDefault(x => x.IsActive);
+            var window = Application.Current.Windows.OfType<StudentRegView>().SingleOrDefault(x => x.IsActive);
 
-            window.IdTextBox.Text = "";
-            window.FNameTextBox.Text = "";
-            window.LNameTextBox.Text = "";
-            window.DepartmentTextBox.Text = "";
-
-            window.AdressTextBox.Text = "";
+            window.t1.Text = "";
+            window.t2.Text = "";
+            window.t3.Text = "";
+            window.t4.Text = "";
+            window.t5.Text = "";
+            window.t6.Text = "";
         }
 
-
+        [RelayCommand]
         public void UpdateSelectedModulesForStudent(Student student)
         {
 
@@ -307,7 +306,7 @@ namespace student_reg_system.ViewModels
 
             }
 
-            var editView = new UserRegView(student, DepModuleList);
+            var editView = new StudentRegView(student, DepModuleList);
             editView.Show();
         }
 

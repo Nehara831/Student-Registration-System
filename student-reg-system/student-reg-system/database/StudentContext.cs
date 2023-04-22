@@ -22,7 +22,7 @@ namespace student_reg_system.database
         public DbSet<User> Users { get; set; }
    
 
-        public DbSet<LoginAuthentication> LoginAuthentications { get; set; }
+       // public DbSet<LoginAuthentication> LoginAuthentications { get; set; }
 
         public DbSet<AdminAuthentication> AdminAuthentications { get; set; }
 

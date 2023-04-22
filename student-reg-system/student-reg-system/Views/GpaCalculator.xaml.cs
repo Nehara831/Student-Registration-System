@@ -30,7 +30,7 @@ namespace student_reg_system.Views
 
         private void CalculateGPA(object sender, RoutedEventArgs e)
         {
-            UserRegView newview = new UserRegView();
+            StudentRegView newview = new StudentRegView();
             newview.Show();
         }
 

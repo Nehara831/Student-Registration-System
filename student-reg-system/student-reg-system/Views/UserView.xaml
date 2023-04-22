@@ -83,14 +83,9 @@
                             </Button>
 
                         </StackPanel>
-                        <TextBox Text="{Binding TestName }" Width="100"/>
+                        
 
-
-                        <TextBox Text="{Binding TestName }" Width="100"/>
-
-
-
-                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="1 0 5 20">
+                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="10 0 5 50">
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Logout" Style="{StaticResource menuButtonIcon}"/>
                                 <TextBlock Text="Logout"/>

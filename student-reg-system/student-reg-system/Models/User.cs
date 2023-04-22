@@ -23,6 +23,9 @@ namespace student_reg_system.Models
         public int PhoneUser { get; set; }
 
         public string? DepartmentUser { get; set; }
+
+        public string? UserName { get; set; }
+        public string? Password { get; set; }
         
         public ICollection<Module> Modules { get; set; }
         public ICollection<Student> Students { get; set; }
