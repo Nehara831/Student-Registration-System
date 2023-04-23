@@ -2,12 +2,14 @@
 using CommunityToolkit.Mvvm.Input;
 using student_reg_system.database;
 using student_reg_system.Models;
+using student_reg_system.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace student_reg_system.ViewModels
 {
@@ -42,24 +44,28 @@ namespace student_reg_system.ViewModels
 
         public void AddModule()
         {
-            Module module = new Module()
-            {
-                ModuleId = ModuleIdObservable,
-                ModuleName = ModuleNameObservable,
-
-                CreditValue = creditValueObservable,
-                GradePoint = gradePointObservable,
-                UserId = UserModuleIdObservable,
-                Department=UserModuleDepartmentObservable,
-               
-
-            };
+           
 
             using (var db = new StudentContext())
             {
+                var user = db.Users.FirstOrDefault(u => u.IDUser == UserModuleIdObservable);
+                UserModuleDepartmentObservable = user.DepartmentUser;
+
+                Module module = new Module()
+                {
+                    ModuleId = ModuleIdObservable,
+                    ModuleName = ModuleNameObservable,
+
+                    CreditValue = creditValueObservable,
+                    GradePoint = gradePointObservable,
+                    UserId = UserModuleIdObservable,
+                    Department = UserModuleDepartmentObservable,
+
+
+                };
                 db.Modules.Add(module);
 
-                var user = db.Users.FirstOrDefault(u => u.IDUser == UserModuleIdObservable);
+                
 
                 if (user != null)
                 {
@@ -73,9 +79,21 @@ namespace student_reg_system.ViewModels
                 db.SaveChanges();
 
             }
+            ClearTextBoxes();
+        }
+        [RelayCommand]
+        public void ClearTextBoxes()
+        {
+            var window = Application.Current.Windows.OfType<ModuleRegistrationxaml>().SingleOrDefault(x => x.IsActive);
+
+            window.t1.Text = "";
+            window.t2.Text = "";
+            window.t3.Text = "";
+            window.t4.Text = "";
+            window.t5.Text = "";
            
         }
 
-        
+
     }
 }

@@ -9,105 +9,23 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"  WindowStartupLocation="CenterScreen"
-        Title="ModuleRegistrationxaml" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        Title="ModuleRegistrationxaml" Height="800" Width="600">
+    <StackPanel Orientation="Vertical"  Margin="10 10" Background="White">
+        <StackPanel Orientation="Horizontal" >
+            <Image Source="/Images/minimize.png" Width="20" Margin="725 10 5 0" Style="{StaticResource iconApp}"  HorizontalAlignment="Left" />
+            <Image Source="/Images/close.png" Width="25" Margin="0 8 500 0" Style="{StaticResource iconApp}" HorizontalAlignment="Left"/>
 
-        <!--Left Section-->
-        <Border Padding="30" CornerRadius="25 0 0 25">
-            <Border.Background>
-                <LinearGradientBrush >
-                    <GradientStop Color="DarkBlue" Offset="0"/>
-                    <GradientStop Color="DarkSlateBlue" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+        </StackPanel>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-                <Canvas>
-                    <Polygon Points="0 20 230 140 8 278" Fill="DarkSlateBlue" HorizontalAlignment="Center" Canvas.Top="80" VerticalAlignment="Top"/>
-                    <Polygon Points="0 20 20 40 8 50" Fill="DarkSlateBlue" Margin="50 400" />
-                    <Polygon Points="0 20 80 80 8 150" Fill="DarkSlateBlue"  Margin="200 250"/>
-                    <Polygon Points="0 20 50 50 25 15" Fill="DarkSlateBlue" Margin="250 0" />
+        <TextBlock   Text="Module Registration" FontSize="30" Style="{StaticResource text}" FontWeight="Bold" Foreground="MediumPurple" Height="40" VerticalAlignment="Center" Margin="10 0" HorizontalAlignment="Center"/>
+        
 
+            
 
+            <Border Padding="30"  Background="White">
+              
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 0">
 
-                </Canvas>
-
-                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0" Margin="70 10"/>
-
-                <TextBox Grid.Column="1" Grid.Row="1"   Margin="10 10" VerticalAlignment="Center"  Foreground="#868686" Text="{Binding ModuleIdObservable}" TextChanged="TextBox_TextChanged"/>
-                <TextBox Grid.Column="1" Grid.Row="2"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding  ModuleNameObservable}"/>
-                <TextBox Grid.Column="1" Grid.Row="3"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686" Text="{Binding GradePointObservable}"/>
-
-                <TextBox Grid.Column="1" Grid.Row="4"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686" Text="{Binding CreditValueObservable}"/>
-
-
-                <TextBlock Grid.Row="1" Text="Module ID" Style="{StaticResource text}"  Foreground="White"/>
-                <TextBlock Grid.Row="2" Text="Module Name" Style="{StaticResource text}"  Foreground="White"/>
-                <TextBlock Grid.Row="3" Text="Grade Point" Style="{StaticResource text}"  Foreground="White"/>
-                <TextBlock Grid.Row="4" Text="Credit Value" Style="{StaticResource text}"  Foreground="White"/>
-
-
-
-                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" Margin="0 10">
-
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="6" Margin="0 10">
-
-                </StackPanel>
-
-                <Grid Grid.Column="1" Grid.Row="7" Margin="0 40 0 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel  Margin="0 80 10 0">
-
-                    </StackPanel>
-
-                </Grid>
-
-
-            </Grid>
-
-        </Border>
-
-        <!--Input Section-->
-        <Border Grid.Column="1" Padding="20" MouseDown="Border_MouseDown"  CornerRadius="0 25 25 0">
-            <Border.Background>
-                <LinearGradientBrush >
-                    <GradientStop Color="DarkBlue" Offset="0"/>
-                    <GradientStop Color="DarkSlateBlue" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-
-            <Grid Margin="10,0,0,0">
-                <Image Source="/Images/close.png" Width="25" Margin="0 4 5 0" Style="{StaticResource iconApp}"/>
-                <Image Source="/Images/minimize.png" Width="20" Margin="0 7 40 0" Style="{StaticResource iconApp}"/>
-
-                <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Width="315" Height="400" Margin="35,50,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -118,53 +36,38 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                   
+                  
+                    <TextBox Grid.Column="1" Grid.Row="1"   Margin="10 10" VerticalAlignment="Center"  Foreground="#868686" Text="{Binding ModuleIdObservable}" TextChanged="TextBox_TextChanged" Width="700" Height="35" Name="t1"/>
+                    <TextBox Grid.Column="1" Grid.Row="4"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding  ModuleNameObservable}" Width="700" Height="35" Name="t2"/>
+                    <TextBox Grid.Column="1" Grid.Row="6"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686" Text="{Binding GradePointObservable}" Height="35" Name="t3"/>
 
-                    <Canvas>
-                        <Polygon Points="30 150 230 200 180 0" Fill="DarkSlateBlue" HorizontalAlignment="Left" Canvas.Top="-200" VerticalAlignment="Top" Canvas.Left="10" Height="200" Width="247" RenderTransformOrigin="0.736,0.536"/>
-                        <Polygon Points="10 10 20 60 80 50" Fill="DarkSlateBlue" Canvas.Left="-12" Canvas.Top="-178" HorizontalAlignment="Center" VerticalAlignment="Top" />
-                        <Polygon Points="10 20 80 80 80 150" Fill="DarkSlateBlue" Canvas.Left="-52" Canvas.Top="45"/>
-                        <Polygon Points="0 20 50 50 25 15" Fill="DarkSlateBlue" Margin="250 0" />
+                    <TextBox Grid.Column="1" Grid.Row="8"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686" Text="{Binding CreditValueObservable}" Height="35" Name="t4"/>
+                    <TextBox Grid.Column="1" Grid.Row="10"  Foreground="#868686" Text="{Binding UserModuleIdObservable}" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="700" Height="35" Name="t5"/>
 
+                    <TextBlock Grid.Row="0" Text="Module ID" Style="{StaticResource text}"  Foreground="SlateGray" Height="30" VerticalAlignment="Top" Margin="10 0"/>
+                    <TextBlock Grid.Row="3" Text="Module Name" Style="{StaticResource text}"  Foreground="SlateGray" Height="30" VerticalAlignment="Center" Margin="10 0"/>
+                    <TextBlock Grid.Row="5" Text="Credit Point " Style="{StaticResource text}"  Foreground="SlateGray" Height="30" VerticalAlignment="Center" Margin="10 0"/>
+                    <TextBlock Grid.Row="7" Text="Credit Value" Style="{StaticResource text}"  Foreground="SlateGray" Height="30" VerticalAlignment="Center" Margin="10 0"/>
+                    <TextBlock Grid.Row="9" Text="User Id" Style="{StaticResource text}" Foreground="SlateGray" Margin="10 0" Height="30"/>
 
-
-                    </Canvas>
-                    <TextBox Grid.Column="1" Grid.Row="1"  Margin="0 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding UserModuleDepartmentObservable}" TextChanged="TextBox_TextChanged_1"  />
-                    <TextBox Grid.Column="1" Grid.Row="0"  Margin="0 20" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding UserModuleIdObservable}" RenderTransformOrigin="0.5,0.5" >
-                        <TextBox.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="0"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBox.RenderTransform>
-                    </TextBox>
-                    <TextBlock Grid.Row="0" Text="User ID" Style="{StaticResource text}"  Foreground="White"/>
-                    <TextBlock Grid.Row="1" Text="Department" Style="{StaticResource text}"  Foreground="White"/>
-
-
-                    <Grid Grid.Column="1" Grid.Row="7" Margin="0 40 0 0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="9*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-
-                        <Button Style="{StaticResource buttonMain}" Margin="0,80,5,0" Content="Cancel"  />
-
-                        <Button Style="{StaticResource buttonMainGreen}" Margin="0,80,0,0" Content="Save" Command="{Binding AddModuleCommand}" Grid.Column="1"/>
-                    </Grid>
 
                 </Grid>
-            </Grid>
-        </Border>
 
-    </Grid>
+            </Border>
+
+           
+              
+                 <StackPanel Height="100" Orientation="Horizontal">
+                        <Button Style="{StaticResource addButton}" Margin="100,0,55,0" Content="Cancel"  Command="{Binding  ClearTextBoxesCommand}" />
+
+                    <Button Style="{StaticResource addButton}" Margin="0,0,0,00" Content="Save" Command="{Binding AddModuleCommand}" Grid.Column="1"/>
+                    </StackPanel>
+               
+           
+    </StackPanel>
 </Window>
 
