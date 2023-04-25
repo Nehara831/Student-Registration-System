@@ -29,14 +29,7 @@
             <!--Left Section-->
 
             <Border Padding="30"  Background="White">
-                <!--
-            <Border.Background>
-                <LinearGradientBrush >
-                    <GradientStop Color="DarkBlue" Offset="0"/>
-                    <GradientStop Color="DarkSlateBlue" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-        -->
+          
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 0">
 
 
@@ -53,17 +46,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <!--
-                <Canvas>
-                    <Polygon Points="0 20 230 140 8 278" Fill="LavenderBlush" HorizontalAlignment="Center" Canvas.Top="80" VerticalAlignment="Top"/>
-                    <Polygon Points="0 20 20 40 8 50" Fill="DarkSlateBlue" Margin="50 400" />
-                    <Polygon Points="0 20 80 80 8 150" Fill="DarkSlateBlue"  Margin="200 250"/>
-                    <Polygon Points="0 20 50 50 25 15" Fill="DarkSlateBlue" Margin="250 0" />
-
-
-
-                </Canvas>
--->
+             
 
                     <TextBox Grid.Column="1" Grid.Row="1"   Margin="10 10" VerticalAlignment="Center"  Foreground="#868686" Text="{Binding Id}" TextChanged="TextBox_TextChanged" Width="700" Height="35" Name="t1"/>
                     <TextBox Grid.Column="1" Grid.Row="4"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686"  Text="{Binding FName}" Width="700" Height="35" Name="t2"/>
@@ -77,26 +60,13 @@
                     <TextBlock Grid.Row="5" Text="Last Name" Style="{StaticResource text}"  Foreground="SlateGray" Height="30" VerticalAlignment="Center" Margin="10 0"/>
                     <TextBlock Grid.Row="7" Text="Date of Birth" Style="{StaticResource text}"  Foreground="SlateGray" Height="30" VerticalAlignment="Center" Margin="10 0"/>
 
-
-
-
-
                 </Grid>
 
             </Border>
 
             <!--Input Section-->
             <Border Grid.Column="1" Padding="20" MouseDown="Border_MouseDown" Background="White">
-                <!--
-            <Border.Background>
-                
-                <LinearGradientBrush >
-                    <GradientStop Color="DarkBlue" Offset="0"/>
-                    <GradientStop Color="DarkSlateBlue" Offset="1"/>
-                </LinearGradientBrush>
-               
-            </Border.Background>
- -->
+           
                 <Grid Margin="10,0,0,0">
 
 
@@ -116,17 +86,7 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <!--
-                    <Canvas>
-                        <Polygon Points="30 150 230 200 180 0" Fill="DarkSlateBlue" HorizontalAlignment="Left" Canvas.Top="95" VerticalAlignment="Top" Canvas.Left="10"/>
-                        <Polygon Points="10 10 20 60 80 50" Fill="DarkSlateBlue" Canvas.Left="-12" Canvas.Top="265" />
-                        <Polygon Points="10 20 80 80 80 150" Fill="DarkSlateBlue" Canvas.Left="-52" Canvas.Top="45"/>
-                        <Polygon Points="0 20 50 50 25 15" Fill="DarkSlateBlue" Margin="250 0" />
-
-
-
-                    </Canvas>
-                    -->
+                       
                         <TextBox Grid.Column="1" Grid.Row="1" Foreground="#868686"  Text="{Binding Adres}" Width="700" Height="35" Name="t5"/>
                         <TextBox Grid.Column="1" Grid.Row="3"  Foreground="#868686" Text="{Binding Email}" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="700" Height="35" Name="t6"/>
 

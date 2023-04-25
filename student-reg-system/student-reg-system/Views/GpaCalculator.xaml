@@ -15,11 +15,21 @@
     </Page.Resources>
 
     <StackPanel Orientation="Vertical" Background="White" >
-       
-      
-        <TextBlock TextWrapping="Wrap" Text="TextBlock" Margin="40,10,40,0" Width="300" HorizontalAlignment="Right" Background="#FFEDE9E9" Height="28"/>
-        <Button Style="{StaticResource addButton}" Content="Calculate GPA" Margin="40,10,0,0" Width="117" HorizontalAlignment="Left" Height="30"/>
-        <DataGrid  RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding StudentList}" Width="800" HorizontalAlignment="Left">
+
+        <Grid Width="300" HorizontalAlignment="Left" Margin="40 10">
+            <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
+                           Panel.ZIndex="1" Text="Search here ..."
+                           Visibility="{Binding ElementName=textBoxSearch, Converter={StaticResource BoolToVis}}" />
+
+            <TextBox Name="textBoxSearch" Style="{StaticResource searchTextbox}" Text="{Binding StudentId}"/>
+            <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc">
+                <Icon:PackIconMaterial Kind="Magnify"/>
+            </Button>
+        </Grid>
+
+        <TextBlock TextWrapping="Wrap" Text="{Binding StudentName}" Height="30" Margin="40,0,0,0" Width="200" HorizontalAlignment="Left" Background="#FFEFEBEB" />
+        <Button Style="{StaticResource addButton}" Content="Calculate GPA" Margin="40,10,0,0" Width="117" HorizontalAlignment="Left" Height="30" Command="{Binding SearchCommand}"/>
+        <DataGrid  RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding ModuleList}" Width="700" HorizontalAlignment="Left">
             <DataGrid.Columns>
 
                 <DataGridTemplateColumn Header="Module Id" IsReadOnly="True" Width="*">
@@ -30,37 +40,33 @@
 
                                 </Border>
 
-                                <TextBlock Text="{Binding  StudentIDStudent}" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding  ModuleId}" VerticalAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 
-                <DataGridTextColumn Header=" Module Name" Binding="{Binding AdressStudent }" IsReadOnly="True" Width="*"/>
+                <DataGridTextColumn Header=" Module Name" Binding="{Binding ModuleName }" IsReadOnly="True" Width="*"/>
 
-                <DataGridTextColumn Header="Credit Value" Binding="{Binding DateofBirthStudent}" IsReadOnly="True" Width="*"/>
-                <DataGridTemplateColumn Header="Grade" IsReadOnly="True" Width="auto">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Grade}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
+                <DataGridTextColumn Header="Credit Value" Binding="{Binding CreditValue}" IsReadOnly="True" Width="*"/>
+
+                <DataGridTemplateColumn Header="Grade">
+                   
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <controls:ComboBox x:Name="gradeComboBox" SelectedItem="{Binding Grade, UpdateSourceTrigger=PropertyChanged}">
-                                <controls:ComboBoxItem Content="A" />
-                                <controls:ComboBoxItem Content="B" />
-                                <controls:ComboBoxItem Content="C" />
-                                <controls:ComboBoxItem Content="E" />
-                            </controls:ComboBox>
+                            <ComboBox SelectedItem="{Binding Grade}" ItemsSource="{Binding ModuleList}">
+                               
+                            </ComboBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                
+
+
             </DataGrid.Columns>
 
 
         </DataGrid>
+
     </StackPanel>
-    
+
 </Page>
