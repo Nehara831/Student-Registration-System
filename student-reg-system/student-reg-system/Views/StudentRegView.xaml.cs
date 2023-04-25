@@ -22,15 +22,7 @@ namespace student_reg_system.Views
         {
             InitializeComponent();
             DataContext = new StudentRegVM();
-            //Create a list to store the selected items
-/*///////////////////////////////////////////////////////////////////////////////////////////////////////////
-            foreach (var selectedItem in MyListBox.SelectedItems)
-            {
-                // Get the text of the selected item
-                SelectedModules.Add((Module)selectedItem); // Add the text to the SelectedModulesList
-            }*/
-
-
+           
 
         }
         public StudentRegView(Student student, List<Module> moduleList)

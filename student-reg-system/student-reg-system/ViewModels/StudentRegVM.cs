@@ -114,15 +114,8 @@ namespace student_reg_system.ViewModels
         public void AddStudent()
 
         {
-
             using (var db = new StudentContext())
             {
-                // for Editing student details
-
-                // Check if the module is already being tracked by the context
-
-
-                
                 var existingStudent = db.Students.FirstOrDefault(u => u.StudentIDStudent == Id);
                 if (existingStudent != null)
                 {
@@ -138,17 +131,12 @@ namespace student_reg_system.ViewModels
 
                     if (isSelected)
                     {
-                  
-
                         selectedModules.Add(db.Modules.FirstOrDefault(u => u.ModuleName == module.ModuleName));
 
                     }
 
                 }
 
-                //MessageBox.Show($"Selected module List: {selectedModules.Count()}");
-               // MessageBox.Show($"Temp module List: {tempList.Count()}");
-                // create new student object
                 Student student = new Student()
                 {
                     StudentIDStudent = Id,
@@ -164,9 +152,6 @@ namespace student_reg_system.ViewModels
                 };
 
 
-
-
-                // add student to Students table
                 db.Students.Add(student);
                 if (user != null)
                 {

@@ -27,8 +27,7 @@ namespace student_reg_system.ViewModels
         [ObservableProperty]
         public double gradePointObservable;
        
-        [ObservableProperty]
-        public int userModuleIdObservable;
+        
         [ObservableProperty]
         public string userModuleDepartmentObservable;
         public ModuleRegVM()
@@ -48,8 +47,7 @@ namespace student_reg_system.ViewModels
 
             using (var db = new StudentContext())
             {
-                var user = db.Users.FirstOrDefault(u => u.IDUser == UserModuleIdObservable);
-                UserModuleDepartmentObservable = user.DepartmentUser;
+               
 
                 Module module = new Module()
                 {
@@ -58,8 +56,8 @@ namespace student_reg_system.ViewModels
 
                     CreditValue = creditValueObservable,
                     GradePoint = gradePointObservable,
-                    UserId = UserModuleIdObservable,
-                    Department = UserModuleDepartmentObservable,
+                    
+                   Department=userModuleDepartmentObservable,
 
 
                 };
@@ -67,15 +65,7 @@ namespace student_reg_system.ViewModels
 
                 
 
-                if (user != null)
-                {
-                    if (user.Modules == null)
-                    {
-                        user.Modules = new List<Module>();
-                    }
-                    user.Modules.Add(module);
-                }
-                /* */
+               
                 db.SaveChanges();
 
             }

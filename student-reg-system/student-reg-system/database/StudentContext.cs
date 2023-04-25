@@ -32,8 +32,11 @@ namespace student_reg_system.database
             modelBuilder.Entity<Student>()
                 .HasMany(s => s.Modules)
                 .WithMany(m => m.Students);
+        
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Modules)
+                .WithMany(m => m.Users);
         }
-
         //string projectRootPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", ".."));
         //string dbPath = Path.Combine("@",Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..")), "sqlite", "StudentData.db");
 

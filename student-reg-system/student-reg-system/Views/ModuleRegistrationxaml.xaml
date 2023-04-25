@@ -46,13 +46,13 @@
                     <TextBox Grid.Column="1" Grid.Row="6"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686" Text="{Binding GradePointObservable}" Height="35" Name="t3"/>
 
                     <TextBox Grid.Column="1" Grid.Row="8"   Margin="10 10" VerticalAlignment="Center" Foreground="#868686" Text="{Binding CreditValueObservable}" Height="35" Name="t4"/>
-                    <TextBox Grid.Column="1" Grid.Row="10"  Foreground="#868686" Text="{Binding UserModuleIdObservable}" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="700" Height="35" Name="t5"/>
+                    <TextBox Grid.Column="1" Grid.Row="10"  Foreground="#868686" Text="{Binding UserModuleDepartmentObservable}" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="700" Height="35" Name="t5"/>
 
                     <TextBlock Grid.Row="0" Text="Module ID" Style="{StaticResource text}"  Foreground="SlateGray" Height="30" VerticalAlignment="Top" Margin="10 0"/>
                     <TextBlock Grid.Row="3" Text="Module Name" Style="{StaticResource text}"  Foreground="SlateGray" Height="30" VerticalAlignment="Center" Margin="10 0"/>
                     <TextBlock Grid.Row="5" Text="Credit Point " Style="{StaticResource text}"  Foreground="SlateGray" Height="30" VerticalAlignment="Center" Margin="10 0"/>
                     <TextBlock Grid.Row="7" Text="Credit Value" Style="{StaticResource text}"  Foreground="SlateGray" Height="30" VerticalAlignment="Center" Margin="10 0"/>
-                    <TextBlock Grid.Row="9" Text="User Id" Style="{StaticResource text}" Foreground="SlateGray" Margin="10 0" Height="30"/>
+                    <TextBlock Grid.Row="9" Text="Department" Style="{StaticResource text}" Foreground="SlateGray" Margin="10 0" Height="30"/>
 
 
                 </Grid>

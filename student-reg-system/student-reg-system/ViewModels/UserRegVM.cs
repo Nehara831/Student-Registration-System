@@ -78,61 +78,55 @@ namespace student_reg_system.ViewModels
         [RelayCommand]
         public void AddUser()
         {
+            
             using (var db = new StudentContext())
             {
-                if(ModuleList != null)
-                {
-                    foreach (var module in ModuleList)
-                    {
-                        bool isSelected = module.IsSelected;
-
-                        if (isSelected)
-                        {
-
-
-                            SelectedModules.Add(db.Modules.FirstOrDefault(u => u.ModuleName == module.ModuleName));
-                            MessageBox.Show($"{module.ModuleId}");
-
-                        }
-
-                    }
-
-                }
-
-                  var user1 = db.Users.FirstOrDefault(u => u.IDUser == UserId);
+                var user1 = db.Users.FirstOrDefault(u => u.IDUser == UserId);
                 if (user1 != null)
                 {
                     db.Remove(user1);
                     db.SaveChanges();
                 }
 
+               
+                    foreach (var module in ModuleList)
+                {
+                   
+                    bool isSelected = module.IsSelected;
+                   
+
+                        if (isSelected)
+                        {
+                       
+                        SelectedModules.Add(db.Modules.FirstOrDefault(u => u.ModuleName == module.ModuleName));
+                                                     
+                        }
+
+                    }
                 
                
+                  User user = new User()
+                    {
+                        IDUser = UserId,
 
 
-                User user = new User()
-                {
-                    IDUser = UserId,
+                        FirstNameUser = UserFirstName,
+                        LastNameUser = UserLastName,
+                        EmailUser = UserEmail,
+                        PhoneUser = UserPhone,
+                        DepartmentUser = UserDepartment,
+                        
+                        Modules = SelectedModules.ToList(),
+                        Password = UserPassword,
+                        UserName = UserUserName,
+                        Students = new List<Student>(),
+                    };
 
+                    db.Users.Add(user);
+                    db.SaveChanges();
 
-                    FirstNameUser = UserFirstName,
-                    LastNameUser = UserLastName,
-                    EmailUser = UserEmail,
-                    PhoneUser = UserPhone,
-                    DepartmentUser = UserDepartment,
-                    Modules = SelectedModules.ToList(),
-                    Password=UserPassword,
-                    UserName=UserUserName,
-                    Students = new List<Student>(),
-                };
-
-
-                
-
-                db.Users.Add(user);
-                db.SaveChanges();
-            }
-
+                }
+           
             LoadUser();
             ClearTextBoxes();
 
@@ -141,9 +135,7 @@ namespace student_reg_system.ViewModels
 
         public void LoadUser()
         {
-
-
-           
+          
             using (var db = new StudentContext())
             {
                 var listusers = db.Users
@@ -156,10 +148,6 @@ namespace student_reg_system.ViewModels
 
                 .ToList();
 
-                /* if (modules == null)
-                 {
-                     MessageBox.Show("no mudules");
-                 }*/
                 if (modules == null)
                 {
                     ModuleList = new ObservableCollection<Module>();
@@ -178,8 +166,8 @@ namespace student_reg_system.ViewModels
 
             using (var db = new StudentContext())
             {
-                
-                
+
+                user.Modules = db.Users.Include(u => u.Modules).FirstOrDefault(u => u. IDUser== user.IDUser).Modules;
                 DepModuleList = db.Modules.ToList();
 
             }
@@ -196,17 +184,23 @@ namespace student_reg_system.ViewModels
             foreach (var moduleL in ModuleList)
             {
                 bool exists = false;
-                foreach (var module in user.Modules)
-                {
-                    if (moduleL.ModuleId == module.ModuleId)
+                if (user.Modules != null)
+                
+                    foreach (var module in user.Modules)
                     {
-                        exists = true;
+                        MessageBox.Show($"{module.ModuleName}");
+                        if (moduleL.ModuleId == module.ModuleId)
+                        {
+                            exists = true;
+                        }
                     }
-                }
 
-                if (exists)
-                {
-                    moduleL.IsSelected = true;
+
+
+                    if (exists)
+                    {
+                        moduleL.IsSelected = true;
+                    }
                 }
             }
         }
@@ -226,6 +220,6 @@ namespace student_reg_system.ViewModels
             window.t8.Text = "";
            // window.myComboBox.SelectedItem = null;
         }
-
+      
     }
 }
