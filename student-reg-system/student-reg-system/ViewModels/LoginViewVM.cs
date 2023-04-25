@@ -73,7 +73,6 @@ namespace student_reg_system.ViewModels
         public static void GrantUserAcess()
         {
             UserView userView= new UserView ();
-            // Close active window
             Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive)?.Close();
             userView.Show();
             

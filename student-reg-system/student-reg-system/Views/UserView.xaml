@@ -59,7 +59,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}" >
+                            <Button Style="{StaticResource menuButton}" Click="ShowCalculator">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="CalendarClock" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="GPA Calculator" />

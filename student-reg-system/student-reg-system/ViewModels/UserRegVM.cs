@@ -129,6 +129,10 @@ namespace student_reg_system.ViewModels
            
             LoadUser();
             ClearTextBoxes();
+            var adminView = new AdminView();
+            Application.Current.Windows.OfType<UserView>().SingleOrDefault(x => x.IsActive)?.Close();
+
+            adminView.Show();
 
         }
 
@@ -203,7 +207,7 @@ namespace student_reg_system.ViewModels
                     }
                 }
             }
-        }
+        
 
         [RelayCommand]
         public void ClearTextBoxes()
@@ -220,6 +224,22 @@ namespace student_reg_system.ViewModels
             window.t8.Text = "";
            // window.myComboBox.SelectedItem = null;
         }
-      
+        [RelayCommand]
+        public void DeleteUser(User user)
+       
+        {
+            using (var db = new StudentContext())
+            {
+                db.Remove(user);
+                db.SaveChanges();
+
+                var userView = new AdminView();
+                Application.Current.Windows.OfType<UserView>().SingleOrDefault(x => x.IsActive)?.Close();
+
+                userView.Show();
+
+            }
+
+            }
     }
 }

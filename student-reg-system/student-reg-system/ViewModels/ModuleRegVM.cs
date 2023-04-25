@@ -33,10 +33,7 @@ namespace student_reg_system.ViewModels
         public ModuleRegVM()
         {
             
-
-
         }
-
 
 
         [RelayCommand]
@@ -44,11 +41,8 @@ namespace student_reg_system.ViewModels
         public void AddModule()
         {
            
-
             using (var db = new StudentContext())
             {
-               
-
                 Module module = new Module()
                 {
                     ModuleId = ModuleIdObservable,
@@ -62,10 +56,7 @@ namespace student_reg_system.ViewModels
 
                 };
                 db.Modules.Add(module);
-
-                
-
-               
+              
                 db.SaveChanges();
 
             }

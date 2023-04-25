@@ -210,7 +210,7 @@
                                         <Button Style="{StaticResource gridEditButton}" Command="{Binding Path=DataContext.EditUserCommand, ElementName=membersDataGrid}" CommandParameter="{Binding}">
                                             <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
                                         </Button>
-                                        <Button Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}">
+                                        <Button Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}" Command="{Binding Path=DataContext.DeleteUserCommand,ElementName=membersDataGrid}" CommandParameter="{Binding}">
                                             <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
                                         </Button>
                                     </StackPanel>

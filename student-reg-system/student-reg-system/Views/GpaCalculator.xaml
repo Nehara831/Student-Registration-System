@@ -6,7 +6,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodels="clr-namespace:student_reg_system.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:GPACalculatorVM}"
       xmlns:local="clr-namespace:student_reg_system.Views"
       xmlns:controls="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
-
+ d:DesignHeight="450" d:DesignWidth="800"
       mc:Ignorable="d" 
       
       Title="GpaCalculator">
@@ -14,28 +14,32 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Page.Resources>
 
-    <StackPanel Orientation="Vertical" Background="Blue" Height="452" Width="681">
-        <Grid Width="300" HorizontalAlignment="Left" Margin="40 10">
-            <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
-                           Panel.ZIndex="1" Text="Search here ..."
-                           Visibility="{Binding ElementName=textBoxSearch, Converter={StaticResource BoolToVis}}" />
-
-            <TextBox Name="textBoxSearch" Style="{StaticResource searchTextbox}" Text="{Binding StudentId}"/>
-            <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc" Command="{Binding SearchCommand}">
-                <Icon:PackIconMaterial Kind="Magnify"/>
-            </Button>
-        </Grid>
-        
-        <TextBlock TextWrapping="Wrap" Text="{Binding StudentName}" Height="30" Margin="40,0,0,0" Width="200" HorizontalAlignment="Left" Background="#FFEFEBEB" />
-
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=0}" Margin="40,28,40,2" AutoGenerateColumns="False" Height="200" ItemsSource="{Binding ModuleList}">
+    <StackPanel Orientation="Vertical" Background="White" >
+       
+      
+        <TextBlock TextWrapping="Wrap" Text="TextBlock" Margin="40,10,40,0" Width="300" HorizontalAlignment="Right" Background="#FFEDE9E9" Height="28"/>
+        <Button Style="{StaticResource addButton}" Content="Calculate GPA" Margin="40,10,0,0" Width="117" HorizontalAlignment="Left" Height="30"/>
+        <DataGrid  RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding StudentList}" Width="800" HorizontalAlignment="Left">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Binding="{Binding ModuleId}" HeaderStringFormat="moduleId" Header="Module ID" Width="1.5*"/>
-                <DataGridTextColumn Binding="{Binding ModuleName}" HeaderStringFormat="moduleName" Header="Module Name" Width="4*"/>
-                <DataGridTextColumn Binding="{Binding CreditValue}" HeaderStringFormat="noOfCredits" Header="No Of Credits" Width="*"/>
+                <DataGridTemplateColumn Header="Module Id" IsReadOnly="True" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="Beige">
 
-                <DataGridTemplateColumn Header="Grade">
+                                </Border>
+
+                                <TextBlock Text="{Binding  StudentIDStudent}" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                <DataGridTextColumn Header=" Module Name" Binding="{Binding AdressStudent }" IsReadOnly="True" Width="*"/>
+
+                <DataGridTextColumn Header="Credit Value" Binding="{Binding DateofBirthStudent}" IsReadOnly="True" Width="*"/>
+                <DataGridTemplateColumn Header="Grade" IsReadOnly="True" Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Grade}" />
@@ -52,10 +56,11 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-
+                
             </DataGrid.Columns>
+
+
         </DataGrid>
-        <TextBlock TextWrapping="Wrap" Text="TextBlock" Margin="40,10,40,0" Width="300" HorizontalAlignment="Right" Background="#FFEDE9E9" Height="28"/>
-        <Button Style="{StaticResource addButton}" Content="Calculate GPA" Margin="40,10,0,0" Width="117" HorizontalAlignment="Left" Height="30"/>
     </StackPanel>
+    
 </Page>
