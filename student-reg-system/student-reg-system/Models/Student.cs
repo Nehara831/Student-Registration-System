@@ -35,19 +35,6 @@ namespace student_reg_system.Models
 
         }
         
-            public double CalculateGPA()
-        {
-            double point = 0;
-            double sumOfCredits = 0.0000001;
-            foreach (var module in Modules)
-            {
-                point = point + module.GradePoint * module.CreditValue;
-                sumOfCredits += module.CreditValue;
-            }
-
-            double GPA = point / sumOfCredits;
-
-            return GPA;
-        }
+     
     }
 }

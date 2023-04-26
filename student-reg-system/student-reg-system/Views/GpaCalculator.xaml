@@ -28,7 +28,6 @@
         </Grid>
 
         <TextBlock TextWrapping="Wrap" Text="{Binding StudentName}" Height="30" Margin="40,0,0,0" Width="200" HorizontalAlignment="Left" Background="#FFEFEBEB" />
-        <Button Style="{StaticResource addButton}" Content="Calculate GPA" Margin="40,10,0,0" Width="117" HorizontalAlignment="Left" Height="30" />
         <DataGrid  RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding ModuleList}" Width="700" HorizontalAlignment="Left">
             <DataGrid.Columns>
                
@@ -50,22 +49,21 @@
 
                 <DataGridTextColumn Header="Credit Value" Binding="{Binding CreditValue}" IsReadOnly="True" Width="*"/>
 
-                <DataGridComboBoxColumn Header="Grade" SelectedValueBinding="{Binding Grade}" Visibility="Visible">
-                    <DataGridComboBoxColumn.ElementStyle>
-                        <Style TargetType="ComboBox">
-                            <Setter Property="ItemsSource" Value="{Binding DataContext.GradeList, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
-                           
-                        </Style>
-                    </DataGridComboBoxColumn.ElementStyle>
-                    <DataGridComboBoxColumn.EditingElementStyle>
-                        <Style TargetType="ComboBox">
-                            <Setter Property="ItemsSource" Value="{Binding DataContext.GradeList, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
-                           
-                        </Style>
-                    </DataGridComboBoxColumn.EditingElementStyle>
-                </DataGridComboBoxColumn>
+                <DataGridTemplateColumn Header="Grade">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding DataContext.GradeList, RelativeSource={RelativeSource AncestorType={x:Type DataGrid }}}" 
+                     SelectedValue="{Binding Grade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedValuePath="."
+                      DisplayMemberPath="."
+                      IsEditable="True"
+                                      
+                      />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-                <DataGridTextColumn Header="GPA" Binding="{Binding CreditValue}" IsReadOnly="True" Width="*"/>
+
 
 
 
@@ -73,6 +71,12 @@
 
 
         </DataGrid>
+        <StackPanel Orientation="Horizontal"  Margin="550,200,0,0">
+            <Button Style="{StaticResource addButton}" Content="Calculate GPA"   Width="117" HorizontalAlignment="Left" Height="30" Command="{Binding CalculateGPACommand}" />
+            <TextBlock Width="30"></TextBlock>
+            <Button Style="{StaticResource addButton}" Content="Save Changes" Width="117" HorizontalAlignment="Left" Height="30" Command="{Binding SaveCommand}" />
+        </StackPanel>
+       
 
     </StackPanel>
 

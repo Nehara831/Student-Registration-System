@@ -101,20 +101,25 @@
                     </DataGridCheckBoxColumn.HeaderTemplate>
                 </DataGridCheckBoxColumn>
                 <DataGridTemplateColumn Header="User Id" IsReadOnly="True" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="Beige">
+                   
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="#1098AD">
+                                    <TextBlock Text="{Binding FirstNameStudent[0]}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
 
-                                </Border>
+                                    </Border>
 
-                                <TextBlock Text="{Binding  StudentIDStudent}" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn Header="First Name" Binding="{Binding   FirstNameStudent}" IsReadOnly="True" Width="*"/>
-                <DataGridTextColumn Header="Last Name" Binding="{Binding  LastNameStudent}" IsReadOnly="True" Width="*"/>
+                                <TextBlock Text="{Binding  FirstNameStudent}" VerticalAlignment="Center"/>
+                                    <TextBlock Text="  " VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding  LastNameStudent}" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+               
+               
                 <DataGridTextColumn Header=" Adress" Binding="{Binding AdressStudent }" IsReadOnly="True" Width="*"/>
 
                 <DataGridTextColumn Header="Date Of Birth" Binding="{Binding DateofBirthStudent}" IsReadOnly="True" Width="*"/>

@@ -193,7 +193,7 @@ namespace student_reg_system.ViewModels
                 UserDepartmentObservable = user.DepartmentUser + "  Department";
                 UserEmailObservable = user.EmailUser;
 
-
+                
 
                 var modules = db.Modules
                     .Where(m => m.Department == user.DepartmentUser)

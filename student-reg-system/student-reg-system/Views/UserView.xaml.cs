@@ -28,8 +28,9 @@ namespace student_reg_system.Views
         public UserView()
         {
             InitializeComponent();
-
-
+            DataContext = new StudentRegVM();
+            MainContentFrame.Navigate(new StudentDataPage());
+            
             //  membersDataGrid.ItemsSource = StudentRegVM.studentList;
 
 
