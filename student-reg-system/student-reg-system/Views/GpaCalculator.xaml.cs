@@ -25,13 +25,12 @@ namespace student_reg_system.Views
         {
             InitializeComponent();
             DataContext = new GPACalculatorVM();
+           
         }
 
 
         private void CalculateGPA(object sender, RoutedEventArgs e)
         {
-            StudentRegView newview = new StudentRegView();
-            newview.Show();
         }
 
         private void TextBox_TextChanged2(object sender, TextChangedEventArgs e)

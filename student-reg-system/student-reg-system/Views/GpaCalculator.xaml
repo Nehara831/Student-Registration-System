@@ -14,7 +14,7 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Page.Resources>
 
-    <StackPanel Orientation="Vertical" Background="White" >
+    <StackPanel Orientation="Vertical" Background="white" >
 
         <Grid Width="300" HorizontalAlignment="Left" Margin="40 10">
             <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
@@ -22,39 +22,16 @@
                            Visibility="{Binding ElementName=textBoxSearch, Converter={StaticResource BoolToVis}}" />
 
             <TextBox Name="textBoxSearch" Style="{StaticResource searchTextbox}" Text="{Binding StudentId}"/>
-            <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc">
+            <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc" Command="{Binding SearchCommand}">
                 <Icon:PackIconMaterial Kind="Magnify"/>
             </Button>
         </Grid>
 
         <TextBlock TextWrapping="Wrap" Text="{Binding StudentName}" Height="30" Margin="40,0,0,0" Width="200" HorizontalAlignment="Left" Background="#FFEFEBEB" />
-        <Button Style="{StaticResource addButton}" Content="Calculate GPA" Margin="40,10,0,0" Width="117" HorizontalAlignment="Left" Height="30" Command="{Binding SearchCommand}"/>
+        <Button Style="{StaticResource addButton}" Content="Calculate GPA" Margin="40,10,0,0" Width="117" HorizontalAlignment="Left" Height="30" />
         <DataGrid  RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding ModuleList}" Width="700" HorizontalAlignment="Left">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Grade">
-
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <ComboBox ItemsSource="{Binding ModuleList}"   SelectedValue="{Binding Grade, Mode=TwoWay}"  Name="myComboBox">
-
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <CheckBox IsChecked="{Binding IsSelected}" 
-         
-                          VerticalAlignment="Center"/>
-                                            <TextBlock Text="{Binding ModuleName}" 
-                           Margin="5,0,0,0"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-
-
-
-                            </ComboBox>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
+               
                 <DataGridTemplateColumn Header="Module Id" IsReadOnly="True" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -73,7 +50,23 @@
 
                 <DataGridTextColumn Header="Credit Value" Binding="{Binding CreditValue}" IsReadOnly="True" Width="*"/>
 
-             
+                <DataGridComboBoxColumn Header="Grade" SelectedValueBinding="{Binding Grade}" Visibility="Visible">
+                    <DataGridComboBoxColumn.ElementStyle>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="ItemsSource" Value="{Binding DataContext.GradeList, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                           
+                        </Style>
+                    </DataGridComboBoxColumn.ElementStyle>
+                    <DataGridComboBoxColumn.EditingElementStyle>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="ItemsSource" Value="{Binding DataContext.GradeList, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                           
+                        </Style>
+                    </DataGridComboBoxColumn.EditingElementStyle>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Header="GPA" Binding="{Binding CreditValue}" IsReadOnly="True" Width="*"/>
+
 
 
             </DataGrid.Columns>

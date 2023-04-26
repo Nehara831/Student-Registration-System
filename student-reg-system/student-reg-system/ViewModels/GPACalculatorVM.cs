@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace student_reg_system.ViewModels
 {
-    
+
     partial class GPACalculatorVM : ObservableObject
     {
 
@@ -24,8 +24,13 @@ namespace student_reg_system.ViewModels
 
         [ObservableProperty]
         public ObservableCollection<Module> moduleList = new ObservableCollection<Module>();
-
-
+        [ObservableProperty]
+        public ObservableCollection<char> gradeList = new ObservableCollection<char>();
+        
+        public GPACalculatorVM() {
+            GradeList = new ObservableCollection<char>() { 'A', 'B', 'C', 'D', 'F' };
+           
+        }
         [RelayCommand]
         public void Search()
         {
@@ -42,6 +47,15 @@ namespace student_reg_system.ViewModels
 
            
 
+        }
+        [RelayCommand]
+       public  void CalculateGPA(object selectedModule)
+        {
+            Module module = selectedModule as Module;
+            if (module != null)
+            {
+                
+            }
         }
     }
 }
