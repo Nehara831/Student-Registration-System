@@ -62,37 +62,19 @@ namespace student_reg_system.Views
         }
 
         
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            UserRegistration userRegistration = new UserRegistration();
-            userRegistration.Show();
-        }
+       
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+      
+        private void StudentClick(object sender, RoutedEventArgs e)
         {
-            ModuleRegistrationxaml moduleRegistrationxaml= new ModuleRegistrationxaml();
-            moduleRegistrationxaml.Show();
+             MainContentFrame.Navigate(new UserPage());
+
 
         }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void GPACalculator(object sender, RoutedEventArgs e)
         {
-            this.Close();
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = System.Windows.WindowState.Minimized;
+            MainContentFrame.Navigate(new GpaCalculator());
 
         }
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            // Get the selected user object from the DataContext of the checkbox
-            var user = (sender as FrameworkElement)?.DataContext as User;
-
-            // Show a message box with the user's name
-            System.Windows.MessageBox.Show($"User {user.FirstNameUser} {user.LastNameUser} is checked.");
-        }
-
     }
 }

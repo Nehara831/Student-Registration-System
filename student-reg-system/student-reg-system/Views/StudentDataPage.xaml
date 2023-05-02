@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" xmlns:viewmodels="clr-namespace:student_reg_system.ViewModels"
       xmlns:local="clr-namespace:student_reg_system.Views"
-      DataContext="viewmodels:StudentRegVM"
+      d:DataContext="{d:DesignInstance Type=viewmodels:GPACalculatorVM}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="StudentDataPage"

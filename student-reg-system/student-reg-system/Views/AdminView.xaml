@@ -9,10 +9,7 @@
         mc:Ignorable="c"
          Height="720" Width="1080" WindowStartupLocation="CenterScreen" AllowsTransparency="True"
         Background="Transparent" WindowStyle="None">
-    <Window.Resources>
-        <BooleanToVisibilityConverter x:Key="BoolToVis" />
-    </Window.Resources>
-
+   
     <Border CornerRadius="30" Background="#EFF2F7" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid >
             <Grid.ColumnDefinitions>
@@ -59,17 +56,17 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="GPACalculator">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="CalendarClock" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="GPA Calculator"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}" Background="#7B5CD6" Foreground="White">
+                            <Button Style="{StaticResource menuButton}" Background="#7B5CD6" Foreground="White" Click="StudentClick">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="AccountMultipleOutline" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Students"/>
+                                    <TextBlock Text="Users"/>
                                 </StackPanel>
                             </Button>
 
@@ -95,159 +92,9 @@
                 </Border>
 
             </Grid>
-
+            <Frame Grid.Column="1" Margin="30 20 20 20" x:Name="MainContentFrame" NavigationUIVisibility="Hidden"/>
             <!--Main Section-->
-            <Grid Grid.Column="1" Margin="30 20 20 20">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-
-                <!--Search Textbox-->
-                <Grid Width="300" HorizontalAlignment="Left">
-                    <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
-                           Panel.ZIndex="1" Text="Search here ..."
-                           Visibility="{Binding ElementName=textBoxSearch, Converter={StaticResource BoolToVis}}" />
-
-                    <TextBox Name="textBoxSearch" Style="{StaticResource searchTextbox}"/>
-
-                    <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center" Margin="0 0 15 0" Foreground="#B0B9C6" HorizontalAlignment="Right" />
-                </Grid>
-
-                <!--Top Buttons-->
-                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Click="Button_Click_2">
-                    <Icon:PackIconMaterial  Kind="Close"/>
-                </Button>
-
-                <Button Style="{StaticResource topButton}" Margin="0 0 55 0" Click="Button_Click_3">
-                    <Icon:PackIconMaterial Kind="WindowMinimize" />
-                </Button>
-
-                <!--Page Title-->
-                <TextBlock Text="" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 10 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
-                <TextBlock Text="{}" Grid.Row="1" FontSize="28" FontWeight="SemiBold" Margin="0 50 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
-
-                <!--Add Button-->
-                <Button Style="{StaticResource addButton}" Click="Button_Click_1">
-                    <StackPanel Orientation="Horizontal">
-                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
-                        <TextBlock Text="Add New User"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{StaticResource addButton2}" Click="Button_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
-                        <TextBlock Text="Add New Module"/>
-                    </StackPanel>
-                </Button>
-
-                <!--Seprator-->
-                <Separator Height="1" Grid.Row="3" Background="#DAE2EA" Margin="0 -1 0 10"/>
-
-                <!--Tab buttons-->
-                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
-                    <TextBlock Text="Academic Year 22/23" Grid.Row="1" FontSize="23" FontWeight="SemiBold" Margin="0 50 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
-
-                </StackPanel>
-
-                <!--Counter Title-->
-                <TextBlock Text="No of Students" Grid.Row="4" FontSize="18" FontWeight="SemiBold" Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-
-                <TextBlock Text="Filter by" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0 0 215 0" Foreground="#121518" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-
-                <!--Filter Textbox-->
-                <Grid Width="200" HorizontalAlignment="Right" Grid.Row="4">
-                    <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
-                           Panel.ZIndex="1" Text="Search in Users ..."></TextBlock>
-
-
-                    <TextBox Name="textBoxFilter" Style="{StaticResource filterTextBox}"/>
-                </Grid>
-
-                <!--Members Data Grid-->
-                <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding UsersList}">
-                    <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto"  ElementStyle="{StaticResource CheckBoxStyle1}" >
-                            <DataGridCheckBoxColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <CheckBox Style="{StaticResource CheckBoxStyle1}" Checked="CheckBox_Checked"/>
-                                </DataTemplate>
-                            </DataGridCheckBoxColumn.HeaderTemplate>
-                        </DataGridCheckBoxColumn>
-                        
-                            <DataGridTextColumn Header=" Id  " Binding="{Binding   IDUser}" IsReadOnly="True" Width="0.5*"/>
-                            <DataGridTemplateColumn Header="Student" IsReadOnly="True" Width="1.5*">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="#1098AD">
-                                                <TextBlock Text="{Binding FirstNameUser[0]}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
-
-                                            </Border>
-
-                                            <TextBlock Text="{Binding  FirstNameUser}" VerticalAlignment="Center"/>
-                                            <TextBlock Text="  " VerticalAlignment="Center"/>
-                                            <TextBlock Text="{Binding  LastNameUser}" VerticalAlignment="Center"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Department" Binding="{Binding  DepartmentUser }" IsReadOnly="True" Width="*"/>
-                       
-                        <DataGridTextColumn Header=" Email" Binding="{Binding  EmailUser }" IsReadOnly="True" Width="*"/>
-
-                        <DataGridTextColumn Header="Phone" Binding="{Binding PhoneUser}" IsReadOnly="True" Width="*"/>
-                        <DataGridTemplateColumn Header="Edit User" IsReadOnly="True" Width="auto">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button Style="{StaticResource gridEditButton}" Command="{Binding Path=DataContext.EditUserCommand, ElementName=membersDataGrid}" CommandParameter="{Binding}">
-                                            <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
-                                        </Button>
-                                        <Button Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}" Command="{Binding Path=DataContext.DeleteUserCommand,ElementName=membersDataGrid}" CommandParameter="{Binding}">
-                                            <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
-                                        </Button>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-
-
-                </DataGrid>
-
-                <!--Pagingation Section-->
-                <Border Grid.Row="6" HorizontalAlignment="Right" BorderBrush="#DEE4EC" BorderThickness="1" CornerRadius="5" Padding="5" Background="#ffffff" Margin="0 10 10 10">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Style="{StaticResource pagingButton}">
-                            <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
-                        </Button>
-                        <Rectangle Width="1" Fill="#DEE4EC" Margin="3 7"/>
-
-                        <Button Style="{StaticResource pagingButton}" Content="1"/>
-                        <Button Style="{StaticResource pagingButton}" Content="2" Background="#7950F2" Foreground="#ffffff"/>
-                        <Button Style="{StaticResource pagingButton}" Content="3"/>
-
-                        <TextBlock Text="..." Foreground="#6C7682" VerticalAlignment="Center" Margin="10 0" FontSize="15"/>
-
-                        <Button Style="{StaticResource pagingButton}" Content="7"/>
-                        <Button Style="{StaticResource pagingButton}" Content="8"/>
-                        <Button Style="{StaticResource pagingButton}" Content="9"/>
-
-                        <Rectangle Width="1" Fill="#DEE4EC" Margin="3 7"/>
-                        <Button Style="{StaticResource pagingButton}">
-                            <Icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}"/>
-                        </Button>
-                    </StackPanel>
-                </Border>
-
-            </Grid>
+           
 
         </Grid>
     </Border>
