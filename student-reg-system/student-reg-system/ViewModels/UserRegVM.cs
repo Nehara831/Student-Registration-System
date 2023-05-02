@@ -41,11 +41,11 @@ namespace student_reg_system.ViewModels
 
 
         [ObservableProperty]
-        public ObservableCollection<User> usersList = new ObservableCollection<User>();
+        public   ObservableCollection<User> usersList;
         [ObservableProperty]
         public ObservableCollection<Module> selectedModules = new ObservableCollection<Module>();
 
-
+        public static List<User> users = new List<User>();
 
         [ObservableProperty]
         public ObservableCollection<Module> moduleList;
@@ -54,8 +54,9 @@ namespace student_reg_system.ViewModels
             
             LoadUser();
 
-
-
+            UsersList = new ObservableCollection<User>();
+            users =UsersList.ToList();
+            
 
         }
         public UserRegVM(User user, List<Module> moduleList)
@@ -129,10 +130,12 @@ namespace student_reg_system.ViewModels
            
             LoadUser();
             ClearTextBoxes();
-            var adminView = new AdminView();
-            Application.Current.Windows.OfType<UserView>().SingleOrDefault(x => x.IsActive)?.Close();
+           // var adminView = new AdminView();
+          //  var vv = new UserPage();
+           // Application.Current.Windows.OfType<UserView>().SingleOrDefault(x => x.IsActive)?.Close();
 
-            adminView.Show();
+           // adminView.Show();
+           // vv.ShowsNavigationUI= true;
 
         }
 
@@ -147,6 +150,7 @@ namespace student_reg_system.ViewModels
 
                 .ToList();
                 UsersList = new ObservableCollection<User>(listusers);
+               
 
                 var modules = db.Modules
 

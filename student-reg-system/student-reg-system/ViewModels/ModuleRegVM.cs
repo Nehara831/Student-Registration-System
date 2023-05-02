@@ -52,7 +52,7 @@ namespace student_reg_system.ViewModels
                     GradePoint = gradePointObservable,
                     
                    Department=userModuleDepartmentObservable,
-
+                   Grade="",
 
                 };
                 db.Modules.Add(module);
