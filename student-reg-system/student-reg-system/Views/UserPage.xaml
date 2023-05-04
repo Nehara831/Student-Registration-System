@@ -92,7 +92,7 @@
             </Grid>
 
             <!--Members Data Grid-->
-            <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding UserRegVM.UsersList, Mode=TwoWay}">
+            <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding Path=UsersList }" >
                 <DataGrid.Columns>
                    
 
@@ -106,7 +106,7 @@
 
                                     </Border>
 
-                                    <TextBlock Text="{Binding  FirstNameUser}" VerticalAlignment="Center" Foreground="Black"/>
+                                    <TextBlock Text="{Binding  FirstNameUser}" VerticalAlignment="Center" />
                                     <TextBlock Text="  " VerticalAlignment="Center"/>
                                     <TextBlock Text="{Binding  LastNameUser}" VerticalAlignment="Center"/>
                                 </StackPanel>
