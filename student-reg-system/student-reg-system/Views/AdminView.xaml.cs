@@ -27,7 +27,8 @@ namespace student_reg_system.Views
         {
             InitializeComponent();
             DataContext = new UserRegVM();
-            
+            MainContentFrame.Navigate(new UserPage());
+
 
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -105,6 +105,22 @@ namespace student_reg_system.Views
             MainContentFrame.Navigate(new StudentDataPage());
         }
 
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            /*Window userViewWindow = Application.Current.Windows.OfType<UserView>().SingleOrDefault(x => x.Name == "UserView");
+            userViewWindow?.Close();*/
+            this.Close();
+
+
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+           /* Window userViewWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.Name == "UserView");
+
+            userViewWindow.WindowState = WindowState.Minimized;*/
+           this.WindowState= WindowState.Minimized;
+        }
     }
 
    
