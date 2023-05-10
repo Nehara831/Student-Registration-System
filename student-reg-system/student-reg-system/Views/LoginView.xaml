@@ -7,6 +7,7 @@
       xmlns:local="clr-namespace:student_reg_system.Views" xmlns:viewmodels="clr-namespace:student_reg_system.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:LoginViewVM}"
         mc:Ignorable="d" 
       Title="LoginView" Height="550" Width="800"
+      xmlns:utills="clr-namespace:student_reg_system.Utills"
       WindowStyle="None"
       ResizeMode="NoResize"
       WindowStartupLocation="CenterScreen"
@@ -126,7 +127,7 @@
                             Orientation="Vertical"
                             Margin="181,39,133,-460">
 
-                    <Image Source="/asserts/Logo.png"
+                    <Image Source="D:\UOR education\SEM03\PP-Project\GUI-Project\Student-Registration-System\student-reg-system\student-reg-system\asserts\Logo.png"
                            Width="100" Height="100" Margin="10"/>
 
                     <TextBlock Text="Student Registration System"
@@ -156,8 +157,8 @@
                              VerticalContentAlignment="Center"
                              Margin="0,5,0,0"
                              Padding="20,0,0,0">
-                        
-                       <TextBox.Background>
+
+                        <TextBox.Background>
                             <ImageBrush 
                                         Stretch="None"
                                         AlignmentX="Left"/>
@@ -171,25 +172,30 @@
                                FontFamily="Montserrat"                             
                                Margin="0,10,0,0"
                                TextWrapping="Wrap"/>
-                    <TextBox x:Name="txtUser1"
-                             Text="{Binding PassWord, UpdateSourceTrigger=PropertyChanged}"
-                             FontSize="13"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"                            
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,2"
-                             Height="28"
-                             VerticalContentAlignment="Center"
-                             Margin="0,10,0,0"
-                             Padding="20,0,0,0">
-                        <TextBox.Background>
+
+
+                    <PasswordBox x:Name="passwordBox"
+                                 utills:PasswordBoxHelper.Password="{Binding PassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 PasswordChar="."
+                                 FontSize="20"
+                                 FontWeight="Medium"
+                                 FontFamily="Montserrat"                            
+                                 Foreground="White"
+                                 CaretBrush="LightGray"
+                                 BorderBrush="DarkGray"
+                                 BorderThickness="0,0,0,2"
+                                 Height="28"
+                                 VerticalContentAlignment="Center"
+                                 Margin="0,10,0,0"
+                                 Padding="20,0,0,0">
+                        <PasswordBox.Background>
                             <ImageBrush 
                                         Stretch="None"
                                         AlignmentX="Left"/>
-                        </TextBox.Background>
-                    </TextBox>
+                        </PasswordBox.Background>
+
+                    </PasswordBox>
+
 
                     <TextBlock Text="{}"
                                Foreground="#D7596D"
@@ -198,8 +204,8 @@
                                FontFamily="Montserrat"                             
                                Margin="0,10,0,0"
                                TextWrapping="Wrap"/>
-                    <Button Command="{Binding LoginAcessCommand}" Height="68" ></Button>
-                    
+                    <Button Style="{StaticResource loginButton}" Content="Login" Command="{Binding LoginAcessCommand}"/>
+
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                 Margin="0,15,0,0">

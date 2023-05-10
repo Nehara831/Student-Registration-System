@@ -25,9 +25,12 @@ namespace student_reg_system
     {
         public MainWindow()
         {
-            InitializeComponent();
+            //InitializeComponent();
+            this.Hide();
+            LoginView loginView = new LoginView();
+            loginView.Show();
 
-          
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
