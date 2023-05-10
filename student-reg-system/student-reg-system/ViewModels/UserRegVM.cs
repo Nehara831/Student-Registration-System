@@ -51,12 +51,11 @@ namespace student_reg_system.ViewModels
         public ObservableCollection<Module> moduleList;
         public UserRegVM()
         {
-            
+            UsersList = new ObservableCollection<User>();
             LoadUser();
 
-            UsersList = new ObservableCollection<User>();
-            users =UsersList.ToList();
             
+
 
         }
         public UserRegVM(User user, List<Module> moduleList)
