@@ -25,7 +25,7 @@ namespace student_reg_system.Views
             InitializeComponent();
             DataContext = new UserRegVM();
             membersDataGrid.DataContext = DataContext;
-            //membersDataGrid.ItemsSource = UserRegVM.users;
+           
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
