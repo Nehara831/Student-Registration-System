@@ -23,6 +23,8 @@ namespace student_reg_system.ViewModels
 
         [ObservableProperty]
         public string? studentName;
+        [ObservableProperty]
+        public string? studenEmail;
 
         [ObservableProperty]
         public ObservableCollection<Module> moduleList = new ObservableCollection<Module>();
@@ -47,6 +49,7 @@ namespace student_reg_system.ViewModels
 
                 ModuleList = new ObservableCollection<Module>(student.Modules);
                 StudentName = student.FirstNameStudent + " " + student.LastNameStudent;
+                StudenEmail = student.EmailAdress;
             }
 
 
@@ -143,14 +146,17 @@ namespace student_reg_system.ViewModels
                     totalQualityPoints += qualityPoints;
                     totalCreditValues += module.CreditValue;
                 }
-                double gpa = totalQualityPoints / totalCreditValues;
+                double gpa;
                 if (totalCreditValues == 0)
                 {
                     // Avoid division by zero//////////////////////////////////////////////////////////////
                     gpa = 0;
                 }
 
-               
+                else
+                {
+                    gpa = totalQualityPoints / totalCreditValues;
+                }
                 MessageBox.Show($"{gpa}");
             }
         }

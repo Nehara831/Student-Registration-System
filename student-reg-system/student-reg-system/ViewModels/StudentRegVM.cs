@@ -47,7 +47,7 @@ namespace student_reg_system.ViewModels
         public string? adres;
 
         [ObservableProperty]
-        public int noOfStudents;
+        public string searchName;
 
         [ObservableProperty]
         public string? email;
@@ -294,8 +294,47 @@ namespace student_reg_system.ViewModels
             editView.Show();
         }
 
+        [RelayCommand]
+        public void Search()
+        {
+            using (StudentContext context = new StudentContext())
+            {
+                ObservableCollection<Student> stuList = new ObservableCollection<Student>();
+                foreach (var st in StudentList)
+                {
 
+                    if (string.Equals(st.FirstNameStudent, SearchName, StringComparison.OrdinalIgnoreCase) || string.Equals(st.LastNameStudent, SearchName, StringComparison.OrdinalIgnoreCase))
+                    {
+                        stuList.Add(st);
+                    }
 
+                }
+                StudentList = new ObservableCollection<Student>(stuList);
+              
+            }
+
+           
+
+        }
+        [RelayCommand]
+        public void DeleteStudent(Student student)
+
+        {
+            using (var db = new StudentContext())
+            {
+                db.Remove(student);
+                db.SaveChanges();
+
+                var userView = new UserView();
+                Application.Current.Windows.OfType<UserView>().SingleOrDefault(x => x.IsActive)?.Close();
+
+                userView.Show();
+
+            }
+
+        }
     }
 
-}     
+}
+
+   
