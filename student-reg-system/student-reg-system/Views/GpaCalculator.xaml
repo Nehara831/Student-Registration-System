@@ -22,56 +22,84 @@
                            Visibility="{Binding ElementName=textBoxSearch, Converter={StaticResource BoolToVis}}" />
 
             <TextBox Name="textBoxSearch" Style="{StaticResource searchTextbox}" Text="{Binding StudentId}"/>
-            <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc" Command="{Binding SearchCommand}">
+            <Button Style="{StaticResource topButton}" Margin="0 0 20 10" Background="#dcdcdc" Command="{Binding SearchCommand}">
                 <Icon:PackIconMaterial Kind="Magnify"/>
             </Button>
-        </Grid>
-
-        <TextBlock TextWrapping="Wrap" Text="{Binding StudentName}" Height="30" Margin="40,0,0,0" Width="200" HorizontalAlignment="Left" Background="#FFEFEBEB" />
-        <DataGrid  RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding ModuleList}" Width="700" HorizontalAlignment="Left">
-            <DataGrid.Columns>
+        </Grid >
+        <Grid Margin="10 20">
+            <Grid.ColumnDefinitions>
                
-                <DataGridTemplateColumn Header="Module Id" IsReadOnly="True" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="Beige">
+                    <ColumnDefinition Width="0.35*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                                </Border>
+            <Border Grid.Column="0" Background="#623ED0" Height="200">
 
-                                <TextBlock Text="{Binding  ModuleId}" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                
-                <DataGridTextColumn Header=" Module Name" Binding="{Binding ModuleName }" IsReadOnly="True" Width="*"/>
+                <DockPanel>
+                        <!--Menu Logo-->
 
-                <DataGridTextColumn Header="Credit Value" Binding="{Binding CreditValue}" IsReadOnly="True" Width="*"/>
+                <StackPanel DockPanel.Dock="Top" Background="#623ED0" >
+                              <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" HorizontalAlignment="Left" Margin="20 -30 0 0">
+                            <Ellipse>
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\Images\p1.jpg"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                       </Border>
+                              <TextBlock Text="{Binding StudentName}" Foreground="White" FontSize="18" FontWeight="SemiBold"  Margin="5 25 0 10" TextAlignment="Center" Width="200"/>
+                        <TextBlock Text="{Binding StudenEmail}" Foreground="White" FontSize="12" FontWeight="SemiBold"  TextAlignment="Center" Width="200"/>
 
-                <DataGridTemplateColumn Header="Grade">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ComboBox ItemsSource="{Binding DataContext.GradeList, RelativeSource={RelativeSource AncestorType={x:Type DataGrid }}}" 
+                 </StackPanel>
+                       
+             </DockPanel>
+           
+             </Border>
+            <DataGrid Grid.Column="1" Height="300" RowStyle="{DynamicResource DataGridRowStyle1}" Margin="20,10,0,0" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding ModuleList}" Width="500" HorizontalAlignment="Left">
+                <DataGrid.Columns>
+
+                    <DataGridTemplateColumn Header="Module Id" IsReadOnly="True" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="Beige">
+
+                                    </Border>
+
+                                    <TextBlock Text="{Binding  ModuleId}" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Header=" Module Name" Binding="{Binding ModuleName }" IsReadOnly="True" Width="*"/>
+
+                    <DataGridTextColumn Header="Credit Value" Binding="{Binding CreditValue}" IsReadOnly="True" Width="*"/>
+
+                    <DataGridTemplateColumn Header="Grade">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox ItemsSource="{Binding DataContext.GradeList, RelativeSource={RelativeSource AncestorType={x:Type DataGrid }}}" 
                      SelectedValue="{Binding Grade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                       SelectedValuePath="."
                       DisplayMemberPath="."
                       IsEditable="True"
                                       
                       />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
 
 
 
 
-            </DataGrid.Columns>
+                </DataGrid.Columns>
 
 
-        </DataGrid>
-        <StackPanel Orientation="Horizontal"  Margin="550,200,0,0">
+            </DataGrid>
+        </Grid>
+        
+        <StackPanel Orientation="Horizontal"  Margin="550,-100,0,0">
             <Button Style="{StaticResource addButton}" Content="Calculate GPA"   Width="117" HorizontalAlignment="Left" Height="30" Command="{Binding CalculateGPACommand}" />
             <TextBlock Width="30"></TextBlock>
             <Button Style="{StaticResource addButton}" Content="Save Changes" Width="117" HorizontalAlignment="Left" Height="30" Command="{Binding SaveCommand}" />

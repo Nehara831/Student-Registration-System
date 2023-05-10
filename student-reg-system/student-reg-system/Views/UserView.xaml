@@ -97,8 +97,17 @@
 
             </Grid>
 
+            <StackPanel Orientation="Horizontal" Grid.Column="1">
+                <Button Style="{StaticResource topButton}" Margin="760 -630 20 0" Click="Button_Click_6">
+                    <Icon:PackIconMaterial Kind="WindowMinimize" />
+                </Button>
+                <Button Style="{StaticResource topButton}" Margin="0 -630 0 0" Click="Button_Click_5">
+                <Icon:PackIconMaterial  Kind="Close"/>
+            </Button>
 
-            <Frame Grid.Column="1" Margin="30 20 20 20" x:Name="MainContentFrame" NavigationUIVisibility="Hidden"/>
+           
+            </StackPanel>
+            <Frame Grid.Column="1" Margin="30 60 20 20" x:Name="MainContentFrame" NavigationUIVisibility="Hidden"/>
             <!--Main Section-->
 
 

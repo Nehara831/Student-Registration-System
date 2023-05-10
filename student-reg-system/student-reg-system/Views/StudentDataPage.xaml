@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" xmlns:viewmodels="clr-namespace:student_reg_system.ViewModels"
       xmlns:local="clr-namespace:student_reg_system.Views"
-      d:DataContext="{d:DesignInstance Type=viewmodels:GPACalculatorVM}"
+      d:DataContext="{d:DesignInstance Type=viewmodels:StudentRegVM}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="StudentDataPage"
@@ -29,12 +29,15 @@
         <!--Search Textbox-->
         <Grid Width="300" HorizontalAlignment="Left">
             <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
-                           Panel.ZIndex="1" Text="Search here ..."
-                           Visibility="{Binding ElementName=textBoxSearch, Converter={StaticResource BoolToVis}}" />
+                           Panel.ZIndex="1" 
+                           Visibility="{Binding ElementName=textBoxSearch, Converter={StaticResource BoolToVis}}" 
+                     />
 
-            <TextBox Name="textBoxSearch" Style="{StaticResource searchTextbox}"/>
-                
-            <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center" Margin="0 0 15 0" Foreground="#B0B9C6" HorizontalAlignment="Right" />
+            <TextBox Name="textBoxSearch" Style="{StaticResource searchTextbox}" Text="{Binding SearchName}"/>
+            <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc" Command="{Binding SearchCommand}">
+                <Icon:PackIconMaterial Kind="Magnify"/>
+            </Button>
+           
         </Grid>
 
         <!--Top Buttons-->
@@ -93,14 +96,9 @@
         <!--Members Data Grid-->
         <DataGrid  RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding StudentList}">
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
-                    <DataGridCheckBoxColumn.HeaderTemplate>
-                        <DataTemplate>
-                            <CheckBox Style="{StaticResource CheckBoxStyle1}"/>
-                        </DataTemplate>
-                    </DataGridCheckBoxColumn.HeaderTemplate>
-                </DataGridCheckBoxColumn>
-                <DataGridTemplateColumn Header="User Id" IsReadOnly="True" Width="*">
+                <DataGridTextColumn Header=" Student Id" Binding="{Binding StudentIDStudent }" IsReadOnly="True" Width="0.5*"/>
+
+                <DataGridTemplateColumn Header="User Name" IsReadOnly="True" Width="1.5*">
                    
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -121,6 +119,7 @@
                
                
                 <DataGridTextColumn Header=" Adress" Binding="{Binding AdressStudent }" IsReadOnly="True" Width="*"/>
+                <DataGridTextColumn Header=" Email" Binding="{Binding EmailAdress }" IsReadOnly="True" Width="*"/>
 
                 <DataGridTextColumn Header="Date Of Birth" Binding="{Binding DateofBirthStudent}" IsReadOnly="True" Width="*"/>
                 <DataGridTemplateColumn Header="Edit Student" IsReadOnly="True" Width="auto">
@@ -130,8 +129,8 @@
                                 <Button Style="{StaticResource gridEditButton}" Command="{Binding Path=DataContext.EditStudentCommand, ElementName=membersDataGrid}" CommandParameter="{Binding}">
                                     <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
                                 </Button>
-                                <Button Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}">
-                                    <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                <Button Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}" Command="{Binding Path=DataContext.DeleteStudentCommand,ElementName=membersDataGrid}" CommandParameter="{Binding}">
+                                    <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}" />
                                 </Button>
                             </StackPanel>
                         </DataTemplate>
