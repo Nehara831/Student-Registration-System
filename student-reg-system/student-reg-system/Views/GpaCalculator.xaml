@@ -38,7 +38,7 @@
                 <DockPanel>
                         <!--Menu Logo-->
 
-                <StackPanel DockPanel.Dock="Top" Background="#623ED0" >
+                <StackPanel DockPanel.Dock="Top" Background="MediumPurple" >
                               <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" HorizontalAlignment="Left" Margin="20 -30 0 0">
                             <Ellipse>
                                 <Ellipse.Fill>
@@ -99,7 +99,7 @@
             </DataGrid>
         </Grid>
         
-        <StackPanel Orientation="Horizontal"  Margin="550,-100,0,0">
+        <StackPanel Orientation="Horizontal"  Margin="520,-100,10,0">
             <Button Style="{StaticResource addButton}" Content="Calculate GPA"   Width="117" HorizontalAlignment="Left" Height="30" Command="{Binding CalculateGPACommand}" />
             <TextBlock Width="30"></TextBlock>
             <Button Style="{StaticResource addButton}" Content="Save Changes" Width="117" HorizontalAlignment="Left" Height="30" Command="{Binding SaveCommand}" />

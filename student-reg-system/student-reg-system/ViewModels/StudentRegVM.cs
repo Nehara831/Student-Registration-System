@@ -325,10 +325,16 @@ namespace student_reg_system.ViewModels
                 db.Remove(student);
                 db.SaveChanges();
 
-                var userView = new UserView();
-                Application.Current.Windows.OfType<UserView>().SingleOrDefault(x => x.IsActive)?.Close();
+              
 
-                userView.Show();
+            }
+            using (var db = new StudentContext())
+            {
+                var listusers = db.Students
+
+
+                .ToList();
+                StudentList = new ObservableCollection<Student>(listusers);
 
             }
 

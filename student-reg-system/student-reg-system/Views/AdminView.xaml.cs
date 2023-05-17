@@ -77,5 +77,35 @@ namespace student_reg_system.Views
             MainContentFrame.Navigate(new GpaCalculator());
 
         }
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+           
+            this.Close();
+
+
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+           
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window != Application.Current.MainWindow)
+                {
+                    window.Close();
+                }
+            }
+
+            LoginView newlogin = new LoginView();
+            newlogin.Show();
+
+
+           
+        }
     }
 }

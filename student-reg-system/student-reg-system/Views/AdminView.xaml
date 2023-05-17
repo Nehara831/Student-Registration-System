@@ -63,7 +63,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}" Background="#7B5CD6" Foreground="White" Click="StudentClick">
+                            <Button Style="{StaticResource menuButton}" Background="#7B5CD6"  Click="StudentClick">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="AccountMultipleOutline" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Users"/>
@@ -81,7 +81,7 @@
 
                         </StackPanel>
 
-                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
+                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20" Click="Button_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Logout" Style="{StaticResource menuButtonIcon}"/>
                                 <TextBlock Text="Logout"/>
@@ -92,6 +92,16 @@
                 </Border>
 
             </Grid>
+            <StackPanel Orientation="Horizontal" Grid.Column="1">
+                <Button Style="{StaticResource topButton}" Margin="760 -630 20 0" Click="Button_Click_6">
+                    <Icon:PackIconMaterial Kind="WindowMinimize" />
+                </Button>
+                <Button Style="{StaticResource topButton}" Margin="0 -630 0 0" Click="Button_Click_5">
+                    <Icon:PackIconMaterial  Kind="Close"/>
+                </Button>
+
+
+            </StackPanel>
             <Frame Grid.Column="1" Margin="30 20 20 20" x:Name="MainContentFrame" NavigationUIVisibility="Hidden"/>
             <!--Main Section-->
            

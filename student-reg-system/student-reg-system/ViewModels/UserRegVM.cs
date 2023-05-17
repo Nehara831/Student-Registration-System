@@ -239,13 +239,22 @@ namespace student_reg_system.ViewModels
                 db.Remove(user);
                 db.SaveChanges();
 
-                var userView = new AdminView();
+               /* var userView = new AdminView();
                 Application.Current.Windows.OfType<UserView>().SingleOrDefault(x => x.IsActive)?.Close();
 
-                userView.Show();
+                userView.Show();*/
+
+            }
+            using (var db = new StudentContext())
+            {
+                var listusers = db.Users
+
+
+                .ToList();
+                UsersList = new ObservableCollection<User>(listusers);
 
             }
 
-            }
+        }
     }
 }
