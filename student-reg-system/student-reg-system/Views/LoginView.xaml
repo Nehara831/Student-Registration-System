@@ -127,7 +127,7 @@
                             Orientation="Vertical"
                             Margin="181,39,133,-460">
 
-                    <Image Source="D:\UOR education\SEM03\PP-Project\GUI-Project\Student-Registration-System\student-reg-system\student-reg-system\asserts\Logo.png"
+                    <Image Source="C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\student-reg-system\asserts\Logo.png"
                            Width="100" Height="100" Margin="10"/>
 
                     <TextBlock Text="Student Registration System"

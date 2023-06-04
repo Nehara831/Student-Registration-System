@@ -40,7 +40,7 @@ namespace student_reg_system.database
         //string projectRootPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", ".."));
         //string dbPath = Path.Combine("@",Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..")), "sqlite", "StudentData.db");
 
-        private readonly string _path = @"D:\UOR education\SEM03\PP-Project\GUI-Project\Student-Registration-System\student-reg-system\sqlite\StudentData.db";
+        private readonly string _path = @"C:\Users\User\OneDrive\Desktop\Student-sys\student-reg-system\sqlite\StudentData.db";
         //private readonly string _path = dbPath;
 
     }
