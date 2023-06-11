@@ -16,8 +16,7 @@
       MouseDown="Window_MouseDown">
 
 
-    <Border CornerRadius="10"
-            BorderThickness="2">
+    <Border>
 
 
         <Border.Background>
