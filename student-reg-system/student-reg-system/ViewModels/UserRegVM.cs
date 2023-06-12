@@ -136,8 +136,21 @@ namespace student_reg_system.ViewModels
                 }
            
             LoadUser();
+            using (var db = new StudentContext())
+            {
+                var listusers = db.Users
+
+
+                .ToList();
+                UsersList = new ObservableCollection<User>(listusers);
+
+            }
             ClearTextBoxes();
-           
+            var currentWindow = Application.Current.Windows.OfType<UserRegistration>().SingleOrDefault(w => w.IsActive);
+            currentWindow?.Close();
+            AdminView newview = new AdminView();
+
+            newview.Show();
 
         }
 
@@ -184,6 +197,7 @@ namespace student_reg_system.ViewModels
 
             var editView = new UserRegistration(user, DepModuleList);
             editView.Show();
+           
         }
 
         [RelayCommand]
@@ -239,10 +253,6 @@ namespace student_reg_system.ViewModels
                 db.Remove(user);
                 db.SaveChanges();
 
-               /* var userView = new AdminView();
-                Application.Current.Windows.OfType<UserView>().SingleOrDefault(x => x.IsActive)?.Close();
-
-                userView.Show();*/
 
             }
             using (var db = new StudentContext())

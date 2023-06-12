@@ -26,6 +26,7 @@ namespace student_reg_system.Views
         public UserRegistration()
         {
             InitializeComponent();
+            t1.Text="";
             myComboBox.Items.Clear();
             DataContext = new UserRegVM();
             
@@ -63,7 +64,17 @@ namespace student_reg_system.Views
                 textBox.Foreground = Brushes.Black;
             }
         }
-      
-       
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
