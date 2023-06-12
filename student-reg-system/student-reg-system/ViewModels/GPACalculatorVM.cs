@@ -26,6 +26,9 @@ namespace student_reg_system.ViewModels
         [ObservableProperty]
         public string? studenEmail;
 
+
+
+
         [ObservableProperty]
         public ObservableCollection<Module> moduleList = new ObservableCollection<Module>();
         [ObservableProperty]
@@ -157,7 +160,8 @@ namespace student_reg_system.ViewModels
                 {
                     gpa = totalQualityPoints / totalCreditValues;
                 }
-                MessageBox.Show($"{gpa}");
+                
+                //MessageBox.Show($"{gpa}");
             }
         }
 

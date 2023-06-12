@@ -48,5 +48,10 @@ namespace student_reg_system.Views
         {
            
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
