@@ -61,7 +61,7 @@ namespace student_reg_system.ViewModels
         [RelayCommand]
         public void Save()
         {
-            {
+            
 
                 using (var db = new StudentContext())
                 {
@@ -85,7 +85,7 @@ namespace student_reg_system.ViewModels
                     db.SaveChanges();
                 }
 
-            }
+            
         }
        
         [RelayCommand]
@@ -161,7 +161,7 @@ namespace student_reg_system.ViewModels
                     gpa = totalQualityPoints / totalCreditValues;
                 }
                 
-                //MessageBox.Show($"{gpa}");
+                MessageBox.Show($"{gpa}");
             }
         }
 
