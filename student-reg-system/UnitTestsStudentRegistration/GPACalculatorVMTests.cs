@@ -5,12 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using student_reg_system.Models;
+using student_reg_system.database;
+using student_reg_system.ViewModels;
 using System.Collections.ObjectModel;
+using Moq;
+using Microsoft.EntityFrameworkCore;
+using NSubstitute;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace student_reg_system.UnitTestsStudentRegistration
 {
     public class GPACalculatorVMTests
     {
+
+        private readonly string _path = @"D:\UOR education\SEM03\PP-Project\GUI-Project\Student-Registration-System\student-reg-system\sqlite\StudentData.db";
         [Fact]
         public void SearchCommand_FetchesStudentFromDatabase()
         {
@@ -32,9 +40,11 @@ namespace student_reg_system.UnitTestsStudentRegistration
                 EmailAdress = studentEmail,
                 Modules = moduleList
             };
-            var mockContext = new Mock<StudentContext>();
-            mockContext.Setup(c => c.Students.Include(s => s.Modules))
-                       .Returns(new List<Student> { student }.AsQueryable());
+
+            var serviceProvider = new ServiceCollection()
+                .AddDbContext<StudentContext>(optionsBuilder => optionsBuilder.UseSqlite($"DataSource={_path}"))
+                .BuildServiceProvider();
+
             var vm = new GPACalculatorVM { StudentId = studentId };
             vm.ModuleList = new ObservableCollection<Module>();
 
