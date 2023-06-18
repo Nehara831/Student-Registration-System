@@ -14,7 +14,7 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Page.Resources>
 
-    <StackPanel  Orientation="Vertical" Background="#EFF2F7" Margin="0,0,0,-50" >
+    <StackPanel  Orientation="Vertical" Background="#EFF2F7" Margin="0,0,0,-37" >
 
         <Grid Width="300"  HorizontalAlignment="Left" Margin="40 10">
             <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
@@ -33,12 +33,12 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" Background="#623ED0" Height="200">
+            <Border Grid.Column="0" Background="#623ED0" Height="300">
 
                 <DockPanel>
                     <!--Menu Logo-->
 
-                    <StackPanel DockPanel.Dock="Top" Background="MediumPurple" >
+                    <StackPanel DockPanel.Dock="Top" Background="MediumPurple" Height="328" >
                         <TextBlock Text="Student Details" Foreground="White" FontWeight="SemiBold" FontSize="16" Margin="10 10 0 5" TextAlignment="Left" Width="200"/>
                         <TextBlock Text="Name" Foreground="White" FontWeight="SemiBold" FontSize="14" Margin="10 1 0 5" TextAlignment="Left" Width="200"/>
                         <TextBlock Text="{Binding StudentName}" Foreground="White" FontSize="12" FontWeight="SemiBold"  Margin="10 1 0 5" TextAlignment="Left" Width="200"/>
@@ -48,6 +48,9 @@
 
                         <TextBlock Text="Email" Foreground="White" FontWeight="SemiBold" FontSize="14" Margin="10 1 0 5" TextAlignment="Left" Width="200"/>
                         <TextBlock Text="{Binding StudenEmail}" Foreground="White" FontSize="12" FontWeight="SemiBold" Margin="10 1 0 5" TextAlignment="Left" Width="200"/>
+
+                        <TextBlock Text="Grade Point Average" Foreground="White" FontWeight="SemiBold" FontSize="14" Margin="10 1 0 5" TextAlignment="Left" Width="200"/>
+                        <TextBlock Text="Non" Foreground="White" FontSize="12" FontWeight="SemiBold" Margin="10 1 0 5" TextAlignment="Left" Width="200"/>
 
                     </StackPanel>
 
@@ -96,6 +99,8 @@
             <TextBlock Width="30"/>
             <Button Style="{StaticResource addButton}" Content="Save Changes" Width="117"  HorizontalAlignment="Left" Height="30" Command="{Binding SaveCommand}" />
         </StackPanel>
+
+
 
 
     </StackPanel>
