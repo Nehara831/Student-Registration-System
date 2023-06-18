@@ -66,13 +66,13 @@ namespace student_reg_system.Views
        
 
       
-        private void StudentClick(object sender, RoutedEventArgs e)
+        private void ShowStudentData(object sender, RoutedEventArgs e)
         {
              MainContentFrame.Navigate(new UserPage());
 
 
         }
-        private void GPACalculator(object sender, RoutedEventArgs e)
+        private void ShowCalculator(object sender, RoutedEventArgs e)
         {
             MainContentFrame.Navigate(new GpaCalculator());
 

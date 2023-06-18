@@ -28,7 +28,6 @@ namespace student_reg_system.Views
            
         }
 
-
         private void CalculateGPA(object sender, RoutedEventArgs e)
         {
         }
@@ -37,5 +36,18 @@ namespace student_reg_system.Views
         {
             // Your code to handle the TextChanged event goes here
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

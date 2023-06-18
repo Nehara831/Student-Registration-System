@@ -168,6 +168,13 @@ namespace student_reg_system.ViewModels
 
 
                 ClearTextBoxes();
+                var currentWindow = Application.Current.Windows.OfType<StudentRegView>().SingleOrDefault(w => w.IsActive);
+                currentWindow?.Close();
+                var currentWindow1 = Application.Current.Windows.OfType<UserView>().SingleOrDefault(w => w.IsActive);
+                currentWindow1?.Close();
+                UserView newview = new UserView();
+
+                newview.Show();
 
             }
         }

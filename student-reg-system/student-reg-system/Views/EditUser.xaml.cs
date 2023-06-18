@@ -1,9 +1,7 @@
-﻿using student_reg_system.database;
-using student_reg_system.Models;
+﻿using student_reg_system.Models;
 using student_reg_system.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,20 +17,20 @@ using System.Windows.Shapes;
 namespace student_reg_system.Views
 {
     /// <summary>
-    /// Interaction logic for UserRegistration.xaml
+    /// Interaction logic for EditUser.xaml
     /// </summary>
-     public partial class UserRegistration : Window
-    { 
-        public UserRegistration()
+    public partial class EditUser : Window
+    {
+        public EditUser(User user, List<Module> moduleList)
         {
             InitializeComponent();
            
+               
+            DataContext = new EditUserVM(user, moduleList);
+
            
-            DataContext = new UserRegVM();
-          
-            
+
         }
-       
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left) this.DragMove();

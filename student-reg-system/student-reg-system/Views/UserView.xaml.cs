@@ -121,6 +121,23 @@ namespace student_reg_system.Views
             userViewWindow.WindowState = WindowState.Minimized;*/
            this.WindowState= WindowState.Minimized;
         }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window != Application.Current.MainWindow)
+                {
+                    window.Close();
+                }
+            }
+
+            LoginView newlogin = new LoginView();
+            newlogin.Show();
+
+
+
+        }
     }
 
    
